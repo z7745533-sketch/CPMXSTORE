@@ -2,159 +2,470 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CPMXSTORE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#080808;color:#fff}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#080808;color:#fff;overflow-x:hidden}
 button,input{font:inherit}
 button{cursor:pointer}
 
-.header{position:sticky;top:0;z-index:100;background:#0b0b0b;border-bottom:1px solid #252525;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:25px;font-weight:900;letter-spacing:2px;text-shadow:0 0 12px #f22;animation:logoGlow 2s infinite alternate}
+/* GİRİŞ EKRANI */
+#intro{
+position:fixed;
+inset:0;
+z-index:9999;
+background:radial-gradient(circle at center,#350000 0%,#120000 30%,#030303 75%);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+animation:introHide 1s ease 5s forwards;
+}
+
+.intro-logo{
+font-size:clamp(55px,11vw,100px);
+font-weight:1000;
+letter-spacing:7px;
+text-shadow:0 0 15px #f22,0 0 35px #f22,0 0 70px #900;
+animation:introGlow 1.5s infinite alternate;
+}
+
+.intro-logo span{color:#f22}
+
+.intro-sub{
+margin-top:16px;
+letter-spacing:8px;
+color:#aaa;
+font-size:14px;
+}
+
+.intro-line{
+width:280px;
+height:3px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+margin-top:30px;
+}
+
+.intro-line:after{
+content:"";
+display:block;
+width:40%;
+height:100%;
+background:#f22;
+box-shadow:0 0 15px #f22;
+animation:introLoad 1.5s infinite;
+}
+
+@keyframes introGlow{
+from{transform:scale(1);filter:brightness(1)}
+to{transform:scale(1.04);filter:brightness(1.5)}
+}
+
+@keyframes introLoad{
+from{transform:translateX(-150%)}
+to{transform:translateX(350%)}
+}
+
+@keyframes introHide{
+to{
+opacity:0;
+visibility:hidden;
+pointer-events:none
+}
+}
+
+/* HEADER */
+.header{
+position:sticky;
+top:0;
+z-index:100;
+background:#0b0b0b;
+border-bottom:1px solid #252525;
+padding:11px 4%;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+
+.logo{
+font-size:31px;
+font-weight:1000;
+letter-spacing:3px;
+text-shadow:0 0 15px #f22;
+animation:logoGlow 2s infinite alternate
+}
+
 .logo span{color:#f22}
-@keyframes logoGlow{from{filter:drop-shadow(0 0 2px #f22)}to{filter:drop-shadow(0 0 12px #f22)}}
 
-.nav{display:flex;gap:7px}
-.nav button,.btn{background:#151515;color:#fff;border:1px solid #303030;border-radius:10px;padding:10px 13px}
-.nav button:hover,.btn:hover{border-color:#f22;background:#1d1d1d}
+@keyframes logoGlow{
+from{filter:drop-shadow(0 0 2px #f22)}
+to{filter:drop-shadow(0 0 12px #f22)}
+}
 
-.hero{min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at center,#260000 0%,#0b0000 25%,#080808 65%)}
-.hero h1{font-size:55px;font-weight:900;letter-spacing:4px;text-shadow:0 0 20px #f22}
+.nav{display:flex;gap:6px}
+
+.nav button,.btn{
+background:#151515;
+color:#fff;
+border:1px solid #303030;
+border-radius:10px;
+padding:9px 12px
+}
+
+.nav button:hover,.btn:hover{
+border-color:#f22;
+background:#1d1d1d
+}
+
+/* HERO */
+.hero{
+min-height:310px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:30px 15px;
+background:radial-gradient(circle at center,#260000 0%,#0b0000 25%,#080808 65%)
+}
+
+.hero h1{
+font-size:clamp(48px,7vw,75px);
+font-weight:1000;
+letter-spacing:4px;
+text-shadow:0 0 20px #f22
+}
+
 .hero h1 span{color:#f22}
-.hero p{color:#999;margin:15px 0 25px}
 
-.search{width:min(650px,90%);padding:16px 20px;border-radius:14px;border:1px solid #333;background:#111;color:#fff;outline:none}
+.hero p{
+color:#999;
+margin:12px 0 20px;
+font-size:14px
+}
+
+/* ARAMA */
+.search{
+width:min(600px,90%);
+display:block;
+margin:22px auto;
+padding:14px 18px;
+border-radius:13px;
+border:1px solid #333;
+background:#111;
+color:#fff;
+outline:none
+}
+
 .search:focus{border-color:#f22}
 
-.content{width:min(1100px,92%);margin:30px auto}
-.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-.title h2{font-size:24px}
+/* GENEL ALAN */
+.content{
+width:min(900px,90%);
+margin:25px auto
+}
+
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px
+}
+
+.title h2{font-size:22px}
 .title span{color:#888}
 
+/* İLAN */
 .car-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(240px,320px));
+justify-content:center;
+gap:18px
 }
 
 .car-card{
+width:100%;
 background:#101010;
 border:1px solid #252525;
-border-radius:18px;
-overflow:hidden;
+border-radius:16px;
+overflow:hidden
 }
 
 .car-photo{
 position:relative;
 width:100%;
-height:300px;
+height:220px;
 background:#050505;
-overflow:hidden;
+overflow:hidden
 }
 
 .car-photo img{
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
+display:block
 }
 
 .photo-arrow{
 position:absolute;
 top:50%;
 transform:translateY(-50%);
-width:45px;
-height:55px;
+width:38px;
+height:48px;
 border:1px solid #555;
 background:rgba(0,0,0,.75);
 color:#fff;
-font-size:34px;
-border-radius:10px;
-z-index:5;
+font-size:30px;
+border-radius:9px;
+z-index:5
 }
 
 .photo-arrow:hover{
 background:#f22;
-border-color:#f22;
+border-color:#f22
 }
 
-.photo-left{left:10px}
-.photo-right{right:10px}
+.photo-left{left:8px}
+.photo-right{right:8px}
 
 .photo-number{
 position:absolute;
-bottom:10px;
+bottom:8px;
 left:50%;
 transform:translateX(-50%);
 background:rgba(0,0,0,.75);
-padding:6px 12px;
+padding:5px 10px;
 border-radius:20px;
-font-size:12px;
-z-index:5;
+font-size:11px;
+z-index:5
 }
 
 .favorite-button{
 position:absolute;
-right:12px;
-top:12px;
-width:45px;
-height:45px;
+right:9px;
+top:9px;
+width:40px;
+height:40px;
 border-radius:50%;
 border:1px solid #444;
 background:rgba(0,0,0,.8);
 color:#fff;
-font-size:25px;
-z-index:6;
+font-size:23px;
+z-index:6
 }
 
 .favorite-button.active{
 color:#f22;
 border-color:#f22;
-box-shadow:0 0 15px #f22;
+box-shadow:0 0 15px #f22
 }
 
-.car-info{padding:20px}
-.car-info h3{font-size:24px;margin-bottom:10px}
-.price{font-size:28px;font-weight:bold;color:#f22;margin-bottom:8px}
-.seller{color:#888;margin-bottom:18px}
+.car-info{
+padding:15px
+}
+
+.car-info h3{
+font-size:21px;
+margin-bottom:8px
+}
+
+.price{
+font-size:25px;
+font-weight:bold;
+color:#f22;
+margin-bottom:7px
+}
+
+.seller{
+color:#888;
+margin-bottom:14px;
+font-size:14px
+}
+
 .seller b{color:#fff}
 
 .car-actions{
 display:flex;
-gap:8px;
+gap:7px
 }
 
 .car-actions .btn{
 flex:1;
+padding:9px 8px;
+font-size:13px
 }
 
-.stats{width:min(1100px,92%);margin:40px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.stat{background:#101010;border:1px solid #252525;border-radius:15px;padding:20px;text-align:center}
-.stat strong{display:block;font-size:25px;margin:7px}
+/* İSTATİSTİK */
+.stats{
+width:min(900px,90%);
+margin:35px auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:9px
+}
+
+.stat{
+background:#101010;
+border:1px solid #252525;
+border-radius:13px;
+padding:15px 8px;
+text-align:center;
+font-size:14px
+}
+
+.stat strong{
+display:block;
+font-size:22px;
+margin:5px
+}
+
 .stat small{color:#888}
 
-footer{text-align:center;color:#666;padding:40px 20px 90px;border-top:1px solid #202020;margin-top:50px}
+/* FOOTER */
+footer{
+text-align:center;
+color:#666;
+padding:35px 20px 80px;
+border-top:1px solid #202020;
+margin-top:35px;
+font-size:13px
+}
 
-.panel{display:none;position:fixed;z-index:200;inset:0;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:20px}
-.panel-box{width:min(500px,100%);max-height:85vh;overflow:auto;background:#111;border:1px solid #333;border-radius:18px;padding:25px}
-.panel-box h2{margin-bottom:20px}
-.close{float:right;background:none;border:0;color:#aaa;font-size:25px}
+/* PANELLER */
+.panel{
+display:none;
+position:fixed;
+z-index:200;
+inset:0;
+background:rgba(0,0,0,.75);
+align-items:center;
+justify-content:center;
+padding:20px
+}
 
-.profile-input{width:100%;background:#080808;color:#fff;border:1px solid #333;padding:13px;border-radius:10px;margin:10px 0}
+.panel-box{
+width:min(480px,100%);
+max-height:85vh;
+overflow:auto;
+background:#111;
+border:1px solid #333;
+border-radius:18px;
+padding:22px
+}
 
-.empty{background:#101010;border:1px solid #252525;border-radius:18px;padding:50px 20px;text-align:center;color:#888}
+.panel-box h2{margin-bottom:18px}
+
+.close{
+float:right;
+background:none;
+border:0;
+color:#aaa;
+font-size:25px
+}
+
+.profile-input{
+width:100%;
+background:#080808;
+color:#fff;
+border:1px solid #333;
+padding:12px;
+border-radius:10px;
+margin:10px 0
+}
+
+.empty{
+background:#101010;
+border:1px solid #252525;
+border-radius:18px;
+padding:45px 20px;
+text-align:center;
+color:#888
+}
 
 .bottom-nav{display:none}
 
+/* TELEFON */
 @media(max-width:700px){
-.header{padding:12px 4%}
-.logo{font-size:20px}
+
+.header{
+padding:10px 4%
+}
+
+.logo{
+font-size:25px;
+letter-spacing:2px
+}
+
 .nav{display:none}
-.hero h1{font-size:38px}
-.stats{grid-template-columns:repeat(2,1fr)}
-.car-photo{height:240px}
+
+.hero{
+min-height:280px;
+padding:25px 12px
+}
+
+.hero h1{
+font-size:43px;
+letter-spacing:2px
+}
+
+.hero p{
+font-size:13px
+}
+
+.content{
+width:92%;
+margin:20px auto
+}
+
+.title h2{
+font-size:19px
+}
+
+.car-grid{
+grid-template-columns:minmax(0,290px);
+justify-content:center;
+gap:14px
+}
+
+.car-card{
+max-width:290px;
+margin:auto
+}
+
+.car-photo{
+height:190px
+}
+
+.car-info{
+padding:13px
+}
+
+.car-info h3{
+font-size:20px
+}
+
+.price{
+font-size:23px
+}
+
+.stats{
+width:92%;
+grid-template-columns:repeat(2,1fr);
+margin:25px auto
+}
+
+.stat{
+padding:13px 8px
+}
+
+.stat strong{
+font-size:21px
+}
 
 .bottom-nav{
 display:flex;
@@ -166,32 +477,70 @@ right:0;
 background:#0c0c0c;
 border-top:1px solid #292929;
 justify-content:space-around;
-padding:9px 4px
+padding:8px 4px
 }
 
 .bottom-nav button{
 background:none;
 color:#aaa;
 border:0;
-font-size:20px
+font-size:19px
 }
 
 .bottom-nav button span{
 display:block;
 font-size:9px;
-margin-top:3px
+margin-top:2px
 }
+
+}
+
+/* BÜYÜK BİLGİSAYAR EKRANINDA DA KOMPAKT */
+@media(min-width:1200px){
+
+.header{
+padding-left:7%;
+padding-right:7%
+}
+
+.content,
+.stats{
+width:850px
+}
+
+.car-grid{
+grid-template-columns:300px
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- GİRİŞ GÖSTERİSİ -->
+<div id="intro">
+
+<div class="intro-logo">
+CPM<span>X</span>STORE
+</div>
+
+<div class="intro-sub">
+CAR PARKING MULTIPLAYER
+</div>
+
+<div class="intro-line"></div>
+
+</div>
+
 <header class="header">
 
-<div class="logo">CPM<span>X</span>STORE</div>
+<div class="logo">
+CPM<span>X</span>STORE
+</div>
 
 <nav class="nav">
+
 <button onclick="goCars()">🚘</button>
 <button onclick="openPanel('favorites')">❤️</button>
 <button onclick="openPanel('notifications')">🔔</button>
@@ -199,17 +548,24 @@ margin-top:3px
 <button onclick="openPanel('profile')">👤</button>
 <button onclick="openPanel('settings')">⚙️</button>
 <button onclick="openPanel('admin')">🛡️</button>
+
 </nav>
 
 </header>
 
 <section class="hero">
 
-<h1>CPM<span>X</span>STORE</h1>
+<h1>
+CPM<span>X</span>STORE
+</h1>
 
-<p>Car Parking Multiplayer araç pazarı</p>
+<p>
+Car Parking Multiplayer araç pazarı
+</p>
 
-<button class="btn" onclick="goCars()">🚘 Araçları Keşfet</button>
+<button class="btn" onclick="goCars()">
+🚘 Araçları Keşfet
+</button>
 
 </section>
 
@@ -227,8 +583,11 @@ oninput="searchCars()">
 <section class="content" id="cars">
 
 <div class="title">
+
 <h2>🚘 Araç İlanları</h2>
+
 <span>1 ilan</span>
+
 </div>
 
 <div class="car-grid">
@@ -237,11 +596,11 @@ oninput="searchCars()">
 
 <div class="car-photo">
 
-<!-- 1. FOTOĞRAF -->
 <img
 id="carImage"
 src="https://i.hizliresim.com/qzecneqg.jpg"
-alt="Murat 131">
+alt="Murat 131"
+onerror="this.style.display='none'">
 
 <button
 class="favorite-button"
@@ -274,7 +633,9 @@ id="photoNumber">
 
 <h3>🚗 Murat 131</h3>
 
-<div class="price">25 TL</div>
+<div class="price">
+25 TL
+</div>
 
 <div class="seller">
 👤 Satıcı: <b>CPMXSTORE</b>
@@ -333,9 +694,11 @@ onclick="showDetails()">
 </section>
 
 <footer>
+
 © 2026 CPMXSTORE
 <br>
 Car Parking Multiplayer Marketplace
+
 </footer>
 
 <div class="panel" id="favorites">
@@ -469,7 +832,9 @@ id="adminPassword"
 type="password"
 placeholder="Admin şifresi">
 
-<button class="btn" onclick="adminLogin()">
+<button
+class="btn"
+onclick="adminLogin()">
 🔐 Giriş
 </button>
 
@@ -519,23 +884,23 @@ CPMXSTORE yönetim alanı
 
 <script>
 
-/* FOTOĞRAFLAR - DOĞRUDAN JPG */
-const carPhotos = [
+const carPhotos=[
 "https://i.hizliresim.com/qzecneqg.jpg",
 "https://i.hizliresim.com/dcqp3hyt.jpg"
 ];
 
-let currentPhoto = 0;
+let currentPhoto=0;
 
-/* FOTOĞRAF DEĞİŞTİR */
 function updatePhoto(){
 
-const image = document.getElementById("carImage");
+const image=document.getElementById("carImage");
 
-image.src = carPhotos[currentPhoto];
+image.style.display="block";
 
-document.getElementById("photoNumber").textContent =
-(currentPhoto + 1) + " / " + carPhotos.length;
+image.src=carPhotos[currentPhoto];
+
+document.getElementById("photoNumber").textContent=
+(currentPhoto+1)+" / "+carPhotos.length;
 
 }
 
@@ -543,8 +908,8 @@ function nextPhoto(){
 
 currentPhoto++;
 
-if(currentPhoto >= carPhotos.length){
-currentPhoto = 0;
+if(currentPhoto>=carPhotos.length){
+currentPhoto=0;
 }
 
 updatePhoto();
@@ -555,24 +920,22 @@ function previousPhoto(){
 
 currentPhoto--;
 
-if(currentPhoto < 0){
-currentPhoto = carPhotos.length - 1;
+if(currentPhoto<0){
+currentPhoto=carPhotos.length-1;
 }
 
 updatePhoto();
 
 }
 
-/* PANELLER */
-
 function openPanel(id){
 
 closePanels();
 
-const panel = document.getElementById(id);
+const panel=document.getElementById(id);
 
 if(panel){
-panel.style.display = "flex";
+panel.style.display="flex";
 }
 
 }
@@ -580,9 +943,7 @@ panel.style.display = "flex";
 function closePanels(){
 
 document.querySelectorAll(".panel").forEach(function(panel){
-
-panel.style.display = "none";
-
+panel.style.display="none";
 });
 
 }
@@ -597,53 +958,38 @@ behavior:"smooth"
 
 }
 
-/* ARAMA */
-
 function searchCars(){
 
-const value =
+const value=
 document.getElementById("search").value.toLowerCase().trim();
 
-const card =
-document.querySelector(".car-card");
+const card=document.querySelector(".car-card");
 
 if(!card)return;
 
-if(
-value === "" ||
+card.style.display=
+value==="" ||
 card.innerText.toLowerCase().includes(value)
-){
-
-card.style.display = "";
-
-}else{
-
-card.style.display = "none";
+?""
+:"none";
 
 }
-
-}
-
-/* FAVORİ */
 
 function updateFavorite(){
 
-const favorite =
-localStorage.getItem("murat131Favorite") === "true";
+const favorite=
+localStorage.getItem("murat131Favorite")==="true";
 
-const button =
-document.getElementById("favBtn");
-
-const count =
-document.getElementById("favCount");
+const button=document.getElementById("favBtn");
+const count=document.getElementById("favCount");
 
 if(favorite){
 
 button.classList.add("active");
-button.innerHTML = "♥";
-count.textContent = "1";
+button.innerHTML="♥";
+count.textContent="1";
 
-document.getElementById("favoriteContent").innerHTML = `
+document.getElementById("favoriteContent").innerHTML=`
 
 <div>🚗</div>
 
@@ -668,10 +1014,10 @@ onclick="goCars();closePanels()">
 }else{
 
 button.classList.remove("active");
-button.innerHTML = "♡";
-count.textContent = "0";
+button.innerHTML="♡";
+count.textContent="0";
 
-document.getElementById("favoriteContent").innerHTML = `
+document.getElementById("favoriteContent").innerHTML=`
 
 <div>❤️</div>
 
@@ -687,41 +1033,33 @@ document.getElementById("favoriteContent").innerHTML = `
 
 function toggleFavorite(){
 
-const favorite =
-localStorage.getItem("murat131Favorite") === "true";
+const favorite=
+localStorage.getItem("murat131Favorite")==="true";
 
 if(favorite){
-
 localStorage.removeItem("murat131Favorite");
-
 }else{
-
 localStorage.setItem("murat131Favorite","true");
-
 }
 
 updateFavorite();
 
 }
 
-/* DETAY */
-
 function showDetails(){
 
 alert(
-"Murat 131\n\n" +
-"💰 Fiyat: 25 TL\n" +
-"👤 Satıcı: CPMXSTORE\n" +
+"Murat 131\n\n"+
+"💰 Fiyat: 25 TL\n"+
+"👤 Satıcı: CPMXSTORE\n"+
 "📌 Durum: Aktif ilan"
 );
 
 }
 
-/* PROFİL */
-
 function saveProfile(){
 
-const name =
+const name=
 document.getElementById("profileName").value.trim();
 
 if(name){
@@ -737,8 +1075,6 @@ alert("Profil kaydedildi!");
 
 }
 
-/* BİLDİRİM */
-
 function testNotification(){
 
 if(!("Notification" in window)){
@@ -749,7 +1085,7 @@ return;
 
 }
 
-if(Notification.permission === "granted"){
+if(Notification.permission==="granted"){
 
 new Notification(
 "CPMXSTORE",
@@ -762,7 +1098,7 @@ body:"Bildirim sistemi çalışıyor!"
 
 Notification.requestPermission().then(function(permission){
 
-if(permission === "granted"){
+if(permission==="granted"){
 
 new Notification(
 "CPMXSTORE",
@@ -779,16 +1115,14 @@ body:"Bildirimler aktif!"
 
 }
 
-/* ADMIN */
-
 function adminLogin(){
 
-const password =
+const password=
 document.getElementById("adminPassword").value;
 
-if(password === "6640"){
+if(password==="6640"){
 
-document.getElementById("adminArea").style.display = "block";
+document.getElementById("adminArea").style.display="block";
 
 alert("Admin girişi başarılı!");
 
@@ -800,41 +1134,33 @@ alert("Hatalı admin şifresi!");
 
 }
 
-/* TEMA */
-
 function toggleTheme(){
 
-if(document.body.dataset.theme === "light"){
+if(document.body.dataset.theme==="light"){
 
-document.body.dataset.theme = "dark";
-
-document.body.style.background = "#080808";
-document.body.style.color = "#fff";
+document.body.dataset.theme="dark";
+document.body.style.background="#080808";
+document.body.style.color="#fff";
 
 }else{
 
-document.body.dataset.theme = "light";
-
-document.body.style.background = "white";
-document.body.style.color = "#111";
-
-}
+document.body.dataset.theme="light";
+document.body.style.background="white";
+document.body.style.color="#111";
 
 }
 
-/* SAYFA AÇILINCA */
+}
 
 document.addEventListener(
 "DOMContentLoaded",
 function(){
 
-const name =
+const name=
 localStorage.getItem("cpmxProfileName");
 
 if(name){
-
-document.getElementById("profileName").value = name;
-
+document.getElementById("profileName").value=name;
 }
 
 updateFavorite();
