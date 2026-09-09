@@ -3,198 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>CPMXSTORE Ultimate</title>
+<title>CPMXSTORE</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#050505;color:#fff;overflow-x:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:#080808;color:#fff}
 button,input{font:inherit}
 button{cursor:pointer}
 
-#intro{
-position:fixed;inset:0;z-index:9999;
-background:radial-gradient(circle,#350000 0%,#0b0000 30%,#020202 75%);
-display:flex;align-items:center;justify-content:center;flex-direction:column;
-animation:introOut .9s ease 3s forwards
-}
-.introLogo{
-font-size:clamp(42px,10vw,90px);font-weight:1000;letter-spacing:7px;
-text-shadow:0 0 10px #f00,0 0 35px #f00,0 0 70px #900;
-animation:pulse 1.2s infinite alternate
-}
-.introLogo span,.logo span,.hero h1 span{color:#f22}
-.introSub{margin-top:14px;letter-spacing:7px;color:#aaa;font-size:13px}
-.loader{width:220px;height:3px;background:#222;margin-top:28px;overflow:hidden;border-radius:5px}
-.loader:after{
-content:"";display:block;width:45%;height:100%;background:#f22;
-box-shadow:0 0 15px #f22;animation:load 1.2s infinite
-}
-@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.04);filter:brightness(1.5)}}
-@keyframes load{from{transform:translateX(-100%)}to{transform:translateX(500%)}}
-@keyframes introOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.header{position:sticky;top:0;z-index:100;background:#0b0b0b;border-bottom:1px solid #252525;padding:14px 5%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px;text-shadow:0 0 12px #f22;animation:logoGlow 2s infinite alternate}
+.logo span{color:#f22}
+@keyframes logoGlow{from{filter:drop-shadow(0 0 2px #f22)}to{filter:drop-shadow(0 0 12px #f22)}}
 
-.header{
-position:sticky;top:0;z-index:100;height:72px;padding:0 5%;
-display:flex;align-items:center;justify-content:space-between;
-background:rgba(7,7,7,.92);backdrop-filter:blur(16px);
-border-bottom:1px solid #252525
-}
-.logo{
-font-size:25px;font-weight:1000;letter-spacing:3px;
-text-shadow:0 0 15px #f22;animation:logoGlow 2s infinite alternate
-}
-@keyframes logoGlow{
-from{filter:drop-shadow(0 0 2px #f22)}
-to{filter:drop-shadow(0 0 12px #f22)}
-}
 .nav{display:flex;gap:7px}
-.nav button{
-width:43px;height:43px;border-radius:12px;background:#111;
-border:1px solid #292929;color:#fff;transition:.2s
-}
-.nav button:hover{border-color:#f22;box-shadow:0 0 15px #f222;transform:translateY(-2px)}
+.nav button,.btn{background:#151515;color:#fff;border:1px solid #303030;border-radius:10px;padding:10px 13px}
+.nav button:hover,.btn:hover{border-color:#f22;background:#1d1d1d}
 
-.hero{
-position:relative;min-height:430px;display:flex;flex-direction:column;
-align-items:center;justify-content:center;text-align:center;overflow:hidden;
-background:radial-gradient(circle at 50% 40%,#300000 0%,#100000 22%,#050505 68%)
-}
-.hero:before,.hero:after{
-content:"";position:absolute;border-radius:50%;border:1px solid #f222;
-animation:orb 7s linear infinite
-}
-.hero:before{width:500px;height:500px}
-.hero:after{width:700px;height:700px;animation-direction:reverse;opacity:.3}
-@keyframes orb{to{transform:rotate(360deg)}}
-.hero>*{position:relative;z-index:2}
-.hero h1{
-font-size:clamp(42px,9vw,90px);font-weight:1000;letter-spacing:5px;
-text-shadow:0 0 25px #f22
-}
-.hero p{margin:15px 0 28px;color:#999;font-size:16px}
+.hero{min-height:350px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(circle at center,#260000 0%,#0b0000 25%,#080808 65%)}
+.hero h1{font-size:55px;font-weight:900;letter-spacing:4px;text-shadow:0 0 20px #f22}
+.hero h1 span{color:#f22}
+.hero p{color:#999;margin:15px 0 25px}
 
-.mainBtn,.btn{
-border:1px solid #4a4a4a;
-background:linear-gradient(135deg,#181818,#0c0c0c);
-color:#fff;border-radius:12px;padding:12px 18px;transition:.2s
-}
-.mainBtn{
-background:linear-gradient(135deg,#f22,#8b0000);
-border-color:#f44;font-weight:bold;box-shadow:0 0 25px #f224
-}
-.mainBtn:hover,.btn:hover{
-transform:translateY(-2px);border-color:#f22;box-shadow:0 0 18px #f223
-}
-
-.searchWrap{width:min(900px,92%);margin:-30px auto 35px;position:relative;z-index:5}
-.search{
-width:100%;padding:18px 22px;background:#101010;border:1px solid #333;
-border-radius:16px;color:#fff;outline:none;box-shadow:0 15px 40px #000
-}
+.search{width:min(650px,90%);padding:16px 20px;border-radius:14px;border:1px solid #333;background:#111;color:#fff;outline:none}
 .search:focus{border-color:#f22}
 
-.content{width:min(1150px,92%);margin:35px auto}
-.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.title h2{font-size:25px}.title span{color:#777}
-.carGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.content{width:min(1100px,92%);margin:30px auto}
+.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.title h2{font-size:24px}
+.title span{color:#888}
 
-.carCard{
-background:linear-gradient(145deg,#151515,#0b0b0b);
-border:1px solid #292929;border-radius:22px;overflow:hidden;
-box-shadow:0 15px 45px #000;transition:.3s
-}
-.carCard:hover{transform:translateY(-6px);border-color:#f22;box-shadow:0 20px 55px #f211}
-
-.carPhoto{
-height:300px;position:relative;background:#080808;overflow:hidden
-}
-.carPhoto img{
-width:100%;height:100%;object-fit:cover;display:block;transition:.3s
-}
-.photoBadge{
-position:absolute;top:14px;left:14px;padding:7px 11px;background:#e00;
-border-radius:9px;font-size:12px;font-weight:bold;box-shadow:0 0 15px #f226;z-index:3
-}
-.favBtn{
-position:absolute;top:12px;right:12px;width:45px;height:45px;border-radius:50%;
-border:1px solid #666;background:#080808dd;color:#fff;font-size:24px;
-z-index:5;transition:.2s
-}
-.favBtn.active{color:#f22;border-color:#f22;box-shadow:0 0 18px #f225}
-
-.photoArrow{
-position:absolute;top:50%;transform:translateY(-50%);
-width:45px;height:55px;border:1px solid #555;background:#050505cc;
-color:#fff;font-size:32px;border-radius:12px;z-index:4;transition:.2s
-}
-.photoArrow:hover{background:#e00000;border-color:#f44;box-shadow:0 0 18px #f225}
-.photoArrow.left{left:12px}.photoArrow.right{right:12px}
-.photoCounter{
-position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
-background:#050505cc;border:1px solid #444;padding:6px 12px;
-border-radius:20px;font-size:12px;color:#ddd;z-index:4
+.car-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+gap:20px;
 }
 
-.carInfo{padding:21px}
-.carInfo h3{font-size:24px;margin-bottom:10px}
-.price{font-size:29px;font-weight:1000;color:#f22;text-shadow:0 0 12px #f223;margin-bottom:10px}
-.seller{color:#888;margin-bottom:18px}.seller b{color:#fff}
-.carActions{display:flex;gap:8px}.carActions .btn{flex:1}
+.car-card{
+background:#101010;
+border:1px solid #252525;
+border-radius:18px;
+overflow:hidden;
+}
 
-.stats{
-width:min(1150px,92%);margin:50px auto;display:grid;
-grid-template-columns:repeat(4,1fr);gap:14px
+.car-photo{
+position:relative;
+width:100%;
+height:300px;
+background:#050505;
+overflow:hidden;
 }
-.stat{padding:22px;text-align:center;background:#0e0e0e;border:1px solid #242424;border-radius:18px}
-.statIcon{font-size:25px}.stat strong{display:block;font-size:27px;margin:8px}.stat small{color:#777}
 
-.panel{
-display:none;position:fixed;inset:0;z-index:500;background:#000b;
-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px
+.car-photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
 }
-.panelBox{
-width:min(520px,100%);max-height:85vh;overflow:auto;background:#111;
-border:1px solid #333;border-radius:22px;padding:25px;box-shadow:0 25px 80px #000
-}
-.panelBox h2{margin-bottom:20px}
-.close{float:right;border:0;background:none;color:#aaa;font-size:27px}
-.empty{padding:45px 20px;text-align:center;background:#0b0b0b;border:1px solid #222;border-radius:17px;color:#888}
-.empty div{font-size:48px;margin-bottom:12px}
-.input{width:100%;padding:13px;margin:8px 0;border-radius:10px;background:#080808;border:1px solid #333;color:#fff;outline:none}
 
-footer{
-margin-top:70px;padding:45px 20px 100px;border-top:1px solid #202020;
-text-align:center;color:#666
+.photo-arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:45px;
+height:55px;
+border:1px solid #555;
+background:rgba(0,0,0,.75);
+color:#fff;
+font-size:34px;
+border-radius:10px;
+z-index:5;
 }
-.bottomNav{display:none}
+
+.photo-arrow:hover{
+background:#f22;
+border-color:#f22;
+}
+
+.photo-left{left:10px}
+.photo-right{right:10px}
+
+.photo-number{
+position:absolute;
+bottom:10px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(0,0,0,.75);
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+z-index:5;
+}
+
+.favorite-button{
+position:absolute;
+right:12px;
+top:12px;
+width:45px;
+height:45px;
+border-radius:50%;
+border:1px solid #444;
+background:rgba(0,0,0,.8);
+color:#fff;
+font-size:25px;
+z-index:6;
+}
+
+.favorite-button.active{
+color:#f22;
+border-color:#f22;
+box-shadow:0 0 15px #f22;
+}
+
+.car-info{padding:20px}
+.car-info h3{font-size:24px;margin-bottom:10px}
+.price{font-size:28px;font-weight:bold;color:#f22;margin-bottom:8px}
+.seller{color:#888;margin-bottom:18px}
+.seller b{color:#fff}
+
+.car-actions{
+display:flex;
+gap:8px;
+}
+
+.car-actions .btn{
+flex:1;
+}
+
+.stats{width:min(1100px,92%);margin:40px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#101010;border:1px solid #252525;border-radius:15px;padding:20px;text-align:center}
+.stat strong{display:block;font-size:25px;margin:7px}
+.stat small{color:#888}
+
+footer{text-align:center;color:#666;padding:40px 20px 90px;border-top:1px solid #202020;margin-top:50px}
+
+.panel{display:none;position:fixed;z-index:200;inset:0;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:20px}
+.panel-box{width:min(500px,100%);max-height:85vh;overflow:auto;background:#111;border:1px solid #333;border-radius:18px;padding:25px}
+.panel-box h2{margin-bottom:20px}
+.close{float:right;background:none;border:0;color:#aaa;font-size:25px}
+
+.profile-input{width:100%;background:#080808;color:#fff;border:1px solid #333;padding:13px;border-radius:10px;margin:10px 0}
+
+.empty{background:#101010;border:1px solid #252525;border-radius:18px;padding:50px 20px;text-align:center;color:#888}
+
+.bottom-nav{display:none}
 
 @media(max-width:700px){
-.header{height:64px;padding:0 4%}.logo{font-size:19px}.nav{display:none}
-.hero{min-height:390px}.stats{grid-template-columns:repeat(2,1fr)}
-.carPhoto{height:240px}
-.bottomNav{
-position:fixed;display:flex;z-index:300;left:0;right:0;bottom:0;padding:9px 5px;
-background:#0a0a0af5;backdrop-filter:blur(15px);
-border-top:1px solid #292929;justify-content:space-around
+.header{padding:12px 4%}
+.logo{font-size:20px}
+.nav{display:none}
+.hero h1{font-size:38px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.car-photo{height:240px}
+
+.bottom-nav{
+display:flex;
+position:fixed;
+z-index:150;
+bottom:0;
+left:0;
+right:0;
+background:#0c0c0c;
+border-top:1px solid #292929;
+justify-content:space-around;
+padding:9px 4px
 }
-.bottomNav button{border:0;background:none;color:#bbb;font-size:20px}
-.bottomNav span{display:block;font-size:9px;margin-top:3px}
+
+.bottom-nav button{
+background:none;
+color:#aaa;
+border:0;
+font-size:20px
 }
-@media(min-width:701px){.carCard{max-width:500px}}
+
+.bottom-nav button span{
+display:block;
+font-size:9px;
+margin-top:3px
+}
+}
 </style>
 </head>
 
 <body>
 
-<div id="intro">
-<div class="introLogo">CPM<span>X</span>STORE</div>
-<div class="introSub">CAR MARKETPLACE • ULTIMATE</div>
-<div class="loader"></div>
-</div>
-
 <header class="header">
+
 <div class="logo">CPM<span>X</span>STORE</div>
+
 <nav class="nav">
 <button onclick="goCars()">🚘</button>
 <button onclick="openPanel('favorites')">❤️</button>
@@ -204,17 +200,29 @@ border-top:1px solid #292929;justify-content:space-around
 <button onclick="openPanel('settings')">⚙️</button>
 <button onclick="openPanel('admin')">🛡️</button>
 </nav>
+
 </header>
 
 <section class="hero">
+
 <h1>CPM<span>X</span>STORE</h1>
-<p>Car Parking Multiplayer • Ultimate Marketplace</p>
-<button class="mainBtn" onclick="goCars()">🚘 ARAÇLARI KEŞFET</button>
+
+<p>Car Parking Multiplayer araç pazarı</p>
+
+<button class="btn" onclick="goCars()">🚘 Araçları Keşfet</button>
+
 </section>
 
-<div class="searchWrap">
-<input id="search" class="search" placeholder="🔎 Araç, model veya satıcı ara..." oninput="searchCars()">
-</div>
+<section class="content">
+
+<input
+id="search"
+class="search"
+type="text"
+placeholder="🔎 Araç ara..."
+oninput="searchCars()">
+
+</section>
 
 <section class="content" id="cars">
 
@@ -223,26 +231,46 @@ border-top:1px solid #292929;justify-content:space-around
 <span>1 ilan</span>
 </div>
 
-<div class="carGrid">
+<div class="car-grid">
 
-<div class="carCard">
+<div class="car-card">
 
-<div class="carPhoto">
+<div class="car-photo">
 
-<img id="carImage" src="https://hizliresim.com/qzecneqg" alt="Murat 131">
+<!-- 1. FOTOĞRAF -->
+<img
+id="carImage"
+src="https://i.hizliresim.com/qzecneqg.jpg"
+alt="Murat 131">
 
-<div class="photoBadge">AKTİF İLAN</div>
+<button
+class="favorite-button"
+id="favBtn"
+onclick="toggleFavorite()">
+♡
+</button>
 
-<button class="favBtn" id="favBtn" onclick="addFavorite()">♡</button>
+<button
+class="photo-arrow photo-left"
+onclick="previousPhoto()">
+‹
+</button>
 
-<button class="photoArrow left" onclick="previousPhoto()">‹</button>
-<button class="photoArrow right" onclick="nextPhoto()">›</button>
+<button
+class="photo-arrow photo-right"
+onclick="nextPhoto()">
+›
+</button>
 
-<div class="photoCounter" id="photoCounter">1 / 2</div>
+<div
+class="photo-number"
+id="photoNumber">
+1 / 2
+</div>
 
 </div>
 
-<div class="carInfo">
+<div class="car-info">
 
 <h3>🚗 Murat 131</h3>
 
@@ -252,42 +280,52 @@ border-top:1px solid #292929;justify-content:space-around
 👤 Satıcı: <b>CPMXSTORE</b>
 </div>
 
-<div class="carActions">
+<div class="car-actions">
 
-<button class="btn" onclick="openPanel('messages')">💬 Mesaj</button>
+<button
+class="btn"
+onclick="openPanel('messages')">
+💬 Mesaj
+</button>
 
-<button class="btn" onclick="showDetails()">👁️ Detay</button>
+<button
+class="btn"
+onclick="showDetails()">
+👁️ Detay
+</button>
 
 </div>
 
 </div>
+
 </div>
 
 </div>
+
 </section>
 
 <section class="stats">
 
 <div class="stat">
-<div class="statIcon">🚘</div>
+🚘
 <strong>1</strong>
 <small>Aktif İlan</small>
 </div>
 
 <div class="stat">
-<div class="statIcon">👥</div>
+👥
 <strong>0</strong>
 <small>Kullanıcı</small>
 </div>
 
 <div class="stat">
-<div class="statIcon">❤️</div>
+❤️
 <strong id="favCount">0</strong>
 <small>Favori</small>
 </div>
 
 <div class="stat">
-<div class="statIcon">⭐</div>
+⭐
 <strong>5.0</strong>
 <small>Site Puanı</small>
 </div>
@@ -295,252 +333,515 @@ border-top:1px solid #292929;justify-content:space-around
 </section>
 
 <footer>
-<b style="color:#fff">CPM<span style="color:#f22">X</span>STORE</b>
-<br><br>
-Car Parking Multiplayer Marketplace
+© 2026 CPMXSTORE
 <br>
-© 2026 CPMXSTORE Ultimate
+Car Parking Multiplayer Marketplace
 </footer>
 
 <div class="panel" id="favorites">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>❤️ Favoriler</h2>
-<div class="empty" id="favoriteContent">
+
+<div id="favoriteContent" class="empty">
+
 <div>❤️</div>
+
 <h3>Henüz favori yok</h3>
+
 <p>Beğendiğin araçları favorilerine ekle.</p>
+
 </div>
+
 </div>
+
 </div>
 
 <div class="panel" id="notifications">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>🔔 Bildirimler</h2>
+
 <div class="empty">
+
 <div>🔔</div>
-<h3>CPMXSTORE'a hoş geldin!</h3>
-<p>Yeni araç ilanları ve güncellemeler burada görünecek.</p>
+
+<h3>Hoş geldin!</h3>
+
+<p>Yeni ilanlar burada görünecek.</p>
+
 </div>
+
 </div>
+
 </div>
 
 <div class="panel" id="messages">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>💬 Mesajlar</h2>
+
 <div class="empty">
+
 <div>💬</div>
+
 <h3>Henüz mesaj yok</h3>
-<p>Satıcılarla iletişim bölümü.</p>
+
+<p>Satıcıyla mesajlaşma bölümü.</p>
+
 </div>
+
 </div>
+
 </div>
 
 <div class="panel" id="profile">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>👤 Profil</h2>
-<div style="text-align:center;font-size:65px;margin:15px">👤</div>
-<input id="profileName" class="input" placeholder="Kullanıcı adı">
-<button class="btn" onclick="saveProfile()">💾 Kaydet</button>
+
+<div style="text-align:center;font-size:60px;margin:15px">
+👤
 </div>
+
+<input
+class="profile-input"
+id="profileName"
+placeholder="Kullanıcı adı">
+
+<button class="btn" onclick="saveProfile()">
+💾 Kaydet
+</button>
+
+</div>
+
 </div>
 
 <div class="panel" id="settings">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>⚙️ Ayarlar</h2>
-<button class="btn" style="width:100%;margin-bottom:10px" onclick="toggleTheme()">🌙 Tema Değiştir</button>
-<button class="btn" style="width:100%" onclick="testNotification()">🔔 Bildirim Testi</button>
+
+<button
+class="btn"
+style="width:100%;margin-bottom:10px"
+onclick="toggleTheme()">
+🌙 Tema Değiştir
+</button>
+
+<button
+class="btn"
+style="width:100%"
+onclick="testNotification()">
+🔔 Bildirim Testi
+</button>
+
 </div>
+
 </div>
 
 <div class="panel" id="admin">
-<div class="panelBox">
+
+<div class="panel-box">
+
 <button class="close" onclick="closePanels()">×</button>
+
 <h2>🛡️ Admin</h2>
-<input id="adminPassword" class="input" type="password" placeholder="Admin şifresi">
-<button class="btn" onclick="adminLogin()">🔐 Giriş</button>
-<div id="adminArea" style="display:none;margin-top:20px">
-<h3>CPMXSTORE Ultimate Admin</h3>
-<br>
-<button class="btn">➕ İlan Yönetimi</button>
-</div>
-</div>
+
+<input
+class="profile-input"
+id="adminPassword"
+type="password"
+placeholder="Admin şifresi">
+
+<button class="btn" onclick="adminLogin()">
+🔐 Giriş
+</button>
+
+<div
+id="adminArea"
+style="display:none;margin-top:20px;">
+
+<h3>Admin Paneli</h3>
+
+<p style="color:#888;margin:10px 0;">
+CPMXSTORE yönetim alanı
+</p>
+
+<button class="btn">
+➕ İlan Yönetimi
+</button>
+
 </div>
 
-<div class="bottomNav">
-<button onclick="goCars()">🚘<span>Araçlar</span></button>
-<button onclick="openPanel('favorites')">❤️<span>Favoriler</span></button>
-<button onclick="openPanel('messages')">💬<span>Mesajlar</span></button>
-<button onclick="openPanel('profile')">👤<span>Profil</span></button>
+</div>
+
+</div>
+
+<div class="bottom-nav">
+
+<button onclick="goCars()">
+🚘
+<span>Araçlar</span>
+</button>
+
+<button onclick="openPanel('favorites')">
+❤️
+<span>Favori</span>
+</button>
+
+<button onclick="openPanel('messages')">
+💬
+<span>Mesaj</span>
+</button>
+
+<button onclick="openPanel('profile')">
+👤
+<span>Profil</span>
+</button>
+
 </div>
 
 <script>
 
-const carPhotos=[
-"https://hizliresim.com/qzecneqg",
-"https://hizliresim.com/dcqp3hyt"
+/* FOTOĞRAFLAR - DOĞRUDAN JPG */
+const carPhotos = [
+"https://i.hizliresim.com/qzecneqg.jpg",
+"https://i.hizliresim.com/dcqp3hyt.jpg"
 ];
 
-let currentPhoto=0;
+let currentPhoto = 0;
 
+/* FOTOĞRAF DEĞİŞTİR */
 function updatePhoto(){
-document.getElementById("carImage").src=carPhotos[currentPhoto];
-document.getElementById("photoCounter").textContent=
-(currentPhoto+1)+" / "+carPhotos.length;
+
+const image = document.getElementById("carImage");
+
+image.src = carPhotos[currentPhoto];
+
+document.getElementById("photoNumber").textContent =
+(currentPhoto + 1) + " / " + carPhotos.length;
+
 }
 
 function nextPhoto(){
-currentPhoto=(currentPhoto+1)%carPhotos.length;
+
+currentPhoto++;
+
+if(currentPhoto >= carPhotos.length){
+currentPhoto = 0;
+}
+
 updatePhoto();
+
 }
 
 function previousPhoto(){
-currentPhoto=(currentPhoto-1+carPhotos.length)%carPhotos.length;
-updatePhoto();
+
+currentPhoto--;
+
+if(currentPhoto < 0){
+currentPhoto = carPhotos.length - 1;
 }
 
+updatePhoto();
+
+}
+
+/* PANELLER */
+
 function openPanel(id){
+
 closePanels();
-const panel=document.getElementById(id);
-if(panel)panel.style.display="flex";
+
+const panel = document.getElementById(id);
+
+if(panel){
+panel.style.display = "flex";
+}
+
 }
 
 function closePanels(){
-document.querySelectorAll(".panel").forEach(p=>p.style.display="none");
+
+document.querySelectorAll(".panel").forEach(function(panel){
+
+panel.style.display = "none";
+
+});
+
 }
 
 function goCars(){
+
 closePanels();
-document.getElementById("cars").scrollIntoView({behavior:"smooth"});
+
+document.getElementById("cars").scrollIntoView({
+behavior:"smooth"
+});
+
 }
+
+/* ARAMA */
 
 function searchCars(){
-const value=document.getElementById("search").value.toLowerCase().trim();
-const card=document.querySelector(".carCard");
+
+const value =
+document.getElementById("search").value.toLowerCase().trim();
+
+const card =
+document.querySelector(".car-card");
+
 if(!card)return;
-card.style.display=!value||card.innerText.toLowerCase().includes(value)?"block":"none";
+
+if(
+value === "" ||
+card.innerText.toLowerCase().includes(value)
+){
+
+card.style.display = "";
+
+}else{
+
+card.style.display = "none";
+
 }
 
-function showDetails(){
-alert("Murat 131\n\n💰 Fiyat: 25 TL\n👤 Satıcı: CPMXSTORE\n📌 Durum: Aktif ilan");
 }
 
-function updateFavoritePanel(){
-document.getElementById("favoriteContent").innerHTML=`
-<div>🚗</div>
-<h3>Murat 131</h3>
-<p style="color:#f22;font-size:22px;font-weight:bold;margin:10px">25 TL</p>
-<p>👤 Satıcı: CPMXSTORE</p>
-<br>
-<button class="btn" onclick="goCars();closePanels()">🚘 İlana Git</button>
-`;
-}
+/* FAVORİ */
 
-function addFavorite(){
+function updateFavorite(){
 
-const favorite=localStorage.getItem("muratFavorite")==="true";
+const favorite =
+localStorage.getItem("murat131Favorite") === "true";
+
+const button =
+document.getElementById("favBtn");
+
+const count =
+document.getElementById("favCount");
 
 if(favorite){
 
-localStorage.removeItem("muratFavorite");
-document.getElementById("favCount").textContent="0";
-document.getElementById("favBtn").classList.remove("active");
-document.getElementById("favBtn").textContent="♡";
+button.classList.add("active");
+button.innerHTML = "♥";
+count.textContent = "1";
 
-document.getElementById("favoriteContent").innerHTML=`
-<div>❤️</div>
-<h3>Henüz favori yok</h3>
-<p>Beğendiğin araçları favorilerine ekle.</p>
+document.getElementById("favoriteContent").innerHTML = `
+
+<div>🚗</div>
+
+<h3>Murat 131</h3>
+
+<p style="color:#f22;font-size:22px;font-weight:bold;margin:10px">
+25 TL
+</p>
+
+<p>👤 Satıcı: CPMXSTORE</p>
+
+<br>
+
+<button
+class="btn"
+onclick="goCars();closePanels()">
+🚘 İlana Git
+</button>
+
 `;
 
 }else{
 
-localStorage.setItem("muratFavorite","true");
-document.getElementById("favCount").textContent="1";
-document.getElementById("favBtn").classList.add("active");
-document.getElementById("favBtn").textContent="♥";
-updateFavoritePanel();
+button.classList.remove("active");
+button.innerHTML = "♡";
+count.textContent = "0";
+
+document.getElementById("favoriteContent").innerHTML = `
+
+<div>❤️</div>
+
+<h3>Henüz favori yok</h3>
+
+<p>Beğendiğin araçları favorilerine ekle.</p>
+
+`;
 
 }
 
 }
+
+function toggleFavorite(){
+
+const favorite =
+localStorage.getItem("murat131Favorite") === "true";
+
+if(favorite){
+
+localStorage.removeItem("murat131Favorite");
+
+}else{
+
+localStorage.setItem("murat131Favorite","true");
+
+}
+
+updateFavorite();
+
+}
+
+/* DETAY */
+
+function showDetails(){
+
+alert(
+"Murat 131\n\n" +
+"💰 Fiyat: 25 TL\n" +
+"👤 Satıcı: CPMXSTORE\n" +
+"📌 Durum: Aktif ilan"
+);
+
+}
+
+/* PROFİL */
 
 function saveProfile(){
-const name=document.getElementById("profileName").value.trim();
-if(!name)return;
-localStorage.setItem("cpmxProfileName",name);
-alert("Profil kaydedildi.");
+
+const name =
+document.getElementById("profileName").value.trim();
+
+if(name){
+
+localStorage.setItem(
+"cpmxProfileName",
+name
+);
+
+alert("Profil kaydedildi!");
+
 }
+
+}
+
+/* BİLDİRİM */
 
 function testNotification(){
 
 if(!("Notification" in window)){
-alert("Bildirim desteği bulunamadı.");
+
+alert("Bu tarayıcı bildirimleri desteklemiyor.");
+
 return;
+
 }
 
-if(Notification.permission==="granted"){
-new Notification("CPMXSTORE",{body:"Bildirim sistemi çalışıyor!"});
+if(Notification.permission === "granted"){
+
+new Notification(
+"CPMXSTORE",
+{
+body:"Bildirim sistemi çalışıyor!"
+}
+);
+
 }else{
-Notification.requestPermission().then(permission=>{
-if(permission==="granted"){
-new Notification("CPMXSTORE",{body:"Bildirimler aktif!"});
+
+Notification.requestPermission().then(function(permission){
+
+if(permission === "granted"){
+
+new Notification(
+"CPMXSTORE",
+{
+body:"Bildirimler aktif!"
 }
+);
+
+}
+
 });
+
 }
 
 }
+
+/* ADMIN */
 
 function adminLogin(){
 
-const password=document.getElementById("adminPassword").value;
+const password =
+document.getElementById("adminPassword").value;
 
-if(password==="6640"){
-document.getElementById("adminArea").style.display="block";
+if(password === "6640"){
+
+document.getElementById("adminArea").style.display = "block";
+
+alert("Admin girişi başarılı!");
+
 }else{
+
 alert("Hatalı admin şifresi!");
+
 }
 
 }
+
+/* TEMA */
 
 function toggleTheme(){
 
-if(document.body.dataset.theme==="light"){
-document.body.dataset.theme="dark";
-document.body.style.background="#050505";
-document.body.style.color="#fff";
+if(document.body.dataset.theme === "light"){
+
+document.body.dataset.theme = "dark";
+
+document.body.style.background = "#080808";
+document.body.style.color = "#fff";
+
 }else{
-document.body.dataset.theme="light";
-document.body.style.background="#eee";
-document.body.style.color="#111";
-}
+
+document.body.dataset.theme = "light";
+
+document.body.style.background = "white";
+document.body.style.color = "#111";
 
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+}
 
-const name=localStorage.getItem("cpmxProfileName");
+/* SAYFA AÇILINCA */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+const name =
+localStorage.getItem("cpmxProfileName");
 
 if(name){
-document.getElementById("profileName").value=name;
-}
 
-if(localStorage.getItem("muratFavorite")==="true"){
-
-document.getElementById("favCount").textContent="1";
-document.getElementById("favBtn").classList.add("active");
-document.getElementById("favBtn").textContent="♥";
-updateFavoritePanel();
+document.getElementById("profileName").value = name;
 
 }
 
+updateFavorite();
 updatePhoto();
 
-});
+}
+);
 
 </script>
 
