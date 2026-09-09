@@ -2,443 +2,341 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CPMXXSTORE</title>
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  background:#080808;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
+    background:#08090d;
+    color:white;
 }
 
 /* HEADER */
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:rgba(8,8,8,.95);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #222;
-}
-
-.nav{
-  max-width:1200px;
-  margin:auto;
-  padding:16px 20px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+    height:70px;
+    background:#0e1016;
+    border-bottom:1px solid #242732;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:1px;
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px;
 }
 
 .logo span{
-  color:#ff3030;
+    color:#ff3131;
 }
 
-.nav button{
-  border:1px solid #333;
-  background:#151515;
-  color:white;
-  padding:10px 15px;
-  border-radius:10px;
-  cursor:pointer;
+nav{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+nav a{
+    color:#bbb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:white;
+}
+
+/* HEADER BUTTONS */
+.header-btn{
+    position:relative;
+    border:1px solid #292d37;
+    background:#151820;
+    color:white;
+    border-radius:8px;
+    padding:10px 13px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.header-btn:hover{
+    border-color:#ff3131;
+}
+
+.badge{
+    position:absolute;
+    top:-7px;
+    right:-7px;
+    background:#ff3131;
+    color:white;
+    font-size:11px;
+    min-width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
 }
 
 /* HERO */
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:55px 20px 30px;
-  text-align:center;
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    background:radial-gradient(circle at center,#241016 0%,#08090d 60%);
 }
 
 .hero h1{
-  font-size:42px;
-  font-weight:900;
+    font-size:55px;
+    margin-bottom:15px;
 }
 
 .hero h1 span{
-  color:#ff3030;
+    color:#ff3131;
 }
 
 .hero p{
-  color:#999;
-  margin-top:10px;
+    color:#999;
+    font-size:18px;
+    max-width:600px;
 }
 
-.searchBox{
-  max-width:700px;
-  margin:28px auto 0;
-  display:flex;
-  gap:10px;
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
 }
 
-.searchBox input{
-  flex:1;
-  padding:15px;
-  border:1px solid #333;
-  border-radius:12px;
-  outline:none;
-  background:#111;
-  color:white;
+.btn{
+    padding:14px 25px;
+    border-radius:8px;
+    border:1px solid #333;
+    background:#151820;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.searchBox input::placeholder{
-  color:#666;
+.btn.red{
+    background:#e52525;
+    border-color:#e52525;
 }
 
-.searchBox button{
-  padding:0 20px;
-  border:0;
-  border-radius:12px;
-  background:#ff3030;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+/* SEARCH */
+.search-area{
+    padding:35px 7%;
 }
 
-/* FILTERS */
-.filters{
-  max-width:1200px;
-  margin:15px auto;
-  padding:0 20px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+.search{
+    width:100%;
+    padding:17px;
+    background:#11141b;
+    border:1px solid #292d37;
+    border-radius:10px;
+    color:white;
+    font-size:16px;
 }
 
-.filters select{
-  background:#111;
-  color:#fff;
-  border:1px solid #333;
-  padding:11px;
-  border-radius:10px;
-  outline:none;
+/* CATEGORIES */
+.categories{
+    padding:0 7% 35px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
 }
 
-/* STATS */
-.stats{
-  max-width:1200px;
-  margin:25px auto;
-  padding:0 20px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
+.category{
+    padding:10px 18px;
+    background:#12151c;
+    border:1px solid #292d37;
+    border-radius:20px;
+    color:#aaa;
+    cursor:pointer;
 }
 
-.stat{
-  background:#111;
-  border:1px solid #222;
-  border-radius:14px;
-  padding:18px;
-  text-align:center;
+/* SECTION */
+.section{
+    padding:20px 7% 70px;
 }
 
-.stat b{
-  display:block;
-  font-size:24px;
-  color:#ff3030;
+.section-title{
+    font-size:28px;
+    margin-bottom:25px;
 }
 
-.stat span{
-  color:#888;
-  font-size:13px;
-}
-
-/* CONTENT */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:20px;
-}
-
-.sectionTitle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:18px;
-}
-
-.sectionTitle h2{
-  font-size:23px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-/* CARD */
-.card{
-  position:relative;
-  background:#101010;
-  border:1px solid #252525;
-  border-radius:17px;
-  overflow:hidden;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#ff3030;
-}
-
-.carImage{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  background:#181818;
-}
-
-.cardBody{
-  padding:15px;
-}
-
-.badges{
-  display:flex;
-  gap:7px;
-  flex-wrap:wrap;
-  margin-bottom:9px;
-}
-
-.badge{
-  font-size:11px;
-  padding:5px 8px;
-  border-radius:7px;
-  background:#202020;
-  color:#aaa;
-}
-
-.badge.hot{
-  background:#321010;
-  color:#ff4a4a;
-}
-
-.badge.sold{
-  background:#252525;
-  color:#777;
-}
-
-.card h3{
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.info{
-  color:#999;
-  font-size:13px;
-  line-height:1.7;
-}
-
-.price{
-  margin-top:12px;
-  font-size:21px;
-  font-weight:900;
-  color:#fff;
-}
-
-.cardBottom{
-  margin-top:14px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-}
-
-.detailBtn{
-  flex:1;
-  border:0;
-  padding:11px;
-  border-radius:10px;
-  background:#ff3030;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.favorite{
-  width:42px;
-  height:42px;
-  border-radius:10px;
-  border:1px solid #333;
-  background:#171717;
-  color:white;
-  font-size:19px;
-  cursor:pointer;
-}
-
-.favorite.active{
-  color:#ff3030;
-}
-
-/* EMPTY */
 .empty{
-  text-align:center;
-  padding:70px 20px;
-  color:#777;
-  display:none;
+    min-height:250px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    background:#101319;
+    border:1px dashed #30343f;
+    border-radius:15px;
+    text-align:center;
 }
 
-.emptyIcon{
-  font-size:50px;
-  margin-bottom:15px;
+.empty .car{
+    font-size:60px;
+    margin-bottom:15px;
 }
 
-.empty h3{
-  color:#aaa;
-  margin-bottom:8px;
+.empty p{
+    color:#777;
 }
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  z-index:500;
-  background:rgba(0,0,0,.78);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+/* PANELS */
+.panel{
+    display:none;
+    position:fixed;
+    top:75px;
+    right:20px;
+    width:330px;
+    max-height:500px;
+    overflow:auto;
+    background:#11141b;
+    border:1px solid #30343f;
+    border-radius:14px;
+    z-index:200;
+    box-shadow:0 10px 40px #000;
 }
 
-.modal.show{
-  display:flex;
+.panel.active{
+    display:block;
 }
 
-.modalBox{
-  width:100%;
-  max-width:650px;
-  max-height:90vh;
-  overflow:auto;
-  background:#111;
-  border:1px solid #333;
-  border-radius:18px;
-  padding:20px;
+.panel-header{
+    padding:17px;
+    border-bottom:1px solid #292d37;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.modalBox img{
-  width:100%;
-  max-height:350px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:15px;
+.panel-header h3{
+    font-size:18px;
 }
 
 .close{
-  float:right;
-  background:#222;
-  color:white;
-  border:0;
-  width:36px;
-  height:36px;
-  border-radius:9px;
-  cursor:pointer;
-  font-size:20px;
+    background:none;
+    border:0;
+    color:#aaa;
+    font-size:20px;
+    cursor:pointer;
 }
 
-.modalBox h2{
-  margin:10px 0;
+.panel-empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#777;
 }
 
-.modalInfo{
-  color:#aaa;
-  line-height:1.8;
+.notification{
+    padding:15px;
+    border-bottom:1px solid #252933;
+    cursor:pointer;
+}
+
+.notification:hover{
+    background:#191c24;
+}
+
+.notification strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.notification small{
+    color:#777;
+}
+
+/* FAVORİ */
+.favorite-item{
+    padding:15px;
+    border-bottom:1px solid #252933;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.favorite-item button{
+    border:0;
+    background:none;
+    color:#ff3131;
+    font-size:20px;
+    cursor:pointer;
 }
 
 /* FOOTER */
 footer{
-  margin-top:60px;
-  padding:30px 20px;
-  text-align:center;
-  border-top:1px solid #222;
-  color:#666;
+    background:#0d0f14;
+    border-top:1px solid #222630;
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+
+footer b{
+    color:#aaa;
 }
 
 /* MOBILE */
-@media(max-width:800px){
+@media(max-width:700px){
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    header{
+        padding:0 15px;
+    }
 
-  .hero h1{
-    font-size:34px;
-  }
+    nav a{
+        display:none;
+    }
 
-}
+    .hero h1{
+        font-size:38px;
+    }
 
-@media(max-width:550px){
+    .hero p{
+        font-size:15px;
+    }
 
-  .nav{
-    padding:13px;
-  }
+    .buttons{
+        flex-direction:column;
+        width:100%;
+        max-width:280px;
+    }
 
-  .logo{
-    font-size:20px;
-  }
+    .btn{
+        width:100%;
+    }
 
-  .hero{
-    padding-top:35px;
-  }
+    .search-area,
+    .categories,
+    .section{
+        padding-left:20px;
+        padding-right:20px;
+    }
 
-  .hero h1{
-    font-size:30px;
-  }
-
-  .searchBox{
-    flex-direction:column;
-  }
-
-  .searchBox button{
-    padding:13px;
-  }
-
-  .stats{
-    padding:0 12px;
-  }
-
-  .stat{
-    padding:13px 5px;
-  }
-
-  .stat b{
-    font-size:19px;
-  }
-
-  .stat span{
-    font-size:10px;
-  }
-
-  .container{
-    padding:12px;
-  }
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .carImage{
-    height:220px;
-  }
-
+    .panel{
+        left:10px;
+        right:10px;
+        width:auto;
+    }
 }
 </style>
 </head>
@@ -447,602 +345,391 @@ footer{
 
 <header>
 
-  <div class="nav">
-
     <div class="logo">
-      CPM<span>XX</span>STORE
+        CPM<span>XX</span>STORE
     </div>
 
-    <button onclick="showFavorites()">
-      ♥ Favoriler
-    </button>
+    <nav>
+        <a href="#">Ana Sayfa</a>
+        <a href="#cars">Araçlar</a>
 
-  </div>
+        <button class="header-btn" onclick="toggleFavorites()">
+            ❤️
+            <span id="favoriteBadge" class="badge">0</span>
+        </button>
+
+        <button class="header-btn" onclick="toggleNotifications()">
+            🔔
+            <span id="notificationBadge" class="badge">0</span>
+        </button>
+    </nav>
 
 </header>
 
-<section class="hero">
 
-  <h1>
-    CPM<span>XX</span>STORE
-  </h1>
+<!-- FAVORİLER PANELİ -->
 
-  <p>
-    Car Parking Multiplayer araç pazarı
-  </p>
+<div id="favoritesPanel" class="panel">
 
-  <div class="searchBox">
-
-    <input
-      id="search"
-      type="text"
-      placeholder="Marka, model veya kategori ara..."
-      oninput="renderCars()"
-    >
-
-    <button onclick="renderCars()">
-      ARA
-    </button>
-
-  </div>
-
-</section>
-
-<div class="filters">
-
-  <select id="brand" onchange="renderCars()">
-
-    <option value="">
-      Tüm Markalar
-    </option>
-
-    <option>Mercedes</option>
-    <option>BMW</option>
-    <option>Nissan</option>
-    <option>Toyota</option>
-    <option>Porsche</option>
-
-  </select>
-
-  <select id="category" onchange="renderCars()">
-
-    <option value="">
-      Tüm Kategoriler
-    </option>
-
-    <option>JDM</option>
-    <option>Luxury</option>
-    <option>Sport</option>
-    <option>Drift</option>
-
-  </select>
-
-  <select id="status" onchange="renderCars()">
-
-    <option value="">
-      Tüm İlanlar
-    </option>
-
-    <option value="active">
-      Satışta
-    </option>
-
-    <option value="sold">
-      Satıldı
-    </option>
-
-  </select>
-
-</div>
-
-<section class="stats">
-
-  <div class="stat">
-    <b id="totalCars">0</b>
-    <span>Toplam İlan</span>
-  </div>
-
-  <div class="stat">
-    <b id="activeCars">0</b>
-    <span>Satışta</span>
-  </div>
-
-  <div class="stat">
-    <b id="favoriteCount">0</b>
-    <span>Favori</span>
-  </div>
-
-</section>
-
-<main class="container">
-
-  <div class="sectionTitle">
-    <h2>🔥 Araç İlanları</h2>
-  </div>
-
-  <div id="carGrid" class="grid"></div>
-
-  <div id="empty" class="empty">
-
-    <div class="emptyIcon">
-      🚗
+    <div class="panel-header">
+        <h3>❤️ Favorilerim</h3>
+        <button class="close" onclick="closePanels()">×</button>
     </div>
 
-    <h3>
-      Henüz ilan bulunmuyor
-    </h3>
-
-    <p>
-      CPMXXSTORE'a ilk araç ilanı yakında eklenecek.
-    </p>
-
-  </div>
-
-</main>
-
-<div
-  id="modal"
-  class="modal"
-  onclick="closeModal(event)"
->
-
-  <div class="modalBox">
-
-    <button
-      class="close"
-      onclick="closeModal()"
-    >
-      ×
-    </button>
-
-    <div id="modalContent"></div>
-
-  </div>
+    <div id="favoriteList">
+        <div class="panel-empty">
+            Henüz favori aracın yok.
+        </div>
+    </div>
 
 </div>
+
+
+<!-- BİLDİRİMLER PANELİ -->
+
+<div id="notificationsPanel" class="panel">
+
+    <div class="panel-header">
+        <h3>🔔 Bildirimler</h3>
+        <button class="close" onclick="closePanels()">×</button>
+    </div>
+
+    <div id="notificationList">
+        <div class="panel-empty">
+            Yeni bildirimin yok.
+        </div>
+    </div>
+
+</div>
+
+
+<section class="hero">
+
+    <h1>
+        CPM<span>XXSTORE</span>
+    </h1>
+
+    <p>
+        Car Parking Multiplayer araç ilanlarının
+        buluşma noktası.
+    </p>
+
+    <div class="buttons">
+
+        <button class="btn red"
+        onclick="goCars()">
+            🚗 Araçlara Bak
+        </button>
+
+        <button class="btn"
+        onclick="newNotification('İlan sistemi yakında aktif olacak!')">
+            ➕ İlan Ver
+        </button>
+
+    </div>
+
+</section>
+
+
+<section class="search-area">
+
+    <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="🔎 Araç, marka veya model ara..."
+    >
+
+</section>
+
+
+<div class="categories">
+
+    <div class="category">🚗 Tüm Araçlar</div>
+    <div class="category">🏎️ Spor</div>
+    <div class="category">🚙 SUV</div>
+    <div class="category">🚘 Sedan</div>
+    <div class="category">🏁 Yarış</div>
+    <div class="category">💎 Özel</div>
+
+</div>
+
+
+<section class="section" id="cars">
+
+    <h2 class="section-title">
+        🚘 Araç İlanları
+    </h2>
+
+    <div class="empty">
+
+        <div class="car">
+            🚘
+        </div>
+
+        <h2>
+            Henüz ilan yok
+        </h2>
+
+        <p>
+            İlanları daha sonra buraya ekleyeceğiz.
+        </p>
+
+    </div>
+
+</section>
+
 
 <footer>
 
-  CPMXXSTORE © 2026
+    © 2026 <b>CPMXXSTORE</b>
 
-  <br>
+    <br><br>
 
-  <small>
-    Car Parking Multiplayer araç pazarı
-  </small>
+    Car Parking Multiplayer topluluk mağazası.
 
 </footer>
 
+
 <script>
-
-/*
-=================================================
-CPMXXSTORE İLANLARI
-=================================================
-
-Şimdilik bütün eski ilanlar çıkarıldı.
-
-Yeni araç eklemek için daha sonra buraya
-ilanları ekleyebiliriz.
-
-Örnek:
-
-{
-  id:1,
-  brand:"BMW",
-  model:"M4",
-  hp:"500 HP",
-  category:"Sport",
-  price:100,
-  image:"RESİM LİNKİ",
-  description:"Araç açıklaması",
-  featured:true,
-  sold:false
-}
-
-=================================================
-*/
-
-const cars = [];
-
 
 /* FAVORİLER */
 
 let favorites =
-  JSON.parse(
-    localStorage.getItem("cpmxxFavorites")
-  ) || [];
-
-let favoritesOnly = false;
+    JSON.parse(localStorage.getItem("cpmxxFavorites")) || [];
 
 
-/* FAVORİ KAYDET */
+/* BİLDİRİMLER */
+
+let notifications =
+    JSON.parse(localStorage.getItem("cpmxxNotifications")) || [];
+
 
 function saveFavorites(){
 
-  localStorage.setItem(
-    "cpmxxFavorites",
-    JSON.stringify(favorites)
-  );
+    localStorage.setItem(
+        "cpmxxFavorites",
+        JSON.stringify(favorites)
+    );
 
 }
 
 
-/* FAVORİ DEĞİŞTİR */
+function saveNotifications(){
 
-function toggleFavorite(id){
-
-  if(favorites.includes(id)){
-
-    favorites =
-      favorites.filter(x => x !== id);
-
-  }else{
-
-    favorites.push(id);
-
-  }
-
-  saveFavorites();
-
-  updateStats();
-
-  renderCars();
+    localStorage.setItem(
+        "cpmxxNotifications",
+        JSON.stringify(notifications)
+    );
 
 }
 
 
-/* FAVORİLER */
+/* FAVORİ PANELİ */
 
-function showFavorites(){
+function toggleFavorites(){
 
-  favoritesOnly =
-    !favoritesOnly;
-
-  const button =
-    document.querySelector(".nav button");
-
-  button.textContent =
-    favoritesOnly
-    ? "♥ Tüm İlanlar"
-    : "♥ Favoriler";
-
-  renderCars();
-
-}
-
-
-/* İLANLARI GÖSTER */
-
-function renderCars(){
-
-  const search =
     document
-      .getElementById("search")
-      .value
-      .toLowerCase()
-      .trim();
+    .getElementById("notificationsPanel")
+    .classList.remove("active");
 
-  const brand =
-    document.getElementById("brand").value;
+    document
+    .getElementById("favoritesPanel")
+    .classList.toggle("active");
 
-  const category =
-    document.getElementById("category").value;
-
-  const status =
-    document.getElementById("status").value;
+    renderFavorites();
+}
 
 
-  let filtered =
-    cars.filter(car => {
+/* BİLDİRİM PANELİ */
 
-      const matchesSearch =
-        !search ||
-        car.brand
-          .toLowerCase()
-          .includes(search) ||
+function toggleNotifications(){
 
-        car.model
-          .toLowerCase()
-          .includes(search) ||
+    document
+    .getElementById("favoritesPanel")
+    .classList.remove("active");
 
-        car.category
-          .toLowerCase()
-          .includes(search);
+    document
+    .getElementById("notificationsPanel")
+    .classList.toggle("active");
+
+    renderNotifications();
+}
 
 
-      const matchesBrand =
-        !brand ||
-        car.brand === brand;
+/* PANELLERİ KAPAT */
+
+function closePanels(){
+
+    document
+    .querySelectorAll(".panel")
+    .forEach(panel=>{
+        panel.classList.remove("active");
+    });
+
+}
 
 
-      const matchesCategory =
-        !category ||
-        car.category === category;
+/* FAVORİLERİ GÖSTER */
 
+function renderFavorites(){
 
-      const matchesStatus =
-        !status ||
+    const list =
+        document.getElementById("favoriteList");
 
-        (
-          status === "sold" &&
-          car.sold
-        ) ||
+    document.getElementById("favoriteBadge")
+        .textContent = favorites.length;
 
-        (
-          status === "active" &&
-          !car.sold
-        );
+    if(favorites.length===0){
 
+        list.innerHTML =
+        `<div class="panel-empty">
+            Henüz favori aracın yok.
+        </div>`;
 
-      const matchesFavorite =
-        !favoritesOnly ||
-        favorites.includes(car.id);
+        return;
+    }
 
+    list.innerHTML="";
 
-      return (
-        matchesSearch &&
-        matchesBrand &&
-        matchesCategory &&
-        matchesStatus &&
-        matchesFavorite
-      );
+    favorites.forEach((car,index)=>{
+
+        const item =
+        document.createElement("div");
+
+        item.className="favorite-item";
+
+        item.innerHTML=`
+            <div>
+                🚗 <b>${car}</b>
+            </div>
+
+            <button onclick="removeFavorite(${index})">
+                ♥
+            </button>
+        `;
+
+        list.appendChild(item);
 
     });
 
-
-  const grid =
-    document.getElementById("carGrid");
-
-  const empty =
-    document.getElementById("empty");
+}
 
 
-  grid.innerHTML = "";
+/* FAVORİDEN SİL */
 
+function removeFavorite(index){
 
-  if(filtered.length === 0){
+    favorites.splice(index,1);
 
-    empty.style.display =
-      "block";
+    saveFavorites();
 
-    return;
-
-  }
-
-
-  empty.style.display =
-    "none";
-
-
-  filtered.forEach(car => {
-
-    const isFav =
-      favorites.includes(car.id);
-
-
-    const card =
-      document.createElement("div");
-
-    card.className =
-      "card";
-
-
-    card.innerHTML = `
-
-      <img
-        class="carImage"
-        src="${car.image}"
-        alt="${car.brand} ${car.model}"
-      >
-
-      <div class="cardBody">
-
-        <div class="badges">
-
-          ${
-            car.featured
-            ? `
-              <span class="badge hot">
-                🔥 ÖNE ÇIKAN
-              </span>
-            `
-            : ""
-          }
-
-          <span class="badge">
-            ${car.category}
-          </span>
-
-          ${
-            car.sold
-            ? `
-              <span class="badge sold">
-                SATILDI
-              </span>
-            `
-            : `
-              <span class="badge">
-                SATIŞTA
-              </span>
-            `
-          }
-
-        </div>
-
-
-        <h3>
-          ${car.brand} ${car.model}
-        </h3>
-
-
-        <div class="info">
-
-          ⚡ ${car.hp}
-
-          <br>
-
-          🏷️ ${car.category}
-
-        </div>
-
-
-        <div class="price">
-
-          ${car.price} TL
-
-        </div>
-
-
-        <div class="cardBottom">
-
-          <button
-            class="detailBtn"
-            onclick="openModal(${car.id})"
-          >
-            İlanı Gör
-          </button>
-
-
-          <button
-            class="favorite ${isFav ? "active" : ""}"
-            onclick="toggleFavorite(${car.id})"
-          >
-
-            ${isFav ? "♥" : "♡"}
-
-          </button>
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    grid.appendChild(card);
-
-  });
+    renderFavorites();
 
 }
 
 
-/* DETAY MODALI */
+/* FAVORİYE ARAÇ EKLEME
+   Daha sonra ilan sistemiyle kullanılacak. */
 
-function openModal(id){
+function addFavorite(carName){
 
-  const car =
-    cars.find(
-      x => x.id === id
-    );
+    if(!favorites.includes(carName)){
 
-  if(!car) return;
+        favorites.push(carName);
 
+        saveFavorites();
 
-  document
-    .getElementById("modalContent")
-    .innerHTML = `
+        newNotification(
+            carName + " favorilerine eklendi."
+        );
 
-      <img
-        src="${car.image}"
-        alt="${car.brand} ${car.model}"
-      >
+    }
 
-      <div class="badges">
-
-        <span class="badge">
-          ${car.category}
-        </span>
-
-        <span class="badge">
-          ${car.sold ? "SATILDI" : "SATIŞTA"}
-        </span>
-
-      </div>
-
-      <h2>
-        ${car.brand} ${car.model}
-      </h2>
-
-      <div class="modalInfo">
-
-        ⚡ Güç: ${car.hp}
-
-        <br>
-
-        🏷️ Kategori: ${car.category}
-
-        <br>
-
-        💰 Fiyat:
-        <b>${car.price} TL</b>
-
-        <br><br>
-
-        ${car.description}
-
-      </div>
-
-    `;
-
-
-  document
-    .getElementById("modal")
-    .classList.add("show");
+    renderFavorites();
 
 }
 
 
-/* MODAL KAPAT */
+/* BİLDİRİM EKLE */
 
-function closeModal(event){
+function newNotification(text){
 
-  if(
-    !event ||
-    event.target.id === "modal" ||
-    event.target.className === "close"
-  ){
+    notifications.unshift({
+
+        text:text,
+
+        date:new Date()
+        .toLocaleString("tr-TR")
+
+    });
+
+    saveNotifications();
+
+    renderNotifications();
+
+}
+
+
+/* BİLDİRİMLERİ GÖSTER */
+
+function renderNotifications(){
+
+    const list =
+        document.getElementById("notificationList");
+
+    document.getElementById("notificationBadge")
+        .textContent = notifications.length;
+
+    if(notifications.length===0){
+
+        list.innerHTML =
+        `<div class="panel-empty">
+            Yeni bildirimin yok.
+        </div>`;
+
+        return;
+    }
+
+    list.innerHTML="";
+
+    notifications.forEach(notification=>{
+
+        const item =
+        document.createElement("div");
+
+        item.className="notification";
+
+        item.innerHTML=`
+            <strong>🔔 CPMXXSTORE</strong>
+            ${notification.text}
+            <small>${notification.date}</small>
+        `;
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+/* ARAÇLARA GİT */
+
+function goCars(){
 
     document
-      .getElementById("modal")
-      .classList.remove("show");
-
-  }
-
-}
-
-
-/* İSTATİSTİKLER */
-
-function updateStats(){
-
-  document
-    .getElementById("totalCars")
-    .textContent =
-      cars.length;
-
-
-  document
-    .getElementById("activeCars")
-    .textContent =
-      cars.filter(
-        x => !x.sold
-      ).length;
-
-
-  document
-    .getElementById("favoriteCount")
-    .textContent =
-      favorites.length;
+    .getElementById("cars")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
 
-/* BAŞLAT */
+/* BAŞLANGIÇ */
 
-updateStats();
-
-renderCars();
+renderFavorites();
+renderNotifications();
 
 </script>
 
