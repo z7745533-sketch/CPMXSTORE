@@ -183,9 +183,10 @@ margin-bottom:15px
 /* İLAN */
 .car-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,320px));
-justify-content:center;
-gap:18px
+grid-template-columns:300px;
+justify-content:start;
+gap:18px;
+margin-left:25px
 }
 
 .car-card{
@@ -429,7 +430,8 @@ font-size:19px
 .car-grid{
 grid-template-columns:minmax(0,290px);
 justify-content:center;
-gap:14px
+gap:14px;
+margin-left:0
 }
 
 .car-card{
@@ -509,7 +511,8 @@ width:850px
 }
 
 .car-grid{
-grid-template-columns:300px
+grid-template-columns:300px;
+margin-left:25px
 }
 
 }
@@ -576,7 +579,7 @@ id="search"
 class="search"
 type="text"
 placeholder="🔎 Araç ara..."
-oninput="searchCars()">
+oninput="searchCars">
 
 </section>
 
