@@ -2,403 +2,350 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CPMXSTORE</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-    background:#080808;
+    font-family:Arial,sans-serif;
+    background:#050505;
     color:#fff;
     min-height:100vh;
-    overflow-x:hidden;
 }
 
-/* =========================
-   AÇILIŞ EKRANI
-========================= */
+/* ===== LOGO ===== */
+
+.logo{
+    font-size:27px;
+    font-weight:1000;
+    letter-spacing:3px;
+    position:relative;
+    color:#fff;
+    overflow:hidden;
+}
+
+.logo span{color:#f22}
+
+.logo:after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:70%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.95),
+        transparent
+    );
+    transform:skewX(-20deg);
+    animation:shine 2.8s infinite;
+}
+
+@keyframes shine{
+    0%{left:-120%}
+    55%,100%{left:150%}
+}
+
+/* ===== INTRO ===== */
 
 #intro{
     position:fixed;
     inset:0;
-    background:#050505;
+    z-index:99999;
     display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    z-index:99999;
-    animation:introOut 1s ease 3.5s forwards;
+    background:
+      radial-gradient(circle,#350000 0%,#080000 35%,#000 75%);
+    animation:hideIntro .8s ease 4s forwards;
 }
 
-.intro-logo{
-    font-size:58px;
+.introLogo{
+    font-size:clamp(45px,12vw,100px);
     font-weight:1000;
-    letter-spacing:5px;
+    letter-spacing:6px;
     background:linear-gradient(
-        90deg,
-        #fff,
-        #ff2020,
-        #fff,
-        #ff2020,
-        #fff
+      90deg,#fff,#ff1111,#fff,#ff1111,#fff
     );
-    background-size:300% auto;
+    background-size:400%;
     -webkit-background-clip:text;
-    background-clip:text;
     color:transparent;
     animation:
-        logoGradient 2s linear infinite,
-        logoZoom 1.3s ease;
+      introGradient 2s linear infinite,
+      introZoom 1.5s ease;
 }
 
-.intro-line{
+.introLine{
     width:0;
     height:3px;
-    margin-top:18px;
-    border-radius:10px;
-    background:linear-gradient(90deg,#ff0000,#fff,#ff0000);
-    animation:lineIn 1.5s ease .5s forwards;
+    margin-top:20px;
+    background:linear-gradient(90deg,transparent,#fff,#f00,transparent);
+    animation:line 1.5s ease .5s forwards;
 }
 
-.intro-text{
-    margin-top:16px;
-    color:#aaa;
-    font-size:13px;
-    letter-spacing:4px;
+.introSub{
+    margin-top:15px;
+    letter-spacing:7px;
+    color:#888;
     opacity:0;
-    animation:textIn 1s ease 1.2s forwards;
+    animation:textIn 1s ease 1.3s forwards;
 }
 
-@keyframes logoGradient{
-    to{background-position:300% center;}
+@keyframes introGradient{
+    to{background-position:400%}
 }
 
-@keyframes logoZoom{
-    0%{
-        transform:scale(.5);
+@keyframes introZoom{
+    from{
+        transform:scale(.3);
         opacity:0;
-        filter:blur(15px);
+        filter:blur(20px)
     }
-    100%{
+    to{
         transform:scale(1);
         opacity:1;
-        filter:blur(0);
+        filter:blur(0)
     }
 }
 
-@keyframes lineIn{
-    to{width:280px;}
+@keyframes line{
+    to{width:300px}
 }
 
 @keyframes textIn{
-    to{opacity:1;}
+    to{opacity:1}
 }
 
-@keyframes introOut{
+@keyframes hideIntro{
     to{
         opacity:0;
-        visibility:hidden;
+        visibility:hidden
     }
 }
 
-/* =========================
-   HEADER
-========================= */
+/* ===== HEADER ===== */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    height:70px;
+    height:72px;
+    padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6%;
-    background:rgba(8,8,8,.88);
-    backdrop-filter:blur(15px);
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(18px);
     border-bottom:1px solid #222;
-}
-
-.logo{
-    font-size:25px;
-    font-weight:1000;
-    letter-spacing:2px;
-    cursor:pointer;
-    background:linear-gradient(90deg,#fff,#ff2020,#fff);
-    background-size:200% auto;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation:logoMove 3s linear infinite;
-}
-
-.logo span{
-    color:#ff2020;
-}
-
-@keyframes logoMove{
-    to{background-position:200% center;}
 }
 
 .nav{
     display:flex;
-    gap:8px;
+    gap:5px;
 }
 
-.nav button{
+.nav button,
+.mobile button{
     border:0;
     background:transparent;
     color:#aaa;
-    padding:10px;
-    border-radius:10px;
     cursor:pointer;
-    font-size:18px;
-    transition:.25s;
+    font-size:20px;
+    padding:10px;
 }
 
-.nav button:hover{
-    color:#fff;
-    background:#181818;
-    transform:translateY(-2px);
+.nav button:hover,
+.mobile button:hover{
+    color:#f22;
 }
 
-/* =========================
-   HERO
-========================= */
+/* ===== HERO ===== */
 
 .hero{
-    position:relative;
-    min-height:410px;
+    min-height:420px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:50px 20px;
+    position:relative;
     overflow:hidden;
     background:
-        radial-gradient(circle at 50% 20%,#380000 0%,transparent 45%),
-        linear-gradient(180deg,#100000,#080808);
+      radial-gradient(circle at center,#350000,transparent 48%),
+      #060606;
 }
 
-.hero::before{
+.hero:before,
+.hero:after{
     content:"";
     position:absolute;
-    width:400px;
-    height:400px;
     border-radius:50%;
-    background:#ff0000;
-    filter:blur(160px);
-    opacity:.12;
-    animation:pulse 4s infinite alternate;
+    border:1px solid rgba(255,0,0,.18);
+    animation:orbit 8s linear infinite;
 }
 
-@keyframes pulse{
-    from{transform:scale(.8);}
-    to{transform:scale(1.3);}
+.hero:before{
+    width:500px;
+    height:500px;
 }
 
-.hero-content{
+.hero:after{
+    width:700px;
+    height:700px;
+    animation-duration:13s;
+}
+
+@keyframes orbit{
+    from{transform:rotate(0) scale(.8)}
+    to{transform:rotate(360deg) scale(1.1)}
+}
+
+.heroContent{
     position:relative;
     z-index:2;
 }
 
 .hero h1{
-    font-size:clamp(42px,9vw,85px);
+    font-size:clamp(45px,10vw,90px);
+    letter-spacing:5px;
     font-weight:1000;
-    letter-spacing:4px;
 }
 
-.hero h1 span{
-    color:#ff2020;
-}
+.hero h1 span{color:#f22}
 
 .hero p{
-    margin:15px auto 25px;
-    color:#aaa;
     max-width:600px;
+    color:#999;
+    margin:18px auto 28px;
     line-height:1.6;
 }
 
-.hero-btn{
+.btn{
     border:0;
     padding:14px 25px;
     border-radius:12px;
+    background:linear-gradient(90deg,#b40000,#ff2929);
     color:#fff;
-    background:linear-gradient(90deg,#d90000,#ff3030);
     font-weight:bold;
     cursor:pointer;
-    box-shadow:0 10px 30px rgba(255,0,0,.2);
+    box-shadow:0 0 30px rgba(255,0,0,.18);
     transition:.3s;
 }
 
-.hero-btn:hover{
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 15px 40px rgba(255,0,0,.35);
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 40px rgba(255,0,0,.4);
 }
 
-/* =========================
-   SEARCH
-========================= */
+/* ===== SEARCH ===== */
 
-.search-area{
+.searchBox{
     padding:25px 6%;
 }
 
-.search{
+.searchBox input{
     width:100%;
     padding:16px 20px;
     background:#111;
     border:1px solid #292929;
     border-radius:14px;
+    color:white;
     outline:none;
-    color:#fff;
-    font-size:15px;
-    transition:.3s;
 }
 
-.search:focus{
-    border-color:#ff2020;
-    box-shadow:0 0 20px rgba(255,0,0,.12);
+.searchBox input:focus{
+    border-color:#f22;
 }
 
-/* =========================
-   CATEGORIES
-========================= */
+/* ===== SECTIONS ===== */
 
-.categories{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding:0 6% 25px;
+section.content{
+    padding:20px 6% 50px;
 }
 
-.categories button{
-    white-space:nowrap;
-    border:1px solid #292929;
-    background:#111;
-    color:#aaa;
-    padding:10px 17px;
-    border-radius:30px;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.categories button:hover,
-.categories button.active{
-    background:#ff2020;
-    border-color:#ff2020;
-    color:#fff;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.section{
-    padding:25px 6%;
-}
-
-.section-title{
+.title{
     display:flex;
     justify-content:space-between;
-    align-items:center;
     margin-bottom:20px;
-}
-
-.section-title h2{
-    font-size:23px;
 }
 
 .empty{
     text-align:center;
-    padding:70px 20px;
-    border:1px dashed #303030;
+    border:1px dashed #333;
     border-radius:18px;
-    background:#0d0d0d;
+    padding:70px 20px;
+    background:#0b0b0b;
 }
 
-.empty-icon{
+.empty div{
     font-size:50px;
     margin-bottom:15px;
 }
 
-.empty h3{
-    margin-bottom:8px;
-}
+.empty p{color:#777}
 
-.empty p{
-    color:#777;
-}
-
-/* =========================
-   STATS
-========================= */
+/* ===== STATS ===== */
 
 .stats{
+    padding:20px 6% 50px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:14px;
-    padding:10px 6% 40px;
+    gap:15px;
 }
 
 .stat{
-    background:#111;
-    border:1px solid #222;
-    border-radius:16px;
+    background:#101010;
+    border:1px solid #242424;
+    border-radius:15px;
     padding:20px;
     text-align:center;
-    transition:.3s;
-}
-
-.stat:hover{
-    transform:translateY(-4px);
-    border-color:#ff2020;
-}
-
-.stat-icon{
-    font-size:25px;
 }
 
 .stat strong{
     display:block;
     font-size:25px;
-    margin:7px 0;
+    margin:7px;
 }
 
-.stat span{
-    color:#777;
-    font-size:12px;
+.stat small{color:#777}
+
+/* ===== PANELS ===== */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:4000;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
 }
 
-/* =========================
-   PANELS
-========================= */
+.overlay.show{
+    opacity:1;
+    visibility:visible;
+}
 
 .panel{
     position:fixed;
+    right:-440px;
     top:0;
-    right:-430px;
-    width:min(430px,100%);
+    width:min(440px,100%);
     height:100%;
-    background:#0d0d0d;
+    background:#0b0b0b;
     z-index:5000;
-    box-shadow:-15px 0 50px rgba(0,0,0,.5);
-    transition:.4s cubic-bezier(.77,0,.18,1);
-    overflow-y:auto;
+    transition:.4s;
+    overflow:auto;
+    box-shadow:-20px 0 60px #000;
 }
 
-.panel.open{
-    right:0;
-}
+.panel.open{right:0}
 
-.panel-header{
-    height:70px;
+.panelHead{
+    height:72px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -406,294 +353,156 @@ header{
     border-bottom:1px solid #222;
 }
 
-.panel-header button{
-    background:#191919;
-    color:#fff;
+.close{
     border:0;
+    background:#181818;
+    color:#fff;
     width:38px;
     height:38px;
     border-radius:10px;
-    cursor:pointer;
 }
 
-.panel-body{
-    padding:22px;
-}
+.panelBody{padding:20px}
 
-.panel-item{
-    background:#151515;
-    border:1px solid #252525;
-    padding:15px;
-    border-radius:13px;
+.card{
+    padding:16px;
     margin-bottom:12px;
+    border:1px solid #242424;
+    background:#121212;
+    border-radius:13px;
 }
 
-.panel-item small{
-    color:#777;
-}
+.card small{color:#777}
 
-.profile-box{
-    text-align:center;
-    padding:25px 0;
-}
+/* ===== PROFILE ===== */
 
 .avatar{
-    width:85px;
-    height:85px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:90px;
+    height:90px;
     margin:auto;
     border-radius:50%;
-    background:linear-gradient(135deg,#ff0000,#600000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff0000,#550000);
     font-size:35px;
     font-weight:bold;
 }
 
-.profile-box h3{
-    margin-top:12px;
-}
+.profile{text-align:center}
 
-.rating{
+.profile h3{margin-top:13px}
+
+.stars{
     color:#ffd000;
-    margin-top:8px;
+    margin:10px;
 }
 
-.badges{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-top:15px;
-}
+/* ===== FORM ===== */
 
-.badge{
-    background:#191919;
-    padding:8px 12px;
-    border-radius:10px;
-    font-size:12px;
-}
-
-/* =========================
-   SETTINGS
-========================= */
-
-.setting{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 0;
-    border-bottom:1px solid #222;
-}
-
-.switch{
-    width:48px;
-    height:26px;
-    border-radius:30px;
-    background:#333;
-    position:relative;
-    cursor:pointer;
-}
-
-.switch::after{
-    content:"";
-    position:absolute;
-    top:4px;
-    left:4px;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:#fff;
-    transition:.3s;
-}
-
-.switch.on{
-    background:#e00000;
-}
-
-.switch.on::after{
-    left:26px;
-}
-
-/* =========================
-   ADMIN
-========================= */
-
-.admin-login input{
+input.form{
     width:100%;
     padding:13px;
-    margin:8px 0;
-    background:#151515;
-    color:#fff;
+    margin:7px 0;
     border:1px solid #292929;
+    background:#111;
+    color:#fff;
     border-radius:10px;
     outline:none;
 }
 
-.admin-login button{
-    width:100%;
-    padding:13px;
-    background:#e00000;
-    border:0;
-    color:#fff;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
-}
+.full{width:100%;margin-top:8px}
 
-.admin-info{
-    display:none;
-}
+/* ===== ADMIN ===== */
 
-.admin-grid{
+.adminStats{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:10px;
     margin-top:15px;
 }
 
-.admin-card{
-    padding:18px;
-    border-radius:12px;
+.adminCard{
     background:#151515;
-    border:1px solid #252525;
+    border:1px solid #292929;
+    padding:18px;
     text-align:center;
+    border-radius:12px;
 }
 
-.admin-card strong{
+.adminCard b{
     display:block;
-    font-size:23px;
-    margin-top:5px;
+    font-size:24px;
+    margin:5px;
 }
 
-/* =========================
-   OVERLAY
-========================= */
+/* ===== MOBILE ===== */
 
-#overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.65);
-    z-index:4000;
-    opacity:0;
-    visibility:hidden;
-    transition:.3s;
-}
-
-#overlay.show{
-    opacity:1;
-    visibility:visible;
-}
-
-/* =========================
-   MOBILE MENU
-========================= */
-
-.mobile-menu{
+.mobile{
     display:none;
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    height:65px;
-    background:rgba(10,10,10,.95);
-    border-top:1px solid #252525;
-    z-index:3000;
-    grid-template-columns:repeat(5,1fr);
 }
-
-.mobile-menu button{
-    border:0;
-    background:transparent;
-    color:#777;
-    font-size:20px;
-}
-
-.mobile-menu button span{
-    display:block;
-    font-size:10px;
-    margin-top:3px;
-}
-
-.mobile-menu button:hover{
-    color:#ff2020;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    text-align:center;
-    padding:45px 20px 90px;
-    border-top:1px solid #1d1d1d;
-    color:#666;
-}
-
-footer b{
-    color:#ff2020;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media(max-width:700px){
 
-    header{
-        padding:0 20px;
-    }
+    header{padding:0 18px}
 
-    .nav{
-        display:none;
-    }
-
-    .hero{
-        min-height:390px;
-    }
+    .nav{display:none}
 
     .stats{
         grid-template-columns:1fr 1fr;
     }
 
-    .mobile-menu{
+    .mobile{
+        position:fixed;
         display:grid;
+        grid-template-columns:repeat(5,1fr);
+        bottom:0;
+        left:0;
+        right:0;
+        height:66px;
+        z-index:3000;
+        background:rgba(8,8,8,.96);
+        border-top:1px solid #222;
+    }
+
+    .mobile button{
+        font-size:19px;
+    }
+
+    .mobile small{
+        display:block;
+        font-size:9px;
+        color:#777;
     }
 
     footer{
-        padding-bottom:100px;
+        padding-bottom:90px!important;
     }
 }
 
-@media(max-width:400px){
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .stat{
-        padding:15px 8px;
-    }
-
-    .stat strong{
-        font-size:21px;
-    }
+footer{
+    text-align:center;
+    color:#666;
+    padding:40px 20px;
+    border-top:1px solid #222;
 }
+
+footer b{color:#f22}
 </style>
 </head>
 
 <body>
 
-<!-- AÇILIŞ -->
+<!-- INTRO -->
 <div id="intro">
-    <div class="intro-logo">CPMXSTORE</div>
-    <div class="intro-line"></div>
-    <div class="intro-text">CAR MARKETPLACE</div>
+    <div class="introLogo">CPMXSTORE</div>
+    <div class="introLine"></div>
+    <div class="introSub">CAR MARKETPLACE</div>
 </div>
 
-<!-- HEADER -->
 <header>
 
-    <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <div class="logo">
         CPM<span>X</span>STORE
     </div>
 
@@ -709,154 +518,99 @@ footer b{
 
 </header>
 
-<!-- HERO -->
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="heroContent">
 
         <h1>CPM<span>XSTORE</span></h1>
 
         <p>
             Car Parking Multiplayer oyuncuları için
-            modern araç topluluk ve alışveriş platformu.
+            modern ve gelişmiş topluluk platformu.
         </p>
 
-        <button class="hero-btn" onclick="goCars()">
-            🚘 Araçlara Göz At
+        <button class="btn" onclick="goCars()">
+            🚘 Araçları Keşfet
         </button>
 
     </div>
 
 </section>
 
-<!-- SEARCH -->
-<div class="search-area">
-
+<div class="searchBox">
     <input
-        class="search"
         id="search"
-        oninput="searchCars()"
         placeholder="🔎 Araç, model veya kategori ara..."
+        oninput="search()"
     >
-
 </div>
 
-<!-- CATEGORIES -->
-<div class="categories">
+<section class="content" id="cars">
 
-    <button class="active" onclick="category(this,'all')">
-        Tümü
-    </button>
-
-    <button onclick="category(this,'sports')">
-        🏎️ Spor
-    </button>
-
-    <button onclick="category(this,'suv')">
-        🚙 SUV
-    </button>
-
-    <button onclick="category(this,'sedan')">
-        🚘 Sedan
-    </button>
-
-    <button onclick="category(this,'racing')">
-        🏁 Racing
-    </button>
-
-    <button onclick="category(this,'special')">
-        ⭐ Özel
-    </button>
-
-</div>
-
-<!-- ARAÇLAR -->
-<section class="section" id="cars">
-
-    <div class="section-title">
+    <div class="title">
         <h2>🚘 Araç İlanları</h2>
-        <span id="listingCount">0 ilan</span>
+        <span>0 ilan</span>
     </div>
 
-    <div id="carList">
-
-        <div class="empty">
-
-            <div class="empty-icon">🚘</div>
-
-            <h3>Henüz ilan yok</h3>
-
-            <p>
-                Araç ilanlarını daha sonra birlikte ekleyeceğiz.
-            </p>
-
-        </div>
-
+    <div class="empty">
+        <div>🚘</div>
+        <h3>Henüz ilan yok</h3>
+        <p>
+            Araç ilanları daha sonra eklenecek.
+        </p>
     </div>
 
 </section>
 
-<!-- STATS -->
 <div class="stats">
 
     <div class="stat">
-        <div class="stat-icon">🚘</div>
+        🚘
         <strong>0</strong>
-        <span>Aktif İlan</span>
+        <small>Aktif İlan</small>
     </div>
 
     <div class="stat">
-        <div class="stat-icon">👥</div>
+        👥
         <strong>0</strong>
-        <span>Kullanıcı</span>
+        <small>Kullanıcı</small>
     </div>
 
     <div class="stat">
-        <div class="stat-icon">❤️</div>
-        <strong id="favoriteStat">0</strong>
-        <span>Favori</span>
+        ❤️
+        <strong id="favCount">0</strong>
+        <small>Favori</small>
     </div>
 
     <div class="stat">
-        <div class="stat-icon">⭐</div>
+        ⭐
         <strong>5.0</strong>
-        <span>Site Puanı</span>
+        <small>Site Puanı</small>
     </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
-
-    <p>
-        © 2026 <b>CPMXSTORE</b>
-    </p>
-
-    <p style="margin-top:8px;font-size:12px;">
-        Car Parking Multiplayer topluluk platformu.
-    </p>
-
+    © 2026 <b>CPMXSTORE</b><br>
+    <small>Car Parking Multiplayer Community</small>
 </footer>
 
-<!-- OVERLAY -->
-<div id="overlay" onclick="closePanels()"></div>
+<div class="overlay" id="overlay" onclick="closePanels()"></div>
 
-<!-- FAVORİLER -->
+<!-- FAVORİ -->
 <div class="panel" id="favorites">
 
-    <div class="panel-header">
+    <div class="panelHead">
         <h3>❤️ Favoriler</h3>
-        <button onclick="closePanels()">✕</button>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body" id="favoriteList">
-
+    <div class="panelBody">
         <div class="empty">
-            <div class="empty-icon">❤️</div>
-            <h3>Favori yok</h3>
-            <p>Beğendiğin araçlar burada görünecek.</p>
+            <div>❤️</div>
+            <h3>Favorin yok</h3>
+            <p>Beğendiğin araçlar burada olacak.</p>
         </div>
-
     </div>
 
 </div>
@@ -864,37 +618,37 @@ footer b{
 <!-- BİLDİRİMLER -->
 <div class="panel" id="notifications">
 
-    <div class="panel-header">
+    <div class="panelHead">
         <h3>🔔 Bildirimler</h3>
-        <button onclick="closePanels()">✕</button>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body" id="notificationList">
+    <div class="panelBody" id="notificationList">
 
-        <div class="panel-item">
+        <div class="card">
             <b>🎉 CPMXSTORE'a hoş geldin!</b>
             <br>
-            <small>Site hazır.</small>
+            <small>Sistem hazır.</small>
         </div>
 
     </div>
 
 </div>
 
-<!-- MESAJLAR -->
+<!-- MESAJ -->
 <div class="panel" id="messages">
 
-    <div class="panel-header">
+    <div class="panelHead">
         <h3>💬 Mesajlar</h3>
-        <button onclick="closePanels()">✕</button>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body" id="messageList">
+    <div class="panelBody">
 
         <div class="empty">
-            <div class="empty-icon">💬</div>
-            <h3>Mesaj yok</h3>
-            <p>Yeni mesajlar burada görünecek.</p>
+            <div>💬</div>
+            <h3>Henüz mesaj yok</h3>
+            <p>Gerçek mesajlaşma sunucu bağlantısı ile çalışacak.</p>
         </div>
 
     </div>
@@ -904,77 +658,46 @@ footer b{
 <!-- PROFİL -->
 <div class="panel" id="profile">
 
-    <div class="panel-header">
+    <div class="panelHead">
         <h3>👤 Profil</h3>
-        <button onclick="closePanels()">✕</button>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body">
+    <div class="panelBody">
 
-        <div class="profile-box">
+        <div class="profile">
 
-            <div class="avatar" id="avatar">
-                C
-            </div>
+            <div class="avatar" id="avatar">C</div>
 
-            <h3 id="username">
-                CPMX Oyuncu
-            </h3>
+            <h3 id="username">CPMX Oyuncu</h3>
 
-            <div class="rating">
+            <div class="stars">
                 ⭐⭐⭐⭐⭐
             </div>
 
-            <div class="badges">
-                <div class="badge">🏆 Yeni Üye</div>
-                <div class="badge">🚘 Oyuncu</div>
-            </div>
+            <p style="color:#777">
+                Seviye 1 • 0 XP
+            </p>
 
         </div>
 
-        <div class="panel-item">
-            <b>📊 İstatistikler</b>
+        <div class="card" style="margin-top:20px">
+            🏆 <b>Rozetler</b>
             <br><br>
-            İlan: 0<br>
-            Favori: <span id="profileFav">0</span><br>
-            Puan: 5.0
+            🆕 Yeni Üye
+            &nbsp;
+            🚘 CPM Oyuncusu
         </div>
 
-        <div class="panel-item">
+        <input
+            class="form"
+            id="newName"
+            placeholder="Yeni kullanıcı adı"
+        >
 
-            <b>✏️ Kullanıcı Adı</b>
-
-            <input
-                id="newName"
-                placeholder="Yeni kullanıcı adı"
-                style="
-                width:100%;
-                padding:12px;
-                margin-top:12px;
-                background:#101010;
-                border:1px solid #292929;
-                color:white;
-                border-radius:10px;
-                "
-            >
-
-            <button
-                onclick="changeName()"
-                style="
-                width:100%;
-                margin-top:8px;
-                padding:12px;
-                border:0;
-                border-radius:10px;
-                background:#e00000;
-                color:white;
-                font-weight:bold;
-                "
-            >
-                Kaydet
-            </button>
-
-        </div>
+        <button class="btn full" onclick="changeName()">
+            Kaydet
+        </button>
 
     </div>
 
@@ -983,39 +706,38 @@ footer b{
 <!-- AYARLAR -->
 <div class="panel" id="settings">
 
-    <div class="panel-header">
+    <div class="panelHead">
         <h3>⚙️ Ayarlar</h3>
-        <button onclick="closePanels()">✕</button>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body">
+    <div class="panelBody">
 
-        <div class="setting">
-            <span>🌙 Koyu Tema</span>
-            <div class="switch on" onclick="toggleSwitch(this)"></div>
+        <div class="card">
+            🌙 Tema
+            <button class="btn full" onclick="toggleTheme()">
+                Tema Değiştir
+            </button>
         </div>
 
-        <div class="setting">
-            <span>🔔 Bildirimler</span>
-            <div class="switch on" onclick="toggleSwitch(this)"></div>
+        <div class="card">
+            🔔 Bildirimler
+            <button class="btn full" onclick="testNotification()">
+                Bildirim Test Et
+            </button>
         </div>
 
-        <div class="setting">
-            <span>💬 Mesaj Bildirimleri</span>
-            <div class="switch on" onclick="toggleSwitch(this)"></div>
+        <div class="card">
+            🔊 Ses Efektleri
+            <button class="btn full">
+                Açık
+            </button>
         </div>
 
-        <div class="setting">
-            <span>❤️ Favori Bildirimleri</span>
-            <div class="switch on" onclick="toggleSwitch(this)"></div>
-        </div>
-
-        <div class="panel-item" style="margin-top:25px">
-            <b>CPMXSTORE</b>
+        <div class="card">
+            🔐 Güvenlik
             <br><br>
-            Sürüm: 1.0
-            <br>
-            Platform: CPM Community
+            Hesap güvenliği ve oturum kontrolleri.
         </div>
 
     </div>
@@ -1025,76 +747,84 @@ footer b{
 <!-- ADMIN -->
 <div class="panel" id="admin">
 
-    <div class="panel-header">
-        <h3>🛡️ Yönetici Paneli</h3>
-        <button onclick="closePanels()">✕</button>
+    <div class="panelHead">
+        <h3>🛡️ Yönetici</h3>
+        <button class="close" onclick="closePanels()">✕</button>
     </div>
 
-    <div class="panel-body">
+    <div class="panelBody">
 
-        <div class="admin-login" id="adminLogin">
+        <div id="adminLogin">
 
-            <p style="color:#aaa;margin-bottom:15px;">
-                Yönetici paneline giriş yap.
+            <h3>🔐 Yönetici Girişi</h3>
+
+            <p style="color:#777;margin:10px 0">
+                Bu bölüm yalnızca site yöneticisine açıktır.
             </p>
 
             <input
+                class="form"
                 id="adminPassword"
                 type="password"
                 placeholder="Yönetici şifresi"
             >
 
-            <button onclick="adminLogin()">
+            <button class="btn full" onclick="loginAdmin()">
                 Giriş Yap
             </button>
 
             <p id="adminError"
-               style="color:#ff3333;margin-top:10px;font-size:13px;">
+               style="color:#f33;margin-top:10px">
             </p>
 
         </div>
 
-        <div class="admin-info" id="adminInfo">
+        <div id="adminArea" style="display:none">
 
-            <h3>📊 Site Durumu</h3>
+            <h3>📊 CPMXSTORE Yönetimi</h3>
 
-            <div class="admin-grid">
+            <div class="adminStats">
 
-                <div class="admin-card">
-                    🚘
-                    <strong>0</strong>
-                    İlan
-                </div>
-
-                <div class="admin-card">
+                <div class="adminCard">
                     👥
-                    <strong>0</strong>
+                    <b>0</b>
                     Kullanıcı
                 </div>
 
-                <div class="admin-card">
+                <div class="adminCard">
+                    🚘
+                    <b>0</b>
+                    İlan
+                </div>
+
+                <div class="adminCard">
+                    💬
+                    <b>0</b>
+                    Mesaj
+                </div>
+
+                <div class="adminCard">
                     🚨
-                    <strong>0</strong>
-                    Şikayet
-                </div>
-
-                <div class="admin-card">
-                    ⭐
-                    <strong>5.0</strong>
-                    Puan
+                    <b>0</b>
+                    Şikâyet
                 </div>
 
             </div>
 
-            <div class="panel-item" style="margin-top:15px">
-                <b>⚡ Yönetici Araçları</b>
+            <div class="card" style="margin-top:15px">
+                <b>🛠️ Yönetim</b>
                 <br><br>
-                • Kullanıcı yönetimi<br>
-                • Bildirim yönetimi<br>
-                • Şikayet yönetimi<br>
-                • Site istatistikleri<br>
-                • İlan yönetimi
+                👥 Kullanıcı yönetimi<br><br>
+                🔔 Bildirim yönetimi<br><br>
+                💬 Mesaj kontrolü<br><br>
+                🚨 Şikâyet yönetimi<br><br>
+                📢 Duyuru sistemi<br><br>
+                📊 Site istatistikleri
             </div>
+
+            <button class="btn full" onclick="adminLogout()">
+                🔒 Yönetici Çıkışı
+            </button>
 
         </div>
 
@@ -1102,32 +832,27 @@ footer b{
 
 </div>
 
-<!-- MOBİL MENÜ -->
-<div class="mobile-menu">
+<!-- MOBILE -->
+<div class="mobile">
 
     <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        🏠
-        <span>Ana Sayfa</span>
+        🏠<small>Ana</small>
     </button>
 
     <button onclick="goCars()">
-        🚘
-        <span>Araçlar</span>
+        🚘<small>Araçlar</small>
     </button>
 
-    <button onclick="openPanel('favorites')">
-        ❤️
-        <span>Favoriler</span>
+    <button onclick="openPanel('notifications')">
+        🔔<small>Bildirim</small>
     </button>
 
     <button onclick="openPanel('messages')">
-        💬
-        <span>Mesaj</span>
+        💬<small>Mesaj</small>
     </button>
 
     <button onclick="openPanel('profile')">
-        👤
-        <span>Profil</span>
+        👤<small>Profil</small>
     </button>
 
 </div>
@@ -1135,28 +860,24 @@ footer b{
 <script>
 
 /* =========================
-   LOCAL STORAGE
+   CPMXSTORE
 ========================= */
-
-let favorites =
-JSON.parse(localStorage.getItem("cpmxFavorites") || "[]");
 
 let username =
-localStorage.getItem("cpmxUsername") || "CPMX Oyuncu";
+localStorage.getItem("cpmx_username")
+|| "CPMX Oyuncu";
 
-/* =========================
-   PANEL
-========================= */
+/* PANEL */
 
 function openPanel(id){
 
     closePanels();
 
-    document.getElementById(id).classList.add("open");
+    document.getElementById(id)
+        .classList.add("open");
 
     document.getElementById("overlay")
         .classList.add("show");
-
 }
 
 function closePanels(){
@@ -1166,12 +887,9 @@ function closePanels(){
 
     document.getElementById("overlay")
         .classList.remove("show");
-
 }
 
-/* =========================
-   ARAÇLARA GİT
-========================= */
+/* ARAÇLAR */
 
 function goCars(){
 
@@ -1182,228 +900,152 @@ function goCars(){
 
 }
 
-/* =========================
-   KATEGORİ
-========================= */
+/* ARAMA */
 
-function category(button,type){
-
-    document.querySelectorAll(".categories button")
-        .forEach(b => b.classList.remove("active"));
-
-    button.classList.add("active");
+function search(){
 
     /*
-       Araçlar eklendiğinde burada
-       kategori filtreleme sistemi çalışacak.
+      Araçlar eklendiğinde gerçek
+      arama sistemi burada çalışacak.
     */
 
 }
 
-/* =========================
-   ARAMA
-========================= */
-
-function searchCars(){
-
-    const text =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
-
-    /*
-       İlanlar eklendiğinde:
-       marka/model/kategori
-       burada filtrelenecek.
-    */
-
-}
-
-/* =========================
-   FAVORİLER
-========================= */
-
-function renderFavorites(){
-
-    const list =
-        document.getElementById("favoriteList");
-
-    document.getElementById("favoriteStat")
-        .innerText = favorites.length;
-
-    document.getElementById("profileFav")
-        .innerText = favorites.length;
-
-    if(favorites.length === 0){
-
-        list.innerHTML = `
-        <div class="empty">
-            <div class="empty-icon">❤️</div>
-            <h3>Favori yok</h3>
-            <p>Beğendiğin araçlar burada görünecek.</p>
-        </div>`;
-
-        return;
-    }
-
-    list.innerHTML =
-        favorites.map(car => `
-        <div class="panel-item">
-            ❤️ <b>${car}</b>
-        </div>
-        `).join("");
-
-}
-
-/* =========================
-   FAVORİ EKLEME
-========================= */
-
-function addFavorite(carName){
-
-    if(!favorites.includes(carName)){
-
-        favorites.push(carName);
-
-        localStorage.setItem(
-            "cpmxFavorites",
-            JSON.stringify(favorites)
-        );
-
-        newNotification(
-            "❤️ " + carName + " favorilere eklendi."
-        );
-
-    }
-
-    renderFavorites();
-
-}
-
-/* =========================
-   BİLDİRİM
-========================= */
-
-function newNotification(text){
-
-    const list =
-        document.getElementById("notificationList");
-
-    const item =
-        document.createElement("div");
-
-    item.className = "panel-item";
-
-    item.innerHTML = `
-        <b>${text}</b>
-        <br>
-        <small>Az önce</small>
-    `;
-
-    list.prepend(item);
-
-}
-
-/* =========================
-   PROFİL
-========================= */
+/* PROFİL */
 
 function changeName(){
 
-    const input =
-        document.getElementById("newName");
-
     const value =
-        input.value.trim();
+        document.getElementById("newName")
+        .value.trim();
 
-    if(!value) return;
+    if(!value)return;
 
-    username = value;
+    username=value;
 
     localStorage.setItem(
-        "cpmxUsername",
+        "cpmx_username",
         username
     );
 
     document.getElementById("username")
-        .innerText = username;
+        .innerText=username;
 
     document.getElementById("avatar")
-        .innerText =
-        username.charAt(0).toUpperCase();
+        .innerText=username[0].toUpperCase();
 
-    input.value = "";
-
-    newNotification(
-        "👤 Kullanıcı adın güncellendi."
-    );
+    alert("Kullanıcı adı güncellendi.");
 
 }
 
-/* =========================
-   AYAR SWITCH
-========================= */
+/* BİLDİRİM */
 
-function toggleSwitch(el){
+function testNotification(){
 
-    el.classList.toggle("on");
+    /*
+      Gerçek telefon push bildirimi için
+      Service Worker + Push API + sunucu
+      bağlantısı gerektiğinden bu bölüm
+      şimdilik tarayıcı bildirimi ister.
+    */
+
+    if(!("Notification" in window)){
+        alert("Bu tarayıcı bildirimleri desteklemiyor.");
+        return;
+    }
+
+    Notification.requestPermission()
+    .then(permission => {
+
+        if(permission==="granted"){
+
+            new Notification(
+                "CPMXSTORE",
+                {
+                    body:"🔔 Bildirim sistemi hazır!"
+                }
+            );
+
+        }
+
+    });
 
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* YÖNETİCİ */
 
 function openAdmin(){
-
     openPanel("admin");
-
 }
 
-function adminLogin(){
+function loginAdmin(){
 
     const password =
         document.getElementById("adminPassword")
         .value;
 
-    const error =
-        document.getElementById("adminError");
-
-    if(password === "1234"){
+    if(password === "6640"){
 
         document.getElementById("adminLogin")
-            .style.display = "none";
+            .style.display="none";
 
-        document.getElementById("adminInfo")
-            .style.display = "block";
+        document.getElementById("adminArea")
+            .style.display="block";
 
-        error.innerText = "";
+        document.getElementById("adminError")
+            .innerText="";
 
     }else{
 
-        error.innerText =
-            "❌ Şifre yanlış.";
+        document.getElementById("adminError")
+            .innerText="❌ Şifre yanlış.";
 
     }
 
 }
 
-/* =========================
-   BAŞLANGIÇ
-========================= */
+function adminLogout(){
+
+    document.getElementById("adminArea")
+        .style.display="none";
+
+    document.getElementById("adminLogin")
+        .style.display="block";
+
+    document.getElementById("adminPassword")
+        .value="";
+
+}
+
+/* TEMA */
+
+function toggleTheme(){
+
+    if(document.body.style.background==="white"){
+
+        document.body.style.background="#050505";
+        document.body.style.color="#fff";
+
+    }else{
+
+        document.body.style.background="white";
+        document.body.style.color="#111";
+
+    }
+
+}
+
+/* BAŞLANGIÇ */
 
 document.addEventListener(
     "DOMContentLoaded",
     () => {
 
         document.getElementById("username")
-            .innerText = username;
+            .innerText=username;
 
         document.getElementById("avatar")
-            .innerText =
-            username.charAt(0).toUpperCase();
-
-        renderFavorites();
+            .innerText=username[0].toUpperCase();
 
     }
 );
