@@ -2,341 +2,396 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>CPMXXSTORE</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:Arial,sans-serif;
 }
 
 body{
-    background:#08090d;
-    color:white;
+ background:#08090d;
+ color:#fff;
+ min-height:100vh;
 }
 
-/* HEADER */
 header{
-    height:70px;
-    background:#0e1016;
-    border-bottom:1px solid #242732;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 7%;
-    position:sticky;
-    top:0;
-    z-index:100;
+ height:70px;
+ background:#0e1016;
+ border-bottom:1px solid #292d37;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 6%;
+ position:sticky;
+ top:0;
+ z-index:100;
 }
 
 .logo{
-    font-size:25px;
-    font-weight:900;
-    letter-spacing:2px;
+ font-size:24px;
+ font-weight:900;
+ letter-spacing:2px;
 }
 
 .logo span{
-    color:#ff3131;
+ color:#ff3030;
 }
 
 nav{
-    display:flex;
-    gap:20px;
-    align-items:center;
+ display:flex;
+ align-items:center;
+ gap:10px;
 }
 
-nav a{
-    color:#bbb;
-    text-decoration:none;
-    font-weight:bold;
+.navbtn{
+ background:#151820;
+ color:#fff;
+ border:1px solid #30343e;
+ border-radius:9px;
+ padding:10px 13px;
+ cursor:pointer;
 }
 
-nav a:hover{
-    color:white;
-}
-
-/* HEADER BUTTONS */
-.header-btn{
-    position:relative;
-    border:1px solid #292d37;
-    background:#151820;
-    color:white;
-    border-radius:8px;
-    padding:10px 13px;
-    cursor:pointer;
-    font-size:18px;
-}
-
-.header-btn:hover{
-    border-color:#ff3131;
+.navbtn:hover{
+ border-color:#ff3030;
 }
 
 .badge{
-    position:absolute;
-    top:-7px;
-    right:-7px;
-    background:#ff3131;
-    color:white;
-    font-size:11px;
-    min-width:18px;
-    height:18px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+ background:#ff3030;
+ border-radius:50%;
+ min-width:17px;
+ height:17px;
+ font-size:10px;
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ margin-left:3px;
 }
 
 /* HERO */
+
 .hero{
-    min-height:420px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:30px;
-    background:radial-gradient(circle at center,#241016 0%,#08090d 60%);
+ min-height:400px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ padding:30px;
+ background:
+ radial-gradient(circle,#2b1115,#08090d 65%);
 }
 
 .hero h1{
-    font-size:55px;
-    margin-bottom:15px;
+ font-size:55px;
+ margin-bottom:15px;
 }
 
 .hero h1 span{
-    color:#ff3131;
+ color:#ff3030;
 }
 
 .hero p{
-    color:#999;
-    font-size:18px;
-    max-width:600px;
+ color:#888;
+ font-size:18px;
 }
 
-.buttons{
-    margin-top:30px;
-    display:flex;
-    gap:15px;
+.hero-buttons{
+ display:flex;
+ gap:12px;
+ margin-top:28px;
 }
 
 .btn{
-    padding:14px 25px;
-    border-radius:8px;
-    border:1px solid #333;
-    background:#151820;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
+ padding:14px 25px;
+ border-radius:9px;
+ border:1px solid #333;
+ background:#151820;
+ color:#fff;
+ font-weight:bold;
+ cursor:pointer;
 }
 
 .btn.red{
-    background:#e52525;
-    border-color:#e52525;
+ background:#e52525;
+ border-color:#e52525;
 }
 
 /* SEARCH */
-.search-area{
-    padding:35px 7%;
-}
 
 .search{
-    width:100%;
-    padding:17px;
-    background:#11141b;
-    border:1px solid #292d37;
-    border-radius:10px;
-    color:white;
-    font-size:16px;
+ margin:35px 6%;
 }
 
-/* CATEGORIES */
-.categories{
-    padding:0 7% 35px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+.search input{
+ width:100%;
+ padding:17px;
+ background:#11141b;
+ border:1px solid #292d37;
+ border-radius:10px;
+ color:#fff;
+ font-size:16px;
 }
 
-.category{
-    padding:10px 18px;
-    background:#12151c;
-    border:1px solid #292d37;
-    border-radius:20px;
-    color:#aaa;
-    cursor:pointer;
+/* STATS */
+
+.stats{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:15px;
+ margin:0 6% 40px;
 }
 
-/* SECTION */
-.section{
-    padding:20px 7% 70px;
+.stat{
+ background:#101319;
+ border:1px solid #292d37;
+ border-radius:12px;
+ padding:22px;
+ text-align:center;
 }
 
-.section-title{
-    font-size:28px;
-    margin-bottom:25px;
+.stat b{
+ display:block;
+ font-size:25px;
+ margin-top:7px;
+}
+
+.stat small{
+ color:#777;
+}
+
+/* CONTENT */
+
+.content{
+ padding:0 6% 70px;
+}
+
+.title{
+ margin-bottom:20px;
+ font-size:27px;
 }
 
 .empty{
-    min-height:250px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    background:#101319;
-    border:1px dashed #30343f;
-    border-radius:15px;
-    text-align:center;
+ min-height:220px;
+ border:1px dashed #30343e;
+ border-radius:14px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ background:#101319;
 }
 
-.empty .car{
-    font-size:60px;
-    margin-bottom:15px;
+.empty .icon{
+ font-size:55px;
+ margin-bottom:10px;
 }
 
 .empty p{
-    color:#777;
+ color:#777;
+ margin-top:7px;
 }
 
 /* PANELS */
+
 .panel{
-    display:none;
-    position:fixed;
-    top:75px;
-    right:20px;
-    width:330px;
-    max-height:500px;
-    overflow:auto;
-    background:#11141b;
-    border:1px solid #30343f;
-    border-radius:14px;
-    z-index:200;
-    box-shadow:0 10px 40px #000;
+ position:fixed;
+ top:78px;
+ right:20px;
+ width:350px;
+ max-height:80vh;
+ overflow:auto;
+ background:#101319;
+ border:1px solid #30343e;
+ border-radius:14px;
+ z-index:500;
+ box-shadow:0 15px 50px #000;
+ display:none;
 }
 
 .panel.active{
-    display:block;
+ display:block;
 }
 
-.panel-header{
-    padding:17px;
-    border-bottom:1px solid #292d37;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.panel-header h3{
-    font-size:18px;
+.panel-head{
+ padding:17px;
+ border-bottom:1px solid #292d37;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
 
 .close{
-    background:none;
-    border:0;
-    color:#aaa;
-    font-size:20px;
-    cursor:pointer;
+ background:none;
+ border:0;
+ color:#aaa;
+ font-size:23px;
+ cursor:pointer;
 }
 
-.panel-empty{
-    padding:35px 20px;
-    text-align:center;
-    color:#777;
+/* PROFILE */
+
+.profile{
+ padding:25px;
+ text-align:center;
 }
 
-.notification{
-    padding:15px;
-    border-bottom:1px solid #252933;
-    cursor:pointer;
+.avatar{
+ width:90px;
+ height:90px;
+ border-radius:50%;
+ background:#20242d;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:45px;
+ margin:auto;
 }
 
-.notification:hover{
-    background:#191c24;
+.profile h2{
+ margin-top:12px;
 }
 
-.notification strong{
-    display:block;
-    margin-bottom:5px;
+.profile p{
+ color:#777;
+ margin:6px;
 }
 
-.notification small{
-    color:#777;
+.profile-buttons{
+ margin-top:20px;
+ display:grid;
+ gap:9px;
 }
 
-/* FAVORİ */
-.favorite-item{
-    padding:15px;
-    border-bottom:1px solid #252933;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.profile-buttons button{
+ padding:12px;
+ border-radius:8px;
+ border:1px solid #30343e;
+ background:#171a22;
+ color:#fff;
+ cursor:pointer;
 }
 
-.favorite-item button{
-    border:0;
-    background:none;
-    color:#ff3131;
-    font-size:20px;
-    cursor:pointer;
+/* MESSAGES */
+
+.message{
+ padding:15px;
+ border-bottom:1px solid #292d37;
+ cursor:pointer;
+}
+
+.message:hover{
+ background:#181b23;
+}
+
+.message strong{
+ display:block;
+ margin-bottom:5px;
+}
+
+.message small{
+ color:#777;
+}
+
+/* SETTINGS */
+
+.setting{
+ padding:16px;
+ border-bottom:1px solid #292d37;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.setting button{
+ border:1px solid #333;
+ background:#171a22;
+ color:white;
+ border-radius:7px;
+ padding:7px 12px;
+}
+
+/* ADMIN */
+
+.admin-box{
+ padding:22px;
+}
+
+.admin-card{
+ padding:15px;
+ background:#171a22;
+ border:1px solid #292d37;
+ border-radius:9px;
+ margin-bottom:10px;
+}
+
+.admin-card b{
+ display:block;
+ margin-bottom:5px;
+}
+
+.admin-card span{
+ color:#777;
 }
 
 /* FOOTER */
+
 footer{
-    background:#0d0f14;
-    border-top:1px solid #222630;
-    text-align:center;
-    padding:30px;
-    color:#666;
+ border-top:1px solid #292d37;
+ background:#0d0f14;
+ padding:30px;
+ text-align:center;
+ color:#666;
 }
 
 footer b{
-    color:#aaa;
+ color:#aaa;
 }
 
 /* MOBILE */
+
 @media(max-width:700px){
 
-    header{
-        padding:0 15px;
-    }
+ header{
+  padding:0 15px;
+ }
 
-    nav a{
-        display:none;
-    }
+ nav .text{
+  display:none;
+ }
 
-    .hero h1{
-        font-size:38px;
-    }
+ .logo{
+  font-size:20px;
+ }
 
-    .hero p{
-        font-size:15px;
-    }
+ .hero h1{
+  font-size:38px;
+ }
 
-    .buttons{
-        flex-direction:column;
-        width:100%;
-        max-width:280px;
-    }
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+  margin-left:20px;
+  margin-right:20px;
+ }
 
-    .btn{
-        width:100%;
-    }
+ .search,
+ .content{
+  margin-left:20px;
+  margin-right:20px;
+ }
 
-    .search-area,
-    .categories,
-    .section{
-        padding-left:20px;
-        padding-right:20px;
-    }
+ .panel{
+  left:10px;
+  right:10px;
+  width:auto;
+ }
 
-    .panel{
-        left:10px;
-        right:10px;
-        width:auto;
-    }
 }
 </style>
 </head>
@@ -345,370 +400,615 @@ footer b{
 
 <header>
 
-    <div class="logo">
-        CPM<span>XX</span>STORE
-    </div>
+<div class="logo">
+CPM<span>XX</span>STORE
+</div>
 
-    <nav>
-        <a href="#">Ana Sayfa</a>
-        <a href="#cars">Araçlar</a>
+<nav>
 
-        <button class="header-btn" onclick="toggleFavorites()">
-            ❤️
-            <span id="favoriteBadge" class="badge">0</span>
-        </button>
+<button class="navbtn" onclick="openPanel('profile')">
+👤 <span class="text">Profil</span>
+</button>
 
-        <button class="header-btn" onclick="toggleNotifications()">
-            🔔
-            <span id="notificationBadge" class="badge">0</span>
-        </button>
-    </nav>
+<button class="navbtn" onclick="openPanel('messages')">
+💬 <span class="text">Mesajlar</span>
+<span id="messageBadge" class="badge">0</span>
+</button>
+
+<button class="navbtn" onclick="openPanel('notifications')">
+🔔 <span class="text">Bildirimler</span>
+<span id="notificationBadge" class="badge">0</span>
+</button>
+
+<button class="navbtn" onclick="openPanel('favorites')">
+❤️ <span class="text">Favoriler</span>
+</button>
+
+<button class="navbtn" onclick="openPanel('settings')">
+⚙️
+</button>
+
+</nav>
 
 </header>
 
 
-<!-- FAVORİLER PANELİ -->
+<!-- PROFİL -->
 
-<div id="favoritesPanel" class="panel">
+<div id="profile" class="panel">
 
-    <div class="panel-header">
-        <h3>❤️ Favorilerim</h3>
-        <button class="close" onclick="closePanels()">×</button>
-    </div>
+<div class="panel-head">
+<b>👤 Profilim</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
 
-    <div id="favoriteList">
-        <div class="panel-empty">
-            Henüz favori aracın yok.
-        </div>
-    </div>
+<div class="profile">
+
+<div class="avatar">👤</div>
+
+<h2 id="username">
+CPMXX Oyuncu
+</h2>
+
+<p>⭐ Yeni Üye</p>
+
+<div class="profile-buttons">
+
+<button onclick="changeName()">
+✏️ Kullanıcı Adını Değiştir
+</button>
+
+<button>
+🏆 Başarılarım
+</button>
+
+<button>
+📦 İşlem Geçmişim
+</button>
+
+<button>
+🚗 Garajım
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
-<!-- BİLDİRİMLER PANELİ -->
+<!-- MESAJLAR -->
 
-<div id="notificationsPanel" class="panel">
+<div id="messages" class="panel">
 
-    <div class="panel-header">
-        <h3>🔔 Bildirimler</h3>
-        <button class="close" onclick="closePanels()">×</button>
-    </div>
+<div class="panel-head">
+<b>💬 Mesajlar</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
 
-    <div id="notificationList">
-        <div class="panel-empty">
-            Yeni bildirimin yok.
-        </div>
-    </div>
+<div id="messageList">
+
+<div class="panel-empty">
+Henüz mesajın yok.
+</div>
 
 </div>
 
+</div>
+
+
+<!-- BİLDİRİMLER -->
+
+<div id="notifications" class="panel">
+
+<div class="panel-head">
+<b>🔔 Bildirimler</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
+
+<div id="notificationList">
+
+<div class="panel-empty">
+Yeni bildirimin yok.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FAVORİLER -->
+
+<div id="favorites" class="panel">
+
+<div class="panel-head">
+<b>❤️ Favorilerim</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
+
+<div id="favoriteList">
+
+<div class="panel-empty">
+Henüz favori aracın yok.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AYARLAR -->
+
+<div id="settings" class="panel">
+
+<div class="panel-head">
+<b>⚙️ Ayarlar</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
+
+<div class="setting">
+Bildirimler
+<button onclick="toggleSetting(this)">Açık</button>
+</div>
+
+<div class="setting">
+Sesler
+<button onclick="toggleSetting(this)">Açık</button>
+</div>
+
+<div class="setting">
+Koyu Tema
+<button>Açık</button>
+</div>
+
+<div class="setting">
+Gizlilik
+<button>›</button>
+</div>
+
+<div class="setting">
+Hesap
+<button>›</button>
+</div>
+
+</div>
+
+
+<!-- HERO -->
 
 <section class="hero">
 
-    <h1>
-        CPM<span>XXSTORE</span>
-    </h1>
+<h1>
+CPM<span>XXSTORE</span>
+</h1>
 
-    <p>
-        Car Parking Multiplayer araç ilanlarının
-        buluşma noktası.
-    </p>
+<p>
+Car Parking Multiplayer araç topluluğu
+</p>
 
-    <div class="buttons">
+<div class="hero-buttons">
 
-        <button class="btn red"
-        onclick="goCars()">
-            🚗 Araçlara Bak
-        </button>
+<button class="btn red" onclick="goCars()">
+🚗 Araçlara Bak
+</button>
 
-        <button class="btn"
-        onclick="newNotification('İlan sistemi yakında aktif olacak!')">
-            ➕ İlan Ver
-        </button>
+<button class="btn" onclick="showComingSoon()">
+➕ İlan Ver
+</button>
 
-    </div>
+</div>
 
 </section>
 
 
-<section class="search-area">
+<!-- ARAMA -->
 
-    <input
-        id="search"
-        class="search"
-        type="text"
-        placeholder="🔎 Araç, marka veya model ara..."
-    >
+<div class="search">
 
-</section>
-
-
-<div class="categories">
-
-    <div class="category">🚗 Tüm Araçlar</div>
-    <div class="category">🏎️ Spor</div>
-    <div class="category">🚙 SUV</div>
-    <div class="category">🚘 Sedan</div>
-    <div class="category">🏁 Yarış</div>
-    <div class="category">💎 Özel</div>
+<input
+id="search"
+placeholder="🔎 Araç, marka veya model ara..."
+>
 
 </div>
 
 
-<section class="section" id="cars">
+<!-- İSTATİSTİK -->
 
-    <h2 class="section-title">
-        🚘 Araç İlanları
-    </h2>
+<div class="stats">
 
-    <div class="empty">
+<div class="stat">
+🚗
+<b id="carCount">0</b>
+<small>İlan</small>
+</div>
 
-        <div class="car">
-            🚘
-        </div>
+<div class="stat">
+👥
+<b>0</b>
+<small>Üye</small>
+</div>
 
-        <h2>
-            Henüz ilan yok
-        </h2>
+<div class="stat">
+❤️
+<b id="favCount">0</b>
+<small>Favori</small>
+</div>
 
-        <p>
-            İlanları daha sonra buraya ekleyeceğiz.
-        </p>
+<div class="stat">
+⭐
+<b>5.0</b>
+<small>Site Puanı</small>
+</div>
 
-    </div>
+</div>
+
+
+<!-- ARAÇLAR -->
+
+<section class="content" id="cars">
+
+<h2 class="title">
+🚘 Araç İlanları
+</h2>
+
+<div class="empty">
+
+<div class="icon">
+🚘
+</div>
+
+<h2>
+Henüz ilan yok
+</h2>
+
+<p>
+İlanları daha sonra birlikte ekleyeceğiz.
+</p>
+
+</div>
 
 </section>
+
+
+<!-- YÖNETİCİ -->
+
+<section class="content">
+
+<h2 class="title">
+🛡️ CPMXXSTORE Yönetim
+</h2>
+
+<div class="empty">
+
+<div class="icon">
+🔐
+</div>
+
+<h2>
+Yönetici Paneli
+</h2>
+
+<p>
+İlan, kullanıcı ve bildirim yönetimi için altyapı hazır.
+</p>
+
+<br>
+
+<button class="btn" onclick="openAdmin()">
+Yönetici Panelini Aç
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN PANEL -->
+
+<div id="admin" class="panel">
+
+<div class="panel-head">
+<b>🛡️ Yönetici Paneli</b>
+<button class="close" onclick="closePanels()">×</button>
+</div>
+
+<div class="admin-box">
+
+<div class="admin-card">
+<b>🚗 İlanlar</b>
+<span>0 aktif ilan</span>
+</div>
+
+<div class="admin-card">
+<b>👥 Kullanıcılar</b>
+<span>0 kayıtlı kullanıcı</span>
+</div>
+
+<div class="admin-card">
+<b>🚨 Şikayetler</b>
+<span>0 bekleyen şikayet</span>
+</div>
+
+<div class="admin-card">
+<b>🔔 Bildirimler</b>
+<span>Bildirim sistemi aktif</span>
+</div>
+
+</div>
+
+</div>
 
 
 <footer>
 
-    © 2026 <b>CPMXXSTORE</b>
+© 2026 <b>CPMXXSTORE</b>
 
-    <br><br>
+<br><br>
 
-    Car Parking Multiplayer topluluk mağazası.
+Car Parking Multiplayer topluluk platformu.
 
 </footer>
 
 
 <script>
 
-/* FAVORİLER */
+/* VERİLER */
 
 let favorites =
-    JSON.parse(localStorage.getItem("cpmxxFavorites")) || [];
+JSON.parse(localStorage.getItem("cpmxxFavorites")) || [];
+
+let notifications =
+JSON.parse(localStorage.getItem("cpmxxNotifications")) || [];
+
+let messages =
+JSON.parse(localStorage.getItem("cpmxxMessages")) || [];
+
+let username =
+localStorage.getItem("cpmxxUsername") ||
+"CPMXX Oyuncu";
+
+
+/* PANELLER */
+
+function openPanel(id){
+
+ closePanels();
+
+ document.getElementById(id)
+ .classList.add("active");
+
+ if(id==="favorites")
+ renderFavorites();
+
+ if(id==="notifications")
+ renderNotifications();
+
+ if(id==="messages")
+ renderMessages();
+
+}
+
+function closePanels(){
+
+ document
+ .querySelectorAll(".panel")
+ .forEach(p=>{
+  p.classList.remove("active");
+ });
+
+}
+
+
+/* PROFİL */
+
+document.getElementById("username")
+.textContent=username;
+
+function changeName(){
+
+ let name=prompt(
+ "Yeni kullanıcı adını yaz:"
+ );
+
+ if(!name) return;
+
+ username=name;
+
+ localStorage.setItem(
+ "cpmxxUsername",
+ username
+ );
+
+ document.getElementById("username")
+ .textContent=username;
+
+}
+
+
+/* FAVORİ */
+
+function renderFavorites(){
+
+ let list=
+ document.getElementById("favoriteList");
+
+ document.getElementById("favCount")
+ .textContent=favorites.length;
+
+ if(favorites.length===0){
+
+  list.innerHTML=
+  `<div class="panel-empty">
+  Henüz favori aracın yok.
+  </div>`;
+
+  return;
+ }
+
+ list.innerHTML="";
+
+ favorites.forEach((car,index)=>{
+
+  let item=document.createElement("div");
+
+  item.className="message";
+
+  item.innerHTML=
+  `🚗 <b>${car}</b>
+   <button
+   onclick="removeFavorite(${index})"
+   style="float:right;background:none;border:0;color:#ff3030">
+   ♥
+   </button>`;
+
+  list.appendChild(item);
+
+ });
+
+}
+
+function removeFavorite(index){
+
+ favorites.splice(index,1);
+
+ localStorage.setItem(
+ "cpmxxFavorites",
+ JSON.stringify(favorites)
+ );
+
+ renderFavorites();
+
+}
 
 
 /* BİLDİRİMLER */
 
-let notifications =
-    JSON.parse(localStorage.getItem("cpmxxNotifications")) || [];
-
-
-function saveFavorites(){
-
-    localStorage.setItem(
-        "cpmxxFavorites",
-        JSON.stringify(favorites)
-    );
-
-}
-
-
-function saveNotifications(){
-
-    localStorage.setItem(
-        "cpmxxNotifications",
-        JSON.stringify(notifications)
-    );
-
-}
-
-
-/* FAVORİ PANELİ */
-
-function toggleFavorites(){
-
-    document
-    .getElementById("notificationsPanel")
-    .classList.remove("active");
-
-    document
-    .getElementById("favoritesPanel")
-    .classList.toggle("active");
-
-    renderFavorites();
-}
-
-
-/* BİLDİRİM PANELİ */
-
-function toggleNotifications(){
-
-    document
-    .getElementById("favoritesPanel")
-    .classList.remove("active");
-
-    document
-    .getElementById("notificationsPanel")
-    .classList.toggle("active");
-
-    renderNotifications();
-}
-
-
-/* PANELLERİ KAPAT */
-
-function closePanels(){
-
-    document
-    .querySelectorAll(".panel")
-    .forEach(panel=>{
-        panel.classList.remove("active");
-    });
-
-}
-
-
-/* FAVORİLERİ GÖSTER */
-
-function renderFavorites(){
-
-    const list =
-        document.getElementById("favoriteList");
-
-    document.getElementById("favoriteBadge")
-        .textContent = favorites.length;
-
-    if(favorites.length===0){
-
-        list.innerHTML =
-        `<div class="panel-empty">
-            Henüz favori aracın yok.
-        </div>`;
-
-        return;
-    }
-
-    list.innerHTML="";
-
-    favorites.forEach((car,index)=>{
-
-        const item =
-        document.createElement("div");
-
-        item.className="favorite-item";
-
-        item.innerHTML=`
-            <div>
-                🚗 <b>${car}</b>
-            </div>
-
-            <button onclick="removeFavorite(${index})">
-                ♥
-            </button>
-        `;
-
-        list.appendChild(item);
-
-    });
-
-}
-
-
-/* FAVORİDEN SİL */
-
-function removeFavorite(index){
-
-    favorites.splice(index,1);
-
-    saveFavorites();
-
-    renderFavorites();
-
-}
-
-
-/* FAVORİYE ARAÇ EKLEME
-   Daha sonra ilan sistemiyle kullanılacak. */
-
-function addFavorite(carName){
-
-    if(!favorites.includes(carName)){
-
-        favorites.push(carName);
-
-        saveFavorites();
-
-        newNotification(
-            carName + " favorilerine eklendi."
-        );
-
-    }
-
-    renderFavorites();
-
-}
-
-
-/* BİLDİRİM EKLE */
-
-function newNotification(text){
-
-    notifications.unshift({
-
-        text:text,
-
-        date:new Date()
-        .toLocaleString("tr-TR")
-
-    });
-
-    saveNotifications();
-
-    renderNotifications();
-
-}
-
-
-/* BİLDİRİMLERİ GÖSTER */
-
 function renderNotifications(){
 
-    const list =
-        document.getElementById("notificationList");
+ let list=
+ document.getElementById("notificationList");
 
-    document.getElementById("notificationBadge")
-        .textContent = notifications.length;
+ document.getElementById("notificationBadge")
+ .textContent=notifications.length;
 
-    if(notifications.length===0){
+ if(notifications.length===0){
 
-        list.innerHTML =
-        `<div class="panel-empty">
-            Yeni bildirimin yok.
-        </div>`;
+  list.innerHTML=
+  `<div class="panel-empty">
+  Yeni bildirimin yok.
+  </div>`;
 
-        return;
-    }
+  return;
+ }
 
-    list.innerHTML="";
+ list.innerHTML="";
 
-    notifications.forEach(notification=>{
+ notifications.forEach(n=>{
 
-        const item =
-        document.createElement("div");
+  let item=document.createElement("div");
 
-        item.className="notification";
+  item.className="notification message";
 
-        item.innerHTML=`
-            <strong>🔔 CPMXXSTORE</strong>
-            ${notification.text}
-            <small>${notification.date}</small>
-        `;
+  item.innerHTML=
+  `<strong>🔔 CPMXXSTORE</strong>
+  ${n.text}
+  <small>${n.date}</small>`;
 
-        list.appendChild(item);
+  list.appendChild(item);
 
-    });
+ });
+
+}
+
+
+/* MESAJLAR */
+
+function renderMessages(){
+
+ let list=
+ document.getElementById("messageList");
+
+ document.getElementById("messageBadge")
+ .textContent=messages.length;
+
+ if(messages.length===0){
+
+  list.innerHTML=
+  `<div class="panel-empty">
+  Henüz mesajın yok.
+  </div>`;
+
+  return;
+ }
+
+ list.innerHTML="";
+
+ messages.forEach(m=>{
+
+  let item=document.createElement("div");
+
+  item.className="message";
+
+  item.innerHTML=
+  `<strong>💬 ${m.from}</strong>
+  ${m.text}
+  <small>${m.date}</small>`;
+
+  list.appendChild(item);
+
+ });
+
+}
+
+
+/* DUYURU */
+
+function showComingSoon(){
+
+ alert(
+ "📢 İlan verme sistemi yakında aktif olacak!"
+ );
+
+}
+
+
+/* YÖNETİCİ */
+
+function openAdmin(){
+
+ let password=prompt(
+ "Yönetici şifresi:"
+ );
+
+ /*
+ DEMO ŞİFRE.
+ Gerçek sistemde şifre sunucuda
+ güvenli şekilde tutulmalıdır.
+ */
+
+ if(password==="1234"){
+
+  openPanel("admin");
+
+ }else{
+
+  alert("❌ Şifre yanlış.");
+
+ }
+
+}
+
+
+/* AYAR */
+
+function toggleSetting(button){
+
+ if(button.textContent==="Açık"){
+  button.textContent="Kapalı";
+ }else{
+  button.textContent="Açık";
+ }
 
 }
 
@@ -717,11 +1017,11 @@ function renderNotifications(){
 
 function goCars(){
 
-    document
-    .getElementById("cars")
-    .scrollIntoView({
-        behavior:"smooth"
-    });
+ document
+ .getElementById("cars")
+ .scrollIntoView({
+  behavior:"smooth"
+ });
 
 }
 
@@ -730,6 +1030,7 @@ function goCars(){
 
 renderFavorites();
 renderNotifications();
+renderMessages();
 
 </script>
 
