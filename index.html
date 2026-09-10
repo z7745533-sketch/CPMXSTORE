@@ -2,8 +2,12 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
+
 <title>CPMXSTORE | Car Parking Multiplayer Araç Pazarı</title>
+<meta name="description" content="CPMXSTORE - Car Parking Multiplayer özel araç pazarı.">
+<meta name="keywords" content="CPMXSTORE, CPM, Car Parking Multiplayer, CPM araç, JDM">
+<meta name="robots" content="index,follow">
 
 <style>
 *{
@@ -37,20 +41,21 @@ body{
   align-items:center;
   justify-content:center;
   background:
-    radial-gradient(circle,#420006 0%,#160003 35%,#050505 80%);
+    radial-gradient(circle at center,#4a0007 0%,#170003 38%,#050505 80%);
   animation:introClose .7s ease 8s forwards;
 }
 
 .introBox{
-  width:90%;
-  max-width:700px;
+  width:92%;
+  max-width:800px;
   text-align:center;
 }
 
 .introLogo{
-  font-size:clamp(42px,10vw,90px);
+  font-size:clamp(42px,9vw,90px);
   font-weight:1000;
   letter-spacing:5px;
+  color:#fff;
   text-shadow:
     0 0 10px #ff1e25,
     0 0 30px #ff1e25,
@@ -60,6 +65,7 @@ body{
 
 .introLine{
   width:80%;
+  max-width:500px;
   height:3px;
   margin:20px auto;
   background:#ff1e25;
@@ -68,7 +74,7 @@ body{
 
 .introMessages{
   position:relative;
-  height:100px;
+  height:110px;
 }
 
 .msg{
@@ -95,7 +101,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:clamp(35px,9vw,75px);
+  font-size:clamp(35px,8vw,75px);
   font-weight:1000;
   opacity:0;
   text-shadow:
@@ -125,26 +131,55 @@ body{
 }
 
 @keyframes logoShow{
-  from{opacity:0;transform:scale(.7)}
-  to{opacity:1;transform:scale(1)}
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 @keyframes msg{
-  0%{opacity:0;transform:translateY(15px)}
-  20%{opacity:1;transform:translateY(0)}
-  80%{opacity:1}
-  100%{opacity:0}
+  0%{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  20%{
+    opacity:1;
+    transform:translateY(0);
+  }
+  80%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
 }
 
 @keyframes welcomeShow{
-  0%{opacity:0;transform:scale(.7)}
-  25%{opacity:1;transform:scale(1.05)}
-  70%{opacity:1;transform:scale(1)}
-  100%{opacity:1}
+  0%{
+    opacity:0;
+    transform:scale(.7);
+  }
+  25%{
+    opacity:1;
+    transform:scale(1.05);
+  }
+  70%{
+    opacity:1;
+    transform:scale(1);
+  }
+  100%{
+    opacity:1;
+  }
 }
 
 @keyframes loading{
-  to{width:100%}
+  to{
+    width:100%;
+  }
 }
 
 @keyframes introClose{
@@ -163,14 +198,13 @@ body{
 header{
   position:sticky;
   top:0;
-  z-index:1000;
-  width:100%;
+  z-index:9000;
   min-height:70px;
   padding:12px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,5,5,.96);
+  background:rgba(5,5,5,.97);
   backdrop-filter:blur(15px);
   border-bottom:1px solid #222;
 }
@@ -188,28 +222,25 @@ header{
 
 .nav{
   display:flex;
+  align-items:center;
   gap:7px;
-}
-
-.nav button,
-.mobileNav button{
-  border:1px solid #292929;
-  background:#111;
-  color:#fff;
-  border-radius:12px;
-  cursor:pointer;
-  transition:.2s;
 }
 
 .nav button{
   width:43px;
   height:43px;
+  border:1px solid #292929;
+  background:#111;
+  color:#fff;
+  border-radius:12px;
+  cursor:pointer;
   font-size:17px;
+  transition:.2s;
 }
 
 .nav button:hover{
-  border-color:#ff1e25;
   color:#ff1e25;
+  border-color:#ff1e25;
   transform:translateY(-2px);
 }
 
@@ -219,15 +250,15 @@ header{
 ========================= */
 
 .hero{
-  min-height:390px;
   width:100%;
+  min-height:390px;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   padding:70px 20px;
   background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
+    linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.9)),
     radial-gradient(circle,#430006,#080808 65%);
 }
 
@@ -245,11 +276,12 @@ header{
   margin-top:14px;
   color:#aaa;
   font-size:clamp(14px,2vw,21px);
+  line-height:1.5;
 }
 
 .heroBtn{
   margin-top:28px;
-  padding:15px 25px;
+  padding:15px 26px;
   border:0;
   border-radius:14px;
   background:#ff1e25;
@@ -343,7 +375,7 @@ header{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:20px;
-  padding-bottom:100px;
+  padding-bottom:50px;
 }
 
 .card{
@@ -365,8 +397,8 @@ header{
   position:relative;
   width:100%;
   height:230px;
-  background:#050505;
   overflow:hidden;
+  background:#050505;
 }
 
 .photoBox img{
@@ -380,19 +412,24 @@ header{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   border:0;
   border-radius:50%;
   background:rgba(0,0,0,.75);
   color:#fff;
   cursor:pointer;
-  font-size:25px;
-  z-index:2;
+  font-size:28px;
+  z-index:5;
 }
 
-.left{left:10px}
-.right{right:10px}
+.left{
+  left:10px;
+}
+
+.right{
+  right:10px;
+}
 
 .photoCount{
   position:absolute;
@@ -462,7 +499,7 @@ header{
   position:fixed;
   top:85px;
   right:20px;
-  z-index:5000;
+  z-index:10000;
   width:min(390px,calc(100vw - 40px));
   max-height:calc(100vh - 110px);
   overflow-y:auto;
@@ -472,7 +509,7 @@ header{
   border:1px solid #333;
   border-radius:18px;
   background:#111;
-  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  box-shadow:0 20px 60px rgba(0,0,0,.85);
 }
 
 .panel.show{
@@ -492,8 +529,8 @@ header{
 }
 
 .panel h2{
-  padding-right:35px;
   margin-bottom:15px;
+  padding-right:30px;
 }
 
 .close{
@@ -501,7 +538,7 @@ header{
   border:0;
   background:none;
   color:#aaa;
-  font-size:25px;
+  font-size:27px;
   cursor:pointer;
 }
 
@@ -517,7 +554,7 @@ header{
 
 
 /* =========================
-   MOBİL ALT MENÜ
+   MOBİL MENÜ
 ========================= */
 
 .mobileNav{
@@ -562,46 +599,44 @@ footer{
 @media(max-width:700px){
 
   body{
-    padding-bottom:70px;
+    padding-bottom:78px;
+    overflow-x:hidden;
   }
 
   header{
-    min-height:58px;
     height:58px;
-    padding:8px 12px;
+    min-height:58px;
+    padding:8px 10px;
   }
 
   .logo{
-    font-size:20px;
+    font-size:19px;
     letter-spacing:1px;
   }
 
   .nav{
-    display:flex;
-    gap:4px;
+    gap:3px;
   }
 
   .nav button{
-    width:34px;
-    height:34px;
-    padding:0;
-    font-size:14px;
+    width:33px;
+    height:33px;
     border-radius:9px;
+    font-size:14px;
   }
 
   .hero{
-    min-height:320px;
+    min-height:310px;
     padding:45px 15px;
   }
 
   .hero h1{
-    font-size:clamp(40px,14vw,62px);
+    font-size:clamp(38px,13vw,60px);
     letter-spacing:1px;
   }
 
   .hero p{
-    font-size:14px;
-    line-height:1.5;
+    font-size:13px;
   }
 
   .heroBtn{
@@ -628,16 +663,16 @@ footer{
   }
 
   .stat{
-    padding:14px 7px;
+    padding:13px 6px;
     border-radius:13px;
   }
 
   .stat strong{
-    font-size:22px;
+    font-size:21px;
   }
 
   .stat span{
-    font-size:11px;
+    font-size:10px;
   }
 
   .sectionTitle{
@@ -657,7 +692,7 @@ footer{
   }
 
   .photoBox{
-    height:230px;
+    height:225px;
   }
 
   .cardBody{
@@ -678,15 +713,15 @@ footer{
     font-size:13px;
   }
 
-  /* Mobil panel sistemi */
+  /* PANEL */
 
   .panel{
     top:66px;
-    left:8px;
-    right:8px;
+    left:7px;
+    right:7px;
+    bottom:78px;
     width:auto;
-    max-width:none;
-    max-height:calc(100vh - 140px);
+    max-height:none;
     padding:16px;
     border-radius:16px;
   }
@@ -699,18 +734,20 @@ footer{
     font-size:14px;
   }
 
+  /* ALT MENÜ */
+
   .mobileNav{
     position:fixed;
     left:0;
     right:0;
     bottom:0;
-    z-index:6000;
-    height:68px;
+    z-index:11000;
+    height:70px;
     display:flex;
     align-items:center;
     justify-content:space-around;
-    padding:5px 4px;
-    padding-bottom:calc(5px + env(safe-area-inset-bottom));
+    padding:4px 2px;
+    padding-bottom:calc(4px + env(safe-area-inset-bottom));
     background:rgba(8,8,8,.98);
     backdrop-filter:blur(15px);
     border-top:1px solid #292929;
@@ -718,16 +755,22 @@ footer{
 
   .mobileNav button{
     width:25%;
-    height:56px;
-    padding:4px 2px;
+    height:60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
     border:0;
     background:transparent;
+    color:#fff;
+    cursor:pointer;
     font-size:10px;
   }
 
   .mobileNav button div{
-    margin-bottom:3px;
-    font-size:20px;
+    font-size:21px;
+    line-height:25px;
   }
 
   footer{
@@ -738,14 +781,14 @@ footer{
 
 
 /* =========================
-   KÜÇÜK TELEFON
+   ÇOK KÜÇÜK TELEFON
 ========================= */
 
 @media(max-width:380px){
 
   header{
-    padding-left:8px;
-    padding-right:8px;
+    padding-left:7px;
+    padding-right:7px;
   }
 
   .logo{
@@ -757,17 +800,17 @@ footer{
   }
 
   .nav button{
-    width:31px;
-    height:31px;
+    width:30px;
+    height:30px;
     font-size:12px;
   }
 
   .hero{
-    min-height:300px;
+    min-height:285px;
   }
 
   .hero h1{
-    font-size:38px;
+    font-size:37px;
   }
 
   .stats{
@@ -775,17 +818,25 @@ footer{
   }
 
   .stat strong{
-    font-size:20px;
+    font-size:19px;
   }
 
   .photoBox{
-    height:210px;
+    height:205px;
   }
 
   .panel{
-    left:6px;
-    right:6px;
-    padding:14px;
+    left:5px;
+    right:5px;
+    padding:13px;
+  }
+
+  .mobileNav button{
+    font-size:9px;
+  }
+
+  .mobileNav button div{
+    font-size:19px;
   }
 
 }
@@ -804,11 +855,12 @@ footer{
 
   .panel{
     top:58px;
-    max-height:calc(100vh - 70px);
+    bottom:8px;
+    max-height:none;
   }
 
   .hero{
-    min-height:260px;
+    min-height:250px;
   }
 
   .cars{
@@ -816,15 +868,78 @@ footer{
   }
 
 }
+
+
+/* =================================================
+   TELEFON CİHAZ ALGILAMA İÇİN ZORUNLU MOBİL MOD
+================================================= */
+
+body.phoneMode{
+  padding-bottom:80px !important;
+  overflow-x:hidden !important;
+}
+
+body.phoneMode .mobileNav{
+  position:fixed !important;
+  display:flex !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  width:100% !important;
+  height:70px !important;
+  z-index:11000 !important;
+  background:rgba(8,8,8,.98) !important;
+}
+
+body.phoneMode .mobileNav button{
+  display:flex !important;
+  width:25% !important;
+  height:60px !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  color:#fff !important;
+}
+
+body.phoneMode .mobileNav button div{
+  display:block !important;
+  font-size:21px !important;
+  line-height:25px !important;
+}
+
+body.phoneMode .panel{
+  position:fixed !important;
+  top:65px !important;
+  left:7px !important;
+  right:7px !important;
+  bottom:78px !important;
+  width:auto !important;
+  max-width:none !important;
+  max-height:none !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  z-index:12000 !important;
+}
+
+body.phoneMode .panel.show{
+  display:block !important;
+}
+
+body.phoneMode header{
+  position:sticky !important;
+  top:0 !important;
+  z-index:10000 !important;
+}
+
 </style>
 </head>
 
 <body>
 
 
-<!-- =========================
+<!-- =========================================
      AÇILIŞ EKRANI
-========================= -->
+========================================= -->
 
 <div id="intro">
 
@@ -869,9 +984,9 @@ footer{
 </div>
 
 
-<!-- =========================
+<!-- =========================================
      HEADER
-========================= -->
+========================================= -->
 
 <header>
 
@@ -881,22 +996,42 @@ footer{
 
   <div class="nav">
 
-    <button onclick="scrollCars()" title="Araçlar">🚘</button>
-    <button onclick="openPanel('favorites')" title="Favoriler">❤️</button>
-    <button onclick="openPanel('notifications')" title="Bildirimler">🔔</button>
-    <button onclick="openPanel('messages')" title="Mesajlar">💬</button>
-    <button onclick="openPanel('profile')" title="Profil">👤</button>
-    <button onclick="openPanel('settings')" title="Ayarlar">⚙️</button>
-    <button onclick="openPanel('admin')" title="Admin">🛡️</button>
+    <button onclick="scrollCars()" title="Araçlar">
+      🚘
+    </button>
+
+    <button onclick="openPanel('favorites')" title="Favoriler">
+      ❤️
+    </button>
+
+    <button onclick="openPanel('notifications')" title="Bildirimler">
+      🔔
+    </button>
+
+    <button onclick="openPanel('messages')" title="Mesajlar">
+      💬
+    </button>
+
+    <button onclick="openPanel('profile')" title="Profil">
+      👤
+    </button>
+
+    <button onclick="openPanel('settings')" title="Ayarlar">
+      ⚙️
+    </button>
+
+    <button onclick="openPanel('admin')" title="Admin">
+      🛡️
+    </button>
 
   </div>
 
 </header>
 
 
-<!-- =========================
+<!-- =========================================
      HERO
-========================= -->
+========================================= -->
 
 <section class="hero">
 
@@ -914,7 +1049,10 @@ footer{
       Özel araçları keşfet, favorilerine ekle ve araç dünyasına katıl.
     </p>
 
-    <button class="heroBtn" onclick="scrollCars()">
+    <button
+      class="heroBtn"
+      onclick="scrollCars()"
+    >
       🚘 Araçları Keşfet
     </button>
 
@@ -923,9 +1061,9 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =========================================
      ARAMA
-========================= -->
+========================================= -->
 
 <div class="searchArea">
 
@@ -939,9 +1077,9 @@ footer{
 </div>
 
 
-<!-- =========================
-     İSTATİSTİKLER
-========================= -->
+<!-- =========================================
+     İSTATİSTİK
+========================================= -->
 
 <div class="stats">
 
@@ -968,11 +1106,14 @@ footer{
 </div>
 
 
-<!-- =========================
+<!-- =========================================
      ARAÇLAR
-========================= -->
+========================================= -->
 
-<div class="sectionTitle" id="carsSection">
+<div
+  class="sectionTitle"
+  id="carsSection"
+>
 
   <h2>
     🚘 Araçlar <span>Mağazası</span>
@@ -983,7 +1124,10 @@ footer{
 
 <div class="cars">
 
-  <div class="card" data-name="Murat 131">
+  <div
+    class="card"
+    data-name="Murat 131"
+  >
 
     <div class="photoBox">
 
@@ -996,12 +1140,16 @@ footer{
       <button
         class="arrow left"
         onclick="changePhoto(-1)"
-      >‹</button>
+      >
+        ‹
+      </button>
 
       <button
         class="arrow right"
         onclick="changePhoto(1)"
-      >›</button>
+      >
+        ›
+      </button>
 
       <div
         class="photoCount"
@@ -1012,16 +1160,30 @@ footer{
 
     </div>
 
+
     <div class="cardBody">
 
-      <h3>Murat 131</h3>
+      <h3>
+        Murat 131
+      </h3>
 
       <div class="info">
 
-        <div>📅 2026</div>
-        <div>⚡ Özel Araç</div>
-        <div>🏷️ CPMXSTORE</div>
-        <div>📂 JDM</div>
+        <div>
+          📅 2026
+        </div>
+
+        <div>
+          ⚡ Özel Araç
+        </div>
+
+        <div>
+          🏷️ CPMXSTORE
+        </div>
+
+        <div>
+          📂 JDM
+        </div>
 
       </div>
 
@@ -1052,15 +1214,25 @@ footer{
 </div>
 
 
-<!-- =========================
-     FAVORİLER
-========================= -->
+<!-- =========================================
+     FAVORİ PANELİ
+========================================= -->
 
-<div class="panel" id="favorites">
+<div
+  class="panel"
+  id="favorites"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>❤️ Favoriler</h2>
+  <h2>
+    ❤️ Favoriler
+  </h2>
 
   <div
     class="panelItem"
@@ -1072,15 +1244,25 @@ footer{
 </div>
 
 
-<!-- =========================
-     BİLDİRİMLER
-========================= -->
+<!-- =========================================
+     BİLDİRİM PANELİ
+========================================= -->
 
-<div class="panel" id="notifications">
+<div
+  class="panel"
+  id="notifications"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>🔔 Bildirimler</h2>
+  <h2>
+    🔔 Bildirimler
+  </h2>
 
   <div class="panelItem">
     🎉 CPMXSTORE'a hoş geldin!
@@ -1097,15 +1279,25 @@ footer{
 </div>
 
 
-<!-- =========================
-     MESAJLAR
-========================= -->
+<!-- =========================================
+     MESAJ PANELİ
+========================================= -->
 
-<div class="panel" id="messages">
+<div
+  class="panel"
+  id="messages"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>💬 Mesajlar</h2>
+  <h2>
+    💬 Mesajlar
+  </h2>
 
   <div class="panelItem">
     Henüz mesaj bulunmuyor.
@@ -1114,15 +1306,25 @@ footer{
 </div>
 
 
-<!-- =========================
-     PROFİL
-========================= -->
+<!-- =========================================
+     PROFİL PANELİ
+========================================= -->
 
-<div class="panel" id="profile">
+<div
+  class="panel"
+  id="profile"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>👤 Profil</h2>
+  <h2>
+    👤 Profil
+  </h2>
 
   <div class="panelItem">
 
@@ -1164,18 +1366,44 @@ footer{
 
   </div>
 
+  <div
+    class="panelItem"
+    onclick="openPanel('settings')"
+    style="cursor:pointer"
+  >
+    ⚙️ Ayarları Aç
+  </div>
+
+  <div
+    class="panelItem"
+    onclick="openPanel('admin')"
+    style="cursor:pointer"
+  >
+    🛡️ Admin Paneli
+  </div>
+
 </div>
 
 
-<!-- =========================
+<!-- =========================================
      AYARLAR
-========================= -->
+========================================= -->
 
-<div class="panel" id="settings">
+<div
+  class="panel"
+  id="settings"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>⚙️ Ayarlar</h2>
+  <h2>
+    ⚙️ Ayarlar
+  </h2>
 
   <div class="panelItem">
     🌙 Koyu tema aktif
@@ -1185,18 +1413,32 @@ footer{
     🔔 Bildirimler aktif
   </div>
 
+  <div class="panelItem">
+    📱 Mobil uyumluluk aktif
+  </div>
+
 </div>
 
 
-<!-- =========================
+<!-- =========================================
      ADMİN
-========================= -->
+========================================= -->
 
-<div class="panel" id="admin">
+<div
+  class="panel"
+  id="admin"
+>
 
-  <button class="close" onclick="closePanels()">×</button>
+  <button
+    class="close"
+    onclick="closePanels()"
+  >
+    ×
+  </button>
 
-  <h2>🛡️ Admin</h2>
+  <h2>
+    🛡️ Admin
+  </h2>
 
   <div class="panelItem">
 
@@ -1236,39 +1478,68 @@ footer{
 </div>
 
 
-<!-- =========================
-     MOBİL MENÜ
-========================= -->
+<!-- =========================================
+     MOBİL ALT MENÜ
+========================================= -->
 
 <div class="mobileNav">
 
   <button onclick="scrollCars()">
-    <div>🚘</div>
+
+    <div>
+      🚘
+    </div>
+
     Araçlar
+
   </button>
+
 
   <button onclick="openPanel('favorites')">
-    <div>❤️</div>
+
+    <div>
+      ❤️
+    </div>
+
     Favori
+
   </button>
+
 
   <button onclick="openPanel('notifications')">
-    <div>🔔</div>
+
+    <div>
+      🔔
+    </div>
+
     Bildirim
+
   </button>
 
-  <button onclick="openPanel('profile')">
-    <div>👤</div>
-    Profil
+
+  <button onclick="openPanel('messages')">
+
+    <div>
+      💬
+    </div>
+
+    Mesaj
+
   </button>
 
 </div>
 
 
+<!-- =========================================
+     FOOTER
+========================================= -->
+
 <footer>
 
   © 2026 CPMXSTORE
+
   <br>
+
   Car Parking Multiplayer Marketplace
 
 </footer>
@@ -1276,92 +1547,157 @@ footer{
 
 <script>
 
-/* =========================
-   FOTOĞRAF
-========================= */
+/* =========================================
+   TELEFON ALGILAMA
+========================================= */
 
-const photos=[
+(function(){
+
+  const isPhone =
+    /Android|iPhone|iPad|iPod|Windows Phone/i
+    .test(navigator.userAgent);
+
+  if(isPhone){
+
+    document.body.classList.add("phoneMode");
+
+  }
+
+})();
+
+
+/* =========================================
+   FOTOĞRAFLAR
+========================================= */
+
+const photos = [
+
   "https://i.hizliresim.com/qzecneqg.jpg",
+
   "https://i.hizliresim.com/dcqp3hyt.jpg"
+
 ];
 
-let photoIndex=0;
+let photoIndex = 0;
+
 
 function changePhoto(direction){
 
-  photoIndex+=direction;
+  photoIndex += direction;
 
-  if(photoIndex<0){
-    photoIndex=photos.length-1;
+  if(photoIndex < 0){
+
+    photoIndex =
+      photos.length - 1;
+
   }
 
-  if(photoIndex>=photos.length){
-    photoIndex=0;
+  if(photoIndex >= photos.length){
+
+    photoIndex = 0;
+
   }
 
-  const image=
+  const image =
     document.getElementById("carImage");
 
-  const count=
+  const count =
     document.getElementById("photoCount");
 
   if(image){
-    image.src=photos[photoIndex];
+
+    image.src =
+      photos[photoIndex];
+
   }
 
   if(count){
-    count.textContent=
-      (photoIndex+1)+" / "+photos.length;
+
+    count.textContent =
+      (photoIndex + 1) +
+      " / " +
+      photos.length;
+
   }
 
 }
 
 
-/* =========================
+/* =========================================
    FAVORİ
-========================= */
+========================================= */
 
-let favorite=
-  localStorage.getItem("cpmxFavorite")==="true";
+let favorite =
+  localStorage.getItem("cpmxFavorite") === "true";
+
 
 function updateFavorite(){
 
-  const btn=
+  const btn =
     document.getElementById("favoriteBtn");
 
-  if(!btn) return;
+  const count =
+    document.getElementById("favCount");
+
+  const text =
+    document.getElementById("favoriteText");
 
   if(favorite){
 
-    btn.classList.add("active");
-    btn.textContent="❤️ Favoride";
+    if(btn){
 
-    document.getElementById("favCount")
-      .textContent="1";
+      btn.classList.add("active");
 
-    document.getElementById("favoriteText")
-      .textContent=
-      "❤️ Murat 131 favorilerinde.";
+      btn.textContent =
+        "❤️ Favoride";
+
+    }
+
+    if(count){
+
+      count.textContent = "1";
+
+    }
+
+    if(text){
+
+      text.textContent =
+        "❤️ Murat 131 favorilerinde.";
+
+    }
 
   }else{
 
-    btn.classList.remove("active");
-    btn.textContent="❤️ Favori";
+    if(btn){
 
-    document.getElementById("favCount")
-      .textContent="0";
+      btn.classList.remove("active");
 
-    document.getElementById("favoriteText")
-      .textContent=
-      "Henüz favori aracın yok.";
+      btn.textContent =
+        "❤️ Favori";
+
+    }
+
+    if(count){
+
+      count.textContent = "0";
+
+    }
+
+    if(text){
+
+      text.textContent =
+        "Henüz favori aracın yok.";
+
+    }
 
   }
 
 }
 
+
 function toggleFavorite(){
 
-  favorite=!favorite;
+  favorite = !favorite;
 
   localStorage.setItem(
     "cpmxFavorite",
@@ -1375,28 +1711,29 @@ function toggleFavorite(){
 updateFavorite();
 
 
-/* =========================
+/* =========================================
    ARAMA
-========================= */
+========================================= */
 
 function searchCars(){
 
-  const input=
+  const input =
     document.getElementById("search");
 
-  const value=
+  const value =
     input.value
     .toLowerCase()
     .trim();
 
-  document.querySelectorAll(".card")
+  document
+    .querySelectorAll(".card")
     .forEach(function(card){
 
-      const name=
+      const name =
         (card.dataset.name || "")
         .toLowerCase();
 
-      card.style.display=
+      card.style.display =
         name.includes(value)
         ? ""
         : "none";
@@ -1406,26 +1743,30 @@ function searchCars(){
 }
 
 
-/* =========================
+/* =========================================
    PANELLER
-========================= */
+========================================= */
 
 function openPanel(id){
 
   closePanels();
 
-  const panel=
+  const panel =
     document.getElementById(id);
 
   if(panel){
+
     panel.classList.add("show");
+
   }
 
 }
 
+
 function closePanels(){
 
-  document.querySelectorAll(".panel")
+  document
+    .querySelectorAll(".panel")
     .forEach(function(panel){
 
       panel.classList.remove("show");
@@ -1435,40 +1776,47 @@ function closePanels(){
 }
 
 
-/* =========================
+/* =========================================
    DETAY
-========================= */
+========================================= */
 
 function showDetails(){
 
   alert(
-    "🚘 Murat 131\n\n"+
-    "📅 Model: 2026\n"+
-    "📂 Kategori: JDM\n"+
-    "🏷️ Satıcı: CPMXSTORE\n"+
+    "🚘 Murat 131\n\n" +
+
+    "📅 Model: 2026\n" +
+
+    "📂 Kategori: JDM\n" +
+
+    "🏷️ Satıcı: CPMXSTORE\n" +
+
     "💰 Fiyat: 25 TL"
   );
 
 }
 
 
-/* =========================
+/* =========================================
    PROFİL
-========================= */
+========================================= */
 
 function saveProfile(){
 
-  const input=
+  const input =
     document.getElementById("profileName");
 
-  const name=
+  const name =
     input.value.trim();
 
   if(!name){
 
-    alert("Bir kullanıcı adı yaz.");
+    alert(
+      "Bir kullanıcı adı yaz."
+    );
 
     return;
+
   }
 
   localStorage.setItem(
@@ -1476,32 +1824,39 @@ function saveProfile(){
     name
   );
 
-  alert("Profil kaydedildi! 👤");
+  alert(
+    "Profil kaydedildi! 👤"
+  );
 
 }
 
-const savedName=
-  localStorage.getItem("cpmxProfileName");
+
+const savedName =
+  localStorage.getItem(
+    "cpmxProfileName"
+  );
 
 if(savedName){
 
   document.getElementById(
     "profileName"
-  ).value=savedName;
+  ).value = savedName;
 
 }
 
 
-/* =========================
+/* =========================================
    ADMİN
-========================= */
+========================================= */
 
 function adminLogin(){
 
-  const password=
-    document.getElementById("adminPass").value;
+  const password =
+    document.getElementById(
+      "adminPass"
+    ).value;
 
-  if(password==="6640"){
+  if(password === "6640"){
 
     alert(
       "🛡️ Admin paneline hoş geldin!"
@@ -1518,14 +1873,18 @@ function adminLogin(){
 }
 
 
-/* =========================
+/* =========================================
    ARAÇLARA GİT
-========================= */
+========================================= */
 
 function scrollCars(){
 
-  const section=
-    document.getElementById("carsSection");
+  closePanels();
+
+  const section =
+    document.getElementById(
+      "carsSection"
+    );
 
   if(section){
 
@@ -1539,52 +1898,35 @@ function scrollCars(){
 }
 
 
-/* =========================
-   PANEL DIŞINA TIKLAMA
-========================= */
-
-document.addEventListener(
-  "click",
-  function(e){
-
-    const panel=
-      e.target.closest(".panel");
-
-    const button=
-      e.target.closest("button");
-
-    if(!panel && !button){
-      closePanels();
-    }
-
-  }
-);
-
-
-/* =========================
-   ESC
-========================= */
+/* =========================================
+   ESC İLE KAPAT
+========================================= */
 
 document.addEventListener(
   "keydown",
   function(e){
 
-    if(e.key==="Escape"){
+    if(e.key === "Escape"){
+
       closePanels();
+
     }
 
   }
 );
 
 
-/* =========================
-   TELEFON FOTOĞRAF KAYDIRMA
-========================= */
+/* =========================================
+   FOTOĞRAF TELEFONDA KAYDIRMA
+========================================= */
 
-let touchStartX=0;
+let touchStartX = 0;
 
-const photoBox=
-  document.querySelector(".photoBox");
+const photoBox =
+  document.querySelector(
+    ".photoBox"
+  );
+
 
 if(photoBox){
 
@@ -1592,36 +1934,68 @@ if(photoBox){
     "touchstart",
     function(e){
 
-      touchStartX=
-        e.changedTouches[0].screenX;
+      touchStartX =
+        e.changedTouches[0]
+        .screenX;
 
     },
-    {passive:true}
+    {
+      passive:true
+    }
   );
+
 
   photoBox.addEventListener(
     "touchend",
     function(e){
 
-      const touchEndX=
-        e.changedTouches[0].screenX;
+      const touchEndX =
+        e.changedTouches[0]
+        .screenX;
 
-      const difference=
-        touchStartX-touchEndX;
+      const difference =
+        touchStartX -
+        touchEndX;
 
-      if(Math.abs(difference)>50){
+      if(Math.abs(difference) > 50){
 
-        if(difference>0){
+        if(difference > 0){
+
           changePhoto(1);
+
         }else{
+
           changePhoto(-1);
+
         }
 
       }
 
     },
-    {passive:true}
+    {
+      passive:true
+    }
   );
+
+}
+
+
+/* =========================================
+   PANEL AÇILINCA SCROLL BAŞA AL
+========================================= */
+
+function openPanelFixed(id){
+
+  openPanel(id);
+
+  const panel =
+    document.getElementById(id);
+
+  if(panel){
+
+    panel.scrollTop = 0;
+
+  }
 
 }
 
