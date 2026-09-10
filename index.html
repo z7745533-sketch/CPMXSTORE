@@ -6,16 +6,8 @@
 <title>CPMXSTORE | Car Parking Multiplayer Araç Pazarı</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
   background:#080808;
   color:#fff;
@@ -23,7 +15,7 @@ body{
 }
 
 /* =========================
-   AÇILIŞ EKRANI
+   AÇILIŞ
 ========================= */
 
 #intro{
@@ -31,11 +23,11 @@ body{
   inset:0;
   z-index:99999;
   background:
-    radial-gradient(circle at center,#3d0006 0%,#120003 40%,#050505 80%);
+    radial-gradient(circle,#420006 0%,#160003 35%,#050505 80%);
   display:flex;
-  justify-content:center;
   align-items:center;
-  overflow:hidden;
+  justify-content:center;
+  animation:introClose .7s ease 8s forwards;
 }
 
 .introBox{
@@ -48,103 +40,133 @@ body{
   font-size:clamp(42px,10vw,90px);
   font-weight:1000;
   letter-spacing:5px;
-  color:#fff;
   text-shadow:
     0 0 10px #ff1e25,
     0 0 30px #ff1e25,
     0 0 70px #ff1e25;
-  animation:logoIn 1s ease;
+  animation:logoShow .8s ease forwards;
 }
 
 .introLine{
+  width:0;
   height:3px;
-  width:80%;
   margin:20px auto;
   background:#ff1e25;
-  box-shadow:0 0 15px #ff1e25;
+  box-shadow:0 0 20px #ff1e25;
+  animation:lineShow .6s ease .7s forwards;
 }
 
-.introText{
-  min-height:90px;
+.introMessages{
+  position:relative;
+  height:100px;
+  margin-top:10px;
+}
+
+.msg{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:10px;
+  color:#ddd;
+  font-size:clamp(16px,3vw,24px);
+  opacity:0;
+}
+
+.msg1{animation:msg1 1.2s ease 1.3s forwards}
+.msg2{animation:msg2 1.2s ease 2.4s forwards}
+.msg3{animation:msg3 1.2s ease 3.5s forwards}
+.msg4{animation:msg4 1.2s ease 4.6s forwards}
+
+.welcome{
+  position:absolute;
+  inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
-}
-
-#introMessage{
-  color:#ddd;
-  font-size:clamp(16px,3vw,25px);
-  line-height:1.5;
-  opacity:0;
-  transition:opacity .35s ease;
-}
-
-.welcome{
-  display:none;
   font-size:clamp(38px,9vw,75px);
   font-weight:1000;
+  opacity:0;
   text-shadow:
     0 0 10px #ff1e25,
     0 0 30px #ff1e25,
     0 0 60px #ff1e25;
-  animation:welcomeIn .8s ease;
+  animation:welcomeShow 1.4s ease 5.8s forwards;
 }
 
-.introLoading{
+.loading{
   width:70%;
   max-width:320px;
   height:4px;
-  margin:25px auto 0;
+  margin:20px auto 0;
   background:#222;
   border-radius:20px;
   overflow:hidden;
 }
 
-.introLoading span{
+.loading span{
   display:block;
   width:0;
   height:100%;
   background:#ff1e25;
   box-shadow:0 0 15px #ff1e25;
-  animation:loadIntro 8s linear forwards;
+  animation:loading 7.5s linear forwards;
 }
 
-.introHide{
-  animation:introOut .7s ease forwards;
+@keyframes logoShow{
+  from{opacity:0;transform:scale(.7)}
+  to{opacity:1;transform:scale(1)}
 }
 
-@keyframes logoIn{
-  from{
-    opacity:0;
-    transform:scale(.7);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+@keyframes lineShow{
+  to{width:80%}
 }
 
-@keyframes welcomeIn{
-  from{
-    opacity:0;
-    transform:scale(.7);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
+@keyframes msg1{
+  0%{opacity:0;transform:translateY(15px)}
+  20%{opacity:1;transform:translateY(0)}
+  80%{opacity:1}
+  100%{opacity:0}
 }
 
-@keyframes loadIntro{
-  to{
-    width:100%;
-  }
+@keyframes msg2{
+  0%{opacity:0;transform:translateY(15px)}
+  20%{opacity:1;transform:translateY(0)}
+  80%{opacity:1}
+  100%{opacity:0}
 }
 
-@keyframes introOut{
+@keyframes msg3{
+  0%{opacity:0;transform:translateY(15px)}
+  20%{opacity:1;transform:translateY(0)}
+  80%{opacity:1}
+  100%{opacity:0}
+}
+
+@keyframes msg4{
+  0%{opacity:0;transform:translateY(15px)}
+  20%{opacity:1;transform:translateY(0)}
+  80%{opacity:1}
+  100%{opacity:0}
+}
+
+@keyframes welcomeShow{
+  0%{opacity:0;transform:scale(.7)}
+  25%{opacity:1;transform:scale(1.05)}
+  70%{opacity:1;transform:scale(1)}
+  100%{opacity:1}
+}
+
+@keyframes loading{
+  to{width:100%}
+}
+
+@keyframes introClose{
   to{
     opacity:0;
     visibility:hidden;
+    pointer-events:none;
   }
 }
 
@@ -173,9 +195,7 @@ header{
   letter-spacing:2px;
 }
 
-.logo span{
-  color:#ff1e25;
-}
+.logo span{color:#ff1e25}
 
 .nav{
   display:flex;
@@ -195,8 +215,8 @@ header{
 
 .nav button:hover,
 .mobileNav button:hover{
-  color:#ff1e25;
   border-color:#ff1e25;
+  color:#ff1e25;
 }
 
 
@@ -207,8 +227,8 @@ header{
 .hero{
   min-height:390px;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
   padding:70px 20px;
   background:
@@ -222,9 +242,7 @@ header{
   letter-spacing:4px;
 }
 
-.hero h1 span{
-  color:#ff1e25;
-}
+.hero h1 span{color:#ff1e25}
 
 .hero p{
   margin-top:14px;
@@ -312,13 +330,8 @@ header{
   margin:45px auto 20px;
 }
 
-.sectionTitle h2{
-  font-size:27px;
-}
-
-.sectionTitle span{
-  color:#ff1e25;
-}
+.sectionTitle h2{font-size:27px}
+.sectionTitle span{color:#ff1e25}
 
 .cars{
   width:min(1100px,90%);
@@ -369,13 +382,8 @@ header{
   font-size:24px;
 }
 
-.left{
-  left:10px;
-}
-
-.right{
-  right:10px;
-}
+.left{left:10px}
+.right{right:10px}
 
 .photoCount{
   position:absolute;
@@ -387,9 +395,7 @@ header{
   font-size:12px;
 }
 
-.cardBody{
-  padding:18px;
-}
+.cardBody{padding:18px}
 
 .cardBody h3{
   margin-bottom:10px;
@@ -426,9 +432,7 @@ header{
   cursor:pointer;
 }
 
-.actions button:hover{
-  border-color:#ff1e25;
-}
+.actions button:hover{border-color:#ff1e25}
 
 .favorite.active{
   color:#ff1e25;
@@ -456,13 +460,9 @@ header{
   box-shadow:0 20px 60px #000;
 }
 
-.panel.show{
-  display:block;
-}
+.panel.show{display:block}
 
-.panel h2{
-  margin-bottom:15px;
-}
+.panel h2{margin-bottom:15px}
 
 .close{
   float:right;
@@ -486,9 +486,7 @@ header{
    MOBİL MENÜ
 ========================= */
 
-.mobileNav{
-  display:none;
-}
+.mobileNav{display:none}
 
 
 /* =========================
@@ -532,22 +530,16 @@ footer{
     padding:10px 15px;
   }
 
-  .logo{
-    font-size:21px;
-  }
+  .logo{font-size:21px}
 
-  .nav{
-    display:none;
-  }
+  .nav{display:none}
 
   .hero{
     min-height:350px;
     padding:50px 18px;
   }
 
-  .hero h1{
-    letter-spacing:2px;
-  }
+  .hero h1{letter-spacing:2px}
 
   .cars{
     width:92%;
@@ -559,13 +551,9 @@ footer{
     gap:10px;
   }
 
-  .stat{
-    padding:15px 8px;
-  }
+  .stat{padding:15px 8px}
 
-  .photoBox{
-    height:250px;
-  }
+  .photoBox{height:250px}
 
   .mobileNav{
     position:fixed;
@@ -593,18 +581,12 @@ footer{
     font-size:20px;
   }
 
-  footer{
-    padding-bottom:90px;
-  }
+  footer{padding-bottom:90px}
 
 }
 
 @media(max-width:380px){
-
-  .photoBox{
-    height:220px;
-  }
-
+  .photoBox{height:220px}
 }
 </style>
 </head>
@@ -626,17 +608,31 @@ footer{
 
     <div class="introLine"></div>
 
-    <div class="introText">
+    <div class="introMessages">
 
-      <div id="introMessage"></div>
+      <div class="msg msg1">
+        🚘 Car Parking Multiplayer araç pazarı
+      </div>
 
-      <div class="welcome" id="welcome">
+      <div class="msg msg2">
+        🔥 Özel araçları keşfet.
+      </div>
+
+      <div class="msg msg3">
+        ❤️ Beğendiğin araçları favorilerine ekle.
+      </div>
+
+      <div class="msg msg4">
+        🏁 CPMXSTORE ile araç dünyasına katıl.
+      </div>
+
+      <div class="welcome">
         HOŞ GELDİN 👋
       </div>
 
     </div>
 
-    <div class="introLoading">
+    <div class="loading">
       <span></span>
     </div>
 
@@ -722,7 +718,7 @@ footer{
 <div class="stats">
 
   <div class="stat">
-    <strong id="listingCount">1</strong>
+    <strong>1</strong>
     <span>Aktif İlan</span>
   </div>
 
@@ -757,12 +753,15 @@ footer{
 </div>
 
 
-<div class="cars" id="cars">
+<div class="cars">
 
 
   <!-- MURAT 131 -->
 
-  <div class="card" data-name="Murat 131">
+  <div
+    class="card"
+    data-name="Murat 131"
+  >
 
     <div class="photoBox">
 
@@ -837,7 +836,7 @@ footer{
 
 
 <!-- =========================
-     FAVORİLER
+     FAVORİ
 ========================= -->
 
 <div class="panel" id="favorites">
@@ -846,7 +845,10 @@ footer{
 
   <h2>❤️ Favoriler</h2>
 
-  <div class="panelItem" id="favoriteText">
+  <div
+    class="panelItem"
+    id="favoriteText"
+  >
     Henüz favori aracın yok.
   </div>
 
@@ -981,7 +983,7 @@ footer{
         width:100%;
         padding:12px;
         background:#0b0b0b;
-        color:#fff;
+        color:white;
         border:1px solid #333;
         border-radius:10px;
       "
@@ -1038,191 +1040,77 @@ footer{
 
 
 <footer>
-
   © 2026 CPMXSTORE
   <br>
   Car Parking Multiplayer Marketplace
-
 </footer>
 
 
 <script>
 
-/* ==========================================
-   CPMXSTORE AÇILIŞ SİSTEMİ
-   TAKILMAYAN SÜRÜM
-========================================== */
+/* =========================
+   FOTOĞRAFLAR
+========================= */
 
-const intro = document.getElementById("intro");
-const introMessage = document.getElementById("introMessage");
-const welcome = document.getElementById("welcome");
-
-const introTexts = [
-  "Car Parking Multiplayer araç pazarı",
-  "Özel araçları keşfet.",
-  "Favorilerine ekle ve araçlarını takip et.",
-  "CPMXSTORE ile araç dünyasına kat."
-];
-
-let introStep = 0;
-
-function playIntro(){
-
-  if(!intro || !introMessage) return;
-
-  if(introStep < introTexts.length){
-
-    introMessage.style.opacity = "0";
-
-    setTimeout(function(){
-
-      introMessage.textContent =
-        introTexts[introStep];
-
-      introMessage.style.opacity = "1";
-
-      introStep++;
-
-      setTimeout(
-        playIntro,
-        1100
-      );
-
-    },300);
-
-  }else{
-
-    introMessage.style.display = "none";
-
-    welcome.style.display = "block";
-
-    setTimeout(function(){
-
-      intro.classList.add("introHide");
-
-      setTimeout(function(){
-
-        if(intro){
-          intro.remove();
-        }
-
-      },800);
-
-    },1500);
-
-  }
-
-}
-
-
-/* Başlat */
-
-setTimeout(
-  playIntro,
-  1200
-);
-
-
-/* ==========================================
-   ACİL GÜVENLİK SİSTEMİ
-   10 SANİYEYİ GEÇERSE AÇILIŞI KAPAT
-========================================== */
-
-setTimeout(function(){
-
-  const screen =
-    document.getElementById("intro");
-
-  if(screen){
-
-    screen.classList.add("introHide");
-
-    setTimeout(function(){
-
-      const last =
-        document.getElementById("intro");
-
-      if(last){
-        last.remove();
-      }
-
-    },800);
-
-  }
-
-},10000);
-
-
-/* ==========================================
-   FOTOĞRAF
-========================================== */
-
-const photos = [
+const photos=[
   "https://i.hizliresim.com/qzecneqg.jpg",
   "https://i.hizliresim.com/dcqp3hyt.jpg"
 ];
 
-let photoIndex = 0;
+let photoIndex=0;
 
 function changePhoto(direction){
 
-  photoIndex += direction;
+  photoIndex+=direction;
 
-  if(photoIndex < 0){
-    photoIndex = photos.length - 1;
-  }
+  if(photoIndex<0)
+    photoIndex=photos.length-1;
 
-  if(photoIndex >= photos.length){
-    photoIndex = 0;
-  }
+  if(photoIndex>=photos.length)
+    photoIndex=0;
 
-  document.getElementById("carImage").src =
+  document.getElementById("carImage").src=
     photos[photoIndex];
 
-  document.getElementById("photoCount").textContent =
-    (photoIndex + 1) + " / " + photos.length;
-
+  document.getElementById("photoCount").textContent=
+    (photoIndex+1)+" / "+photos.length;
 }
 
 
-/* ==========================================
+/* =========================
    FAVORİ
-========================================== */
+========================= */
 
-let favorite =
-  localStorage.getItem("cpmxFavorite") === "true";
+let favorite=
+  localStorage.getItem("cpmxFavorite")==="true";
 
 function updateFavorite(){
 
-  const btn =
+  const btn=
     document.getElementById("favoriteBtn");
 
   if(favorite){
 
     btn.classList.add("active");
-
-    btn.textContent =
-      "❤️ Favoride";
+    btn.textContent="❤️ Favoride";
 
     document.getElementById("favCount")
-      .textContent = "1";
+      .textContent="1";
 
     document.getElementById("favoriteText")
-      .textContent =
+      .textContent=
       "❤️ Murat 131 favorilerinde.";
 
   }else{
 
     btn.classList.remove("active");
-
-    btn.textContent =
-      "❤️ Favori";
+    btn.textContent="❤️ Favori";
 
     document.getElementById("favCount")
-      .textContent = "0";
+      .textContent="0";
 
     document.getElementById("favoriteText")
-      .textContent =
+      .textContent=
       "Henüz favori aracın yok.";
 
   }
@@ -1231,7 +1119,7 @@ function updateFavorite(){
 
 function toggleFavorite(){
 
-  favorite = !favorite;
+  favorite=!favorite;
 
   localStorage.setItem(
     "cpmxFavorite",
@@ -1239,19 +1127,18 @@ function toggleFavorite(){
   );
 
   updateFavorite();
-
 }
 
 updateFavorite();
 
 
-/* ==========================================
+/* =========================
    ARAMA
-========================================== */
+========================= */
 
 function searchCars(){
 
-  const value =
+  const value=
     document.getElementById("search")
     .value
     .toLowerCase()
@@ -1260,81 +1147,72 @@ function searchCars(){
   document.querySelectorAll(".card")
     .forEach(function(card){
 
-      const name =
+      const name=
         card.dataset.name.toLowerCase();
 
-      card.style.display =
-        name.includes(value)
-        ? ""
-        : "none";
+      card.style.display=
+        name.includes(value) ? "" : "none";
 
     });
-
 }
 
 
-/* ==========================================
+/* =========================
    PANELLER
-========================================== */
+========================= */
 
 function openPanel(id){
 
   closePanels();
 
-  const panel =
+  const panel=
     document.getElementById(id);
 
-  if(panel){
+  if(panel)
     panel.classList.add("show");
-  }
-
 }
 
 function closePanels(){
 
   document.querySelectorAll(".panel")
     .forEach(function(panel){
-
       panel.classList.remove("show");
-
     });
 
 }
 
 
-/* ==========================================
+/* =========================
    DETAY
-========================================== */
+========================= */
 
 function showDetails(){
 
   alert(
-    "🚘 Murat 131\n\n" +
-    "📅 Model: 2026\n" +
-    "📂 Kategori: JDM\n" +
-    "🏷️ Satıcı: CPMXSTORE\n" +
+    "🚘 Murat 131\n\n"+
+    "📅 Model: 2026\n"+
+    "📂 Kategori: JDM\n"+
+    "🏷️ Satıcı: CPMXSTORE\n"+
     "💰 Fiyat: 25 TL"
   );
 
 }
 
 
-/* ==========================================
+/* =========================
    PROFİL
-========================================== */
+========================= */
 
 function saveProfile(){
 
-  const input =
-    document.getElementById("profileName");
-
-  const name =
-    input.value.trim();
+  const name=
+    document.getElementById("profileName")
+    .value
+    .trim();
 
   if(!name){
 
     alert("Bir kullanıcı adı yaz.");
-
     return;
 
   }
@@ -1344,4 +1222,126 @@ function saveProfile(){
     name
   );
 
-  alert("Profil kaydedildi
+  alert("Profil kaydedildi! 👤");
+
+}
+
+const savedName=
+  localStorage.getItem("cpmxProfileName");
+
+if(savedName){
+
+  document.getElementById("profileName")
+    .value=savedName;
+
+}
+
+
+/* =========================
+   ADMİN
+========================= */
+
+function adminLogin(){
+
+  const password=
+    document.getElementById("adminPass").value;
+
+  if(password==="6640"){
+
+    alert(
+      "🛡️ Admin paneline hoş geldin!"
+    );
+
+  }else{
+
+    alert("❌ Şifre yanlış!");
+
+  }
+
+}
+
+
+/* =========================
+   ARAÇLARA GİT
+========================= */
+
+function scrollCars(){
+
+  const section=
+    document.getElementById("carsSection");
+
+  if(section){
+
+    section.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
+
+}
+
+
+/* =========================
+   ESC
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key==="Escape")
+      closePanels();
+
+  }
+);
+
+
+/* =========================
+   FOTOĞRAF KAYDIRMA
+========================= */
+
+let touchStartX=0;
+
+const photoBox=
+  document.querySelector(".photoBox");
+
+if(photoBox){
+
+  photoBox.addEventListener(
+    "touchstart",
+    function(e){
+
+      touchStartX=
+        e.changedTouches[0].screenX;
+
+    }
+  );
+
+  photoBox.addEventListener(
+    "touchend",
+    function(e){
+
+      const endX=
+        e.changedTouches[0].screenX;
+
+      const difference=
+        touchStartX-endX;
+
+      if(Math.abs(difference)>50){
+
+        if(difference>0)
+          changePhoto(1);
+        else
+          changePhoto(-1);
+
+      }
+
+    }
+  );
+
+}
+
+</script>
+
+</body>
+</html>
