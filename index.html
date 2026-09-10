@@ -2,16 +2,25 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>CPMXSTORE | Car Parking Multiplayer Araç Pazarı</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:#080808;
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
 }
 
 /* =========================
@@ -22,11 +31,13 @@ body{
   position:fixed;
   inset:0;
   z-index:99999;
-  background:
-    radial-gradient(circle,#420006 0%,#160003 35%,#050505 80%);
+  width:100%;
+  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
+  background:
+    radial-gradient(circle,#420006 0%,#160003 35%,#050505 80%);
   animation:introClose .7s ease 8s forwards;
 }
 
@@ -48,36 +59,35 @@ body{
 }
 
 .introLine{
-  width:0;
+  width:80%;
   height:3px;
   margin:20px auto;
   background:#ff1e25;
   box-shadow:0 0 20px #ff1e25;
-  animation:lineShow .6s ease .7s forwards;
 }
 
 .introMessages{
   position:relative;
   height:100px;
-  margin-top:10px;
 }
 
 .msg{
   position:absolute;
   inset:0;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   padding:10px;
   color:#ddd;
-  font-size:clamp(16px,3vw,24px);
+  font-size:clamp(15px,3vw,24px);
+  line-height:1.4;
   opacity:0;
 }
 
-.msg1{animation:msg1 1.2s ease 1.3s forwards}
-.msg2{animation:msg2 1.2s ease 2.4s forwards}
-.msg3{animation:msg3 1.2s ease 3.5s forwards}
-.msg4{animation:msg4 1.2s ease 4.6s forwards}
+.msg1{animation:msg 1.2s ease 1.2s forwards}
+.msg2{animation:msg 1.2s ease 2.4s forwards}
+.msg3{animation:msg 1.2s ease 3.6s forwards}
+.msg4{animation:msg 1.2s ease 4.8s forwards}
 
 .welcome{
   position:absolute;
@@ -85,14 +95,14 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:clamp(38px,9vw,75px);
+  font-size:clamp(35px,9vw,75px);
   font-weight:1000;
   opacity:0;
   text-shadow:
     0 0 10px #ff1e25,
     0 0 30px #ff1e25,
     0 0 60px #ff1e25;
-  animation:welcomeShow 1.4s ease 5.8s forwards;
+  animation:welcomeShow 1.4s ease 5.9s forwards;
 }
 
 .loading{
@@ -119,32 +129,7 @@ body{
   to{opacity:1;transform:scale(1)}
 }
 
-@keyframes lineShow{
-  to{width:80%}
-}
-
-@keyframes msg1{
-  0%{opacity:0;transform:translateY(15px)}
-  20%{opacity:1;transform:translateY(0)}
-  80%{opacity:1}
-  100%{opacity:0}
-}
-
-@keyframes msg2{
-  0%{opacity:0;transform:translateY(15px)}
-  20%{opacity:1;transform:translateY(0)}
-  80%{opacity:1}
-  100%{opacity:0}
-}
-
-@keyframes msg3{
-  0%{opacity:0;transform:translateY(15px)}
-  20%{opacity:1;transform:translateY(0)}
-  80%{opacity:1}
-  100%{opacity:0}
-}
-
-@keyframes msg4{
+@keyframes msg{
   0%{opacity:0;transform:translateY(15px)}
   20%{opacity:1;transform:translateY(0)}
   80%{opacity:1}
@@ -179,12 +164,13 @@ header{
   position:sticky;
   top:0;
   z-index:1000;
+  width:100%;
   min-height:70px;
   padding:12px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(5,5,5,.95);
+  background:rgba(5,5,5,.96);
   backdrop-filter:blur(15px);
   border-bottom:1px solid #222;
 }
@@ -193,13 +179,16 @@ header{
   font-size:27px;
   font-weight:1000;
   letter-spacing:2px;
+  white-space:nowrap;
 }
 
-.logo span{color:#ff1e25}
+.logo span{
+  color:#ff1e25;
+}
 
 .nav{
   display:flex;
-  gap:8px;
+  gap:7px;
 }
 
 .nav button,
@@ -208,15 +197,20 @@ header{
   background:#111;
   color:#fff;
   border-radius:12px;
-  padding:11px 13px;
   cursor:pointer;
   transition:.2s;
 }
 
-.nav button:hover,
-.mobileNav button:hover{
+.nav button{
+  width:43px;
+  height:43px;
+  font-size:17px;
+}
+
+.nav button:hover{
   border-color:#ff1e25;
   color:#ff1e25;
+  transform:translateY(-2px);
 }
 
 
@@ -226,6 +220,7 @@ header{
 
 .hero{
   min-height:390px;
+  width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -242,12 +237,14 @@ header{
   letter-spacing:4px;
 }
 
-.hero h1 span{color:#ff1e25}
+.hero h1 span{
+  color:#ff1e25;
+}
 
 .hero p{
   margin-top:14px;
   color:#aaa;
-  font-size:clamp(15px,2vw,21px);
+  font-size:clamp(14px,2vw,21px);
 }
 
 .heroBtn{
@@ -264,7 +261,7 @@ header{
 
 
 /* =========================
-   SEARCH
+   ARAMA
 ========================= */
 
 .searchArea{
@@ -274,7 +271,8 @@ header{
 
 .searchArea input{
   width:100%;
-  padding:17px 20px;
+  height:54px;
+  padding:0 20px;
   border:1px solid #292929;
   border-radius:15px;
   outline:none;
@@ -301,6 +299,7 @@ header{
 }
 
 .stat{
+  min-width:0;
   padding:20px;
   background:#101010;
   border:1px solid #242424;
@@ -330,8 +329,13 @@ header{
   margin:45px auto 20px;
 }
 
-.sectionTitle h2{font-size:27px}
-.sectionTitle span{color:#ff1e25}
+.sectionTitle h2{
+  font-size:27px;
+}
+
+.sectionTitle span{
+  color:#ff1e25;
+}
 
 .cars{
   width:min(1100px,90%);
@@ -343,6 +347,7 @@ header{
 }
 
 .card{
+  min-width:0;
   overflow:hidden;
   background:#101010;
   border:1px solid #252525;
@@ -358,11 +363,14 @@ header{
 
 .photoBox{
   position:relative;
+  width:100%;
   height:230px;
   background:#050505;
+  overflow:hidden;
 }
 
 .photoBox img{
+  display:block;
   width:100%;
   height:100%;
   object-fit:cover;
@@ -379,7 +387,8 @@ header{
   background:rgba(0,0,0,.75);
   color:#fff;
   cursor:pointer;
-  font-size:24px;
+  font-size:25px;
+  z-index:2;
 }
 
 .left{left:10px}
@@ -395,7 +404,9 @@ header{
   font-size:12px;
 }
 
-.cardBody{padding:18px}
+.cardBody{
+  padding:18px;
+}
 
 .cardBody h3{
   margin-bottom:10px;
@@ -424,7 +435,8 @@ header{
 
 .actions button{
   flex:1;
-  padding:12px;
+  min-width:0;
+  padding:12px 8px;
   border:1px solid #292929;
   border-radius:11px;
   background:#151515;
@@ -432,7 +444,9 @@ header{
   cursor:pointer;
 }
 
-.actions button:hover{border-color:#ff1e25}
+.actions button:hover{
+  border-color:#ff1e25;
+}
 
 .favorite.active{
   color:#ff1e25;
@@ -449,44 +463,66 @@ header{
   top:85px;
   right:20px;
   z-index:5000;
-  width:min(390px,calc(100% - 40px));
-  max-height:75vh;
-  overflow:auto;
+  width:min(390px,calc(100vw - 40px));
+  max-height:calc(100vh - 110px);
+  overflow-y:auto;
+  overflow-x:hidden;
   display:none;
   padding:20px;
   border:1px solid #333;
   border-radius:18px;
   background:#111;
-  box-shadow:0 20px 60px #000;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
 }
 
-.panel.show{display:block}
+.panel.show{
+  display:block;
+  animation:panelIn .2s ease;
+}
 
-.panel h2{margin-bottom:15px}
+@keyframes panelIn{
+  from{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.panel h2{
+  padding-right:35px;
+  margin-bottom:15px;
+}
 
 .close{
   float:right;
   border:0;
   background:none;
   color:#aaa;
-  font-size:22px;
+  font-size:25px;
   cursor:pointer;
 }
 
 .panelItem{
+  width:100%;
   margin:8px 0;
   padding:14px;
   border-radius:12px;
   background:#181818;
   color:#ccc;
+  overflow-wrap:anywhere;
 }
 
 
 /* =========================
-   MOBİL MENÜ
+   MOBİL ALT MENÜ
 ========================= */
 
-.mobileNav{display:none}
+.mobileNav{
+  display:none;
+}
 
 
 /* =========================
@@ -525,55 +561,168 @@ footer{
 
 @media(max-width:700px){
 
-  header{
-    min-height:62px;
-    padding:10px 15px;
+  body{
+    padding-bottom:70px;
   }
 
-  .logo{font-size:21px}
+  header{
+    min-height:58px;
+    height:58px;
+    padding:8px 12px;
+  }
 
-  .nav{display:none}
+  .logo{
+    font-size:20px;
+    letter-spacing:1px;
+  }
+
+  .nav{
+    display:flex;
+    gap:4px;
+  }
+
+  .nav button{
+    width:34px;
+    height:34px;
+    padding:0;
+    font-size:14px;
+    border-radius:9px;
+  }
 
   .hero{
-    min-height:350px;
-    padding:50px 18px;
+    min-height:320px;
+    padding:45px 15px;
   }
 
-  .hero h1{letter-spacing:2px}
+  .hero h1{
+    font-size:clamp(40px,14vw,62px);
+    letter-spacing:1px;
+  }
 
-  .cars{
-    width:92%;
-    grid-template-columns:1fr;
+  .hero p{
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .heroBtn{
+    width:100%;
+    max-width:280px;
+    padding:14px;
+  }
+
+  .searchArea{
+    width:94%;
+    margin:20px auto;
+  }
+
+  .searchArea input{
+    height:50px;
+    font-size:15px;
   }
 
   .stats{
-    width:92%;
-    gap:10px;
+    width:94%;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin:18px auto;
   }
 
-  .stat{padding:15px 8px}
+  .stat{
+    padding:14px 7px;
+    border-radius:13px;
+  }
 
-  .photoBox{height:250px}
+  .stat strong{
+    font-size:22px;
+  }
+
+  .stat span{
+    font-size:11px;
+  }
+
+  .sectionTitle{
+    width:94%;
+    margin:30px auto 15px;
+  }
+
+  .sectionTitle h2{
+    font-size:22px;
+  }
+
+  .cars{
+    width:94%;
+    grid-template-columns:1fr;
+    gap:15px;
+    padding-bottom:25px;
+  }
+
+  .photoBox{
+    height:230px;
+  }
+
+  .cardBody{
+    padding:15px;
+  }
+
+  .cardBody h3{
+    font-size:20px;
+  }
+
+  .price{
+    margin:14px 0;
+    font-size:23px;
+  }
+
+  .actions button{
+    padding:11px 5px;
+    font-size:13px;
+  }
+
+  /* Mobil panel sistemi */
+
+  .panel{
+    top:66px;
+    left:8px;
+    right:8px;
+    width:auto;
+    max-width:none;
+    max-height:calc(100vh - 140px);
+    padding:16px;
+    border-radius:16px;
+  }
+
+  .panel h2{
+    font-size:20px;
+  }
+
+  .panelItem{
+    font-size:14px;
+  }
 
   .mobileNav{
     position:fixed;
     left:0;
     right:0;
     bottom:0;
-    z-index:4000;
+    z-index:6000;
+    height:68px;
     display:flex;
+    align-items:center;
     justify-content:space-around;
-    padding:8px 5px;
-    background:rgba(8,8,8,.97);
+    padding:5px 4px;
+    padding-bottom:calc(5px + env(safe-area-inset-bottom));
+    background:rgba(8,8,8,.98);
     backdrop-filter:blur(15px);
     border-top:1px solid #292929;
   }
 
   .mobileNav button{
-    padding:8px 10px;
+    width:25%;
+    height:56px;
+    padding:4px 2px;
     border:0;
     background:transparent;
-    font-size:12px;
+    font-size:10px;
   }
 
   .mobileNav button div{
@@ -581,12 +730,91 @@ footer{
     font-size:20px;
   }
 
-  footer{padding-bottom:90px}
+  footer{
+    padding-bottom:90px;
+  }
 
 }
 
+
+/* =========================
+   KÜÇÜK TELEFON
+========================= */
+
 @media(max-width:380px){
-  .photoBox{height:220px}
+
+  header{
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .logo{
+    font-size:17px;
+  }
+
+  .nav{
+    gap:2px;
+  }
+
+  .nav button{
+    width:31px;
+    height:31px;
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:300px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .stats{
+    gap:7px;
+  }
+
+  .stat strong{
+    font-size:20px;
+  }
+
+  .photoBox{
+    height:210px;
+  }
+
+  .panel{
+    left:6px;
+    right:6px;
+    padding:14px;
+  }
+
+}
+
+
+/* =========================
+   YATAY TELEFON
+========================= */
+
+@media(max-width:700px) and (orientation:landscape){
+
+  header{
+    height:52px;
+    min-height:52px;
+  }
+
+  .panel{
+    top:58px;
+    max-height:calc(100vh - 70px);
+  }
+
+  .hero{
+    min-height:260px;
+  }
+
+  .cars{
+    grid-template-columns:repeat(2,1fr);
+  }
+
 }
 </style>
 </head>
@@ -595,7 +823,7 @@ footer{
 
 
 <!-- =========================
-     CPMXSTORE AÇILIŞ
+     AÇILIŞ EKRANI
 ========================= -->
 
 <div id="intro">
@@ -653,13 +881,13 @@ footer{
 
   <div class="nav">
 
-    <button onclick="scrollCars()">🚘</button>
-    <button onclick="openPanel('favorites')">❤️</button>
-    <button onclick="openPanel('notifications')">🔔</button>
-    <button onclick="openPanel('messages')">💬</button>
-    <button onclick="openPanel('profile')">👤</button>
-    <button onclick="openPanel('settings')">⚙️</button>
-    <button onclick="openPanel('admin')">🛡️</button>
+    <button onclick="scrollCars()" title="Araçlar">🚘</button>
+    <button onclick="openPanel('favorites')" title="Favoriler">❤️</button>
+    <button onclick="openPanel('notifications')" title="Bildirimler">🔔</button>
+    <button onclick="openPanel('messages')" title="Mesajlar">💬</button>
+    <button onclick="openPanel('profile')" title="Profil">👤</button>
+    <button onclick="openPanel('settings')" title="Ayarlar">⚙️</button>
+    <button onclick="openPanel('admin')" title="Admin">🛡️</button>
 
   </div>
 
@@ -712,7 +940,7 @@ footer{
 
 
 <!-- =========================
-     İSTATİSTİK
+     İSTATİSTİKLER
 ========================= -->
 
 <div class="stats">
@@ -755,13 +983,7 @@ footer{
 
 <div class="cars">
 
-
-  <!-- MURAT 131 -->
-
-  <div
-    class="card"
-    data-name="Murat 131"
-  >
+  <div class="card" data-name="Murat 131">
 
     <div class="photoBox">
 
@@ -774,16 +996,12 @@ footer{
       <button
         class="arrow left"
         onclick="changePhoto(-1)"
-      >
-        ‹
-      </button>
+      >‹</button>
 
       <button
         class="arrow right"
         onclick="changePhoto(1)"
-      >
-        ›
-      </button>
+      >›</button>
 
       <div
         class="photoCount"
@@ -793,7 +1011,6 @@ footer{
       </div>
 
     </div>
-
 
     <div class="cardBody">
 
@@ -836,7 +1053,7 @@ footer{
 
 
 <!-- =========================
-     FAVORİ
+     FAVORİLER
 ========================= -->
 
 <div class="panel" id="favorites">
@@ -873,6 +1090,10 @@ footer{
     🚘 Yeni araçlar yakında eklenecek.
   </div>
 
+  <div class="panelItem">
+    🔥 Mağazamızı takip etmeyi unutma!
+  </div>
+
 </div>
 
 
@@ -905,10 +1126,13 @@ footer{
 
   <div class="panelItem">
 
-    <label>Kullanıcı adı</label>
+    <label for="profileName">
+      Kullanıcı adı
+    </label>
 
     <input
       id="profileName"
+      type="text"
       placeholder="Adını yaz..."
       style="
         width:100%;
@@ -918,6 +1142,7 @@ footer{
         color:#fff;
         border:1px solid #333;
         border-radius:10px;
+        outline:none;
       "
     >
 
@@ -953,7 +1178,7 @@ footer{
   <h2>⚙️ Ayarlar</h2>
 
   <div class="panelItem">
-    🌙 Tema: Koyu mod
+    🌙 Koyu tema aktif
   </div>
 
   <div class="panelItem">
@@ -983,9 +1208,10 @@ footer{
         width:100%;
         padding:12px;
         background:#0b0b0b;
-        color:white;
+        color:#fff;
         border:1px solid #333;
         border-radius:10px;
+        outline:none;
       "
     >
 
@@ -1011,7 +1237,7 @@ footer{
 
 
 <!-- =========================
-     MOBİL ALT MENÜ
+     MOBİL MENÜ
 ========================= -->
 
 <div class="mobileNav">
@@ -1026,9 +1252,9 @@ footer{
     Favori
   </button>
 
-  <button onclick="openPanel('messages')">
-    <div>💬</div>
-    Mesaj
+  <button onclick="openPanel('notifications')">
+    <div>🔔</div>
+    Bildirim
   </button>
 
   <button onclick="openPanel('profile')">
@@ -1040,16 +1266,18 @@ footer{
 
 
 <footer>
+
   © 2026 CPMXSTORE
   <br>
   Car Parking Multiplayer Marketplace
+
 </footer>
 
 
 <script>
 
 /* =========================
-   FOTOĞRAFLAR
+   FOTOĞRAF
 ========================= */
 
 const photos=[
@@ -1063,17 +1291,29 @@ function changePhoto(direction){
 
   photoIndex+=direction;
 
-  if(photoIndex<0)
+  if(photoIndex<0){
     photoIndex=photos.length-1;
+  }
 
-  if(photoIndex>=photos.length)
+  if(photoIndex>=photos.length){
     photoIndex=0;
+  }
 
-  document.getElementById("carImage").src=
-    photos[photoIndex];
+  const image=
+    document.getElementById("carImage");
 
-  document.getElementById("photoCount").textContent=
-    (photoIndex+1)+" / "+photos.length;
+  const count=
+    document.getElementById("photoCount");
+
+  if(image){
+    image.src=photos[photoIndex];
+  }
+
+  if(count){
+    count.textContent=
+      (photoIndex+1)+" / "+photos.length;
+  }
+
 }
 
 
@@ -1088,6 +1328,8 @@ function updateFavorite(){
 
   const btn=
     document.getElementById("favoriteBtn");
+
+  if(!btn) return;
 
   if(favorite){
 
@@ -1127,6 +1369,7 @@ function toggleFavorite(){
   );
 
   updateFavorite();
+
 }
 
 updateFavorite();
@@ -1138,9 +1381,11 @@ updateFavorite();
 
 function searchCars(){
 
+  const input=
+    document.getElementById("search");
+
   const value=
-    document.getElementById("search")
-    .value
+    input.value
     .toLowerCase()
     .trim();
 
@@ -1148,12 +1393,16 @@ function searchCars(){
     .forEach(function(card){
 
       const name=
-        card.dataset.name.toLowerCase();
+        (card.dataset.name || "")
+        .toLowerCase();
 
       card.style.display=
-        name.includes(value) ? "" : "none";
+        name.includes(value)
+        ? ""
+        : "none";
 
     });
+
 }
 
 
@@ -1168,15 +1417,19 @@ function openPanel(id){
   const panel=
     document.getElementById(id);
 
-  if(panel)
+  if(panel){
     panel.classList.add("show");
+  }
+
 }
 
 function closePanels(){
 
   document.querySelectorAll(".panel")
     .forEach(function(panel){
+
       panel.classList.remove("show");
+
     });
 
 }
@@ -1205,16 +1458,17 @@ function showDetails(){
 
 function saveProfile(){
 
+  const input=
+    document.getElementById("profileName");
+
   const name=
-    document.getElementById("profileName")
-    .value
-    .trim();
+    input.value.trim();
 
   if(!name){
 
     alert("Bir kullanıcı adı yaz.");
-    return;
 
+    return;
   }
 
   localStorage.setItem(
@@ -1231,8 +1485,9 @@ const savedName=
 
 if(savedName){
 
-  document.getElementById("profileName")
-    .value=savedName;
+  document.getElementById(
+    "profileName"
+  ).value=savedName;
 
 }
 
@@ -1254,7 +1509,9 @@ function adminLogin(){
 
   }else{
 
-    alert("❌ Şifre yanlış!");
+    alert(
+      "❌ Şifre yanlış!"
+    );
 
   }
 
@@ -1273,12 +1530,35 @@ function scrollCars(){
   if(section){
 
     section.scrollIntoView({
-      behavior:"smooth"
+      behavior:"smooth",
+      block:"start"
     });
 
   }
 
 }
+
+
+/* =========================
+   PANEL DIŞINA TIKLAMA
+========================= */
+
+document.addEventListener(
+  "click",
+  function(e){
+
+    const panel=
+      e.target.closest(".panel");
+
+    const button=
+      e.target.closest("button");
+
+    if(!panel && !button){
+      closePanels();
+    }
+
+  }
+);
 
 
 /* =========================
@@ -1289,15 +1569,16 @@ document.addEventListener(
   "keydown",
   function(e){
 
-    if(e.key==="Escape")
+    if(e.key==="Escape"){
       closePanels();
+    }
 
   }
 );
 
 
 /* =========================
-   FOTOĞRAF KAYDIRMA
+   TELEFON FOTOĞRAF KAYDIRMA
 ========================= */
 
 let touchStartX=0;
@@ -1314,29 +1595,32 @@ if(photoBox){
       touchStartX=
         e.changedTouches[0].screenX;
 
-    }
+    },
+    {passive:true}
   );
 
   photoBox.addEventListener(
     "touchend",
     function(e){
 
-      const endX=
+      const touchEndX=
         e.changedTouches[0].screenX;
 
       const difference=
-        touchStartX-endX;
+        touchStartX-touchEndX;
 
       if(Math.abs(difference)>50){
 
-        if(difference>0)
+        if(difference>0){
           changePhoto(1);
-        else
+        }else{
           changePhoto(-1);
+        }
 
       }
 
-    }
+    },
+    {passive:true}
   );
 
 }
