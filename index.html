@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,viewport-fit=cover">
 
 <title>CPMXSTORE | Car Parking Multiplayer Araç Pazarı</title>
+
 <meta name="description" content="CPMXSTORE - Car Parking Multiplayer özel araç pazarı.">
 <meta name="keywords" content="CPMXSTORE, CPM, Car Parking Multiplayer, CPM araç, JDM">
 <meta name="robots" content="index,follow">
@@ -27,6 +28,7 @@ body{
   overflow-x:hidden;
 }
 
+
 /* =========================
    AÇILIŞ
 ========================= */
@@ -35,8 +37,6 @@ body{
   position:fixed;
   inset:0;
   z-index:99999;
-  width:100%;
-  height:100%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -55,7 +55,6 @@ body{
   font-size:clamp(42px,9vw,90px);
   font-weight:1000;
   letter-spacing:5px;
-  color:#fff;
   text-shadow:
     0 0 10px #ff1e25,
     0 0 30px #ff1e25,
@@ -554,15 +553,6 @@ header{
 
 
 /* =========================
-   MOBİL MENÜ
-========================= */
-
-.mobileNav{
-  display:none;
-}
-
-
-/* =========================
    FOOTER
 ========================= */
 
@@ -599,7 +589,7 @@ footer{
 @media(max-width:700px){
 
   body{
-    padding-bottom:78px;
+    padding-bottom:0;
     overflow-x:hidden;
   }
 
@@ -619,8 +609,8 @@ footer{
   }
 
   .nav button{
-    width:33px;
-    height:33px;
+    width:34px;
+    height:34px;
     border-radius:9px;
     font-size:14px;
   }
@@ -713,75 +703,26 @@ footer{
     font-size:13px;
   }
 
-  /* PANEL */
-
   .panel{
     top:66px;
     left:7px;
     right:7px;
-    bottom:78px;
+    bottom:7px;
     width:auto;
     max-height:none;
     padding:16px;
     border-radius:16px;
   }
 
-  .panel h2{
-    font-size:20px;
-  }
-
-  .panelItem{
-    font-size:14px;
-  }
-
-  /* ALT MENÜ */
-
-  .mobileNav{
-    position:fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    z-index:11000;
-    height:70px;
-    display:flex;
-    align-items:center;
-    justify-content:space-around;
-    padding:4px 2px;
-    padding-bottom:calc(4px + env(safe-area-inset-bottom));
-    background:rgba(8,8,8,.98);
-    backdrop-filter:blur(15px);
-    border-top:1px solid #292929;
-  }
-
-  .mobileNav button{
-    width:25%;
-    height:60px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:2px;
-    border:0;
-    background:transparent;
-    color:#fff;
-    cursor:pointer;
-    font-size:10px;
-  }
-
-  .mobileNav button div{
-    font-size:21px;
-    line-height:25px;
-  }
-
   footer{
-    padding-bottom:90px;
+    padding-bottom:30px;
   }
 
 }
 
 
 /* =========================
-   ÇOK KÜÇÜK TELEFON
+   KÜÇÜK TELEFON
 ========================= */
 
 @media(max-width:380px){
@@ -800,8 +741,8 @@ footer{
   }
 
   .nav button{
-    width:30px;
-    height:30px;
+    width:31px;
+    height:31px;
     font-size:12px;
   }
 
@@ -829,14 +770,6 @@ footer{
     left:5px;
     right:5px;
     padding:13px;
-  }
-
-  .mobileNav button{
-    font-size:9px;
-  }
-
-  .mobileNav button div{
-    font-size:19px;
   }
 
 }
@@ -870,65 +803,19 @@ footer{
 }
 
 
-/* =================================================
-   TELEFON CİHAZ ALGILAMA İÇİN ZORUNLU MOBİL MOD
-================================================= */
+/* =========================
+   TELEFON ALGILAMA
+========================= */
 
 body.phoneMode{
-  padding-bottom:80px !important;
+  padding-bottom:0 !important;
   overflow-x:hidden !important;
 }
 
-body.phoneMode .mobileNav{
-  position:fixed !important;
-  display:flex !important;
-  left:0 !important;
-  right:0 !important;
-  bottom:0 !important;
-  width:100% !important;
-  height:70px !important;
-  z-index:11000 !important;
-  background:rgba(8,8,8,.98) !important;
-}
 
-body.phoneMode .mobileNav button{
-  display:flex !important;
-  width:25% !important;
-  height:60px !important;
-  flex-direction:column !important;
-  align-items:center !important;
-  justify-content:center !important;
-  color:#fff !important;
-}
-
-body.phoneMode .mobileNav button div{
-  display:block !important;
-  font-size:21px !important;
-  line-height:25px !important;
-}
-
-body.phoneMode .panel{
-  position:fixed !important;
-  top:65px !important;
-  left:7px !important;
-  right:7px !important;
-  bottom:78px !important;
-  width:auto !important;
-  max-width:none !important;
-  max-height:none !important;
-  overflow-y:auto !important;
-  overflow-x:hidden !important;
-  z-index:12000 !important;
-}
-
-body.phoneMode .panel.show{
-  display:block !important;
-}
-
-body.phoneMode header{
-  position:sticky !important;
-  top:0 !important;
-  z-index:10000 !important;
+/* ALT MENÜ ARTIK YOK */
+.mobileNav{
+  display:none !important;
 }
 
 </style>
@@ -937,9 +824,9 @@ body.phoneMode header{
 <body>
 
 
-<!-- =========================================
-     AÇILIŞ EKRANI
-========================================= -->
+<!-- =========================
+     AÇILIŞ
+========================= -->
 
 <div id="intro">
 
@@ -984,9 +871,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
+<!-- =========================
      HEADER
-========================================= -->
+========================= -->
 
 <header>
 
@@ -996,32 +883,46 @@ body.phoneMode header{
 
   <div class="nav">
 
-    <button onclick="scrollCars()" title="Araçlar">
+    <button
+      onclick="scrollCars()"
+      title="Araçlar"
+    >
       🚘
     </button>
 
-    <button onclick="openPanel('favorites')" title="Favoriler">
+    <button
+      onclick="openPanel('favorites')"
+      title="Favoriler"
+    >
       ❤️
     </button>
 
-    <button onclick="openPanel('notifications')" title="Bildirimler">
+    <button
+      onclick="openPanel('notifications')"
+      title="Bildirimler"
+    >
       🔔
     </button>
 
-    <button onclick="openPanel('messages')" title="Mesajlar">
+    <button
+      onclick="openPanel('messages')"
+      title="Mesajlar"
+    >
       💬
     </button>
 
-    <button onclick="openPanel('profile')" title="Profil">
+    <button
+      onclick="openPanel('profile')"
+      title="Profil"
+    >
       👤
     </button>
 
-    <button onclick="openPanel('settings')" title="Ayarlar">
+    <button
+      onclick="openPanel('settings')"
+      title="Ayarlar"
+    >
       ⚙️
-    </button>
-
-    <button onclick="openPanel('admin')" title="Admin">
-      🛡️
     </button>
 
   </div>
@@ -1029,9 +930,9 @@ body.phoneMode header{
 </header>
 
 
-<!-- =========================================
+<!-- =========================
      HERO
-========================================= -->
+========================= -->
 
 <section class="hero">
 
@@ -1061,9 +962,9 @@ body.phoneMode header{
 </section>
 
 
-<!-- =========================================
+<!-- =========================
      ARAMA
-========================================= -->
+========================= -->
 
 <div class="searchArea">
 
@@ -1077,9 +978,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     İSTATİSTİK
-========================================= -->
+<!-- =========================
+     STATS
+========================= -->
 
 <div class="stats">
 
@@ -1106,9 +1007,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
+<!-- =========================
      ARAÇLAR
-========================================= -->
+========================= -->
 
 <div
   class="sectionTitle"
@@ -1169,21 +1070,10 @@ body.phoneMode header{
 
       <div class="info">
 
-        <div>
-          📅 2026
-        </div>
-
-        <div>
-          ⚡ Özel Araç
-        </div>
-
-        <div>
-          🏷️ CPMXSTORE
-        </div>
-
-        <div>
-          📂 JDM
-        </div>
+        <div>📅 2026</div>
+        <div>⚡ Özel Araç</div>
+        <div>🏷️ CPMXSTORE</div>
+        <div>📂 JDM</div>
 
       </div>
 
@@ -1201,7 +1091,9 @@ body.phoneMode header{
           ❤️ Favori
         </button>
 
-        <button onclick="showDetails()">
+        <button
+          onclick="showDetails()"
+        >
           📋 Detay
         </button>
 
@@ -1214,9 +1106,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     FAVORİ PANELİ
-========================================= -->
+<!-- =========================
+     FAVORİ
+========================= -->
 
 <div
   class="panel"
@@ -1244,9 +1136,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     BİLDİRİM PANELİ
-========================================= -->
+<!-- =========================
+     BİLDİRİMLER
+========================= -->
 
 <div
   class="panel"
@@ -1279,9 +1171,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     MESAJ PANELİ
-========================================= -->
+<!-- =========================
+     MESAJLAR
+========================= -->
 
 <div
   class="panel"
@@ -1306,9 +1198,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     PROFİL PANELİ
-========================================= -->
+<!-- =========================
+     PROFİL
+========================= -->
 
 <div
   class="panel"
@@ -1328,7 +1220,7 @@ body.phoneMode header{
 
   <div class="panelItem">
 
-    <label for="profileName">
+    <label>
       Kullanıcı adı
     </label>
 
@@ -1366,28 +1258,12 @@ body.phoneMode header{
 
   </div>
 
-  <div
-    class="panelItem"
-    onclick="openPanel('settings')"
-    style="cursor:pointer"
-  >
-    ⚙️ Ayarları Aç
-  </div>
-
-  <div
-    class="panelItem"
-    onclick="openPanel('admin')"
-    style="cursor:pointer"
-  >
-    🛡️ Admin Paneli
-  </div>
-
 </div>
 
 
-<!-- =========================================
+<!-- =========================
      AYARLAR
-========================================= -->
+========================= -->
 
 <div
   class="panel"
@@ -1420,119 +1296,9 @@ body.phoneMode header{
 </div>
 
 
-<!-- =========================================
-     ADMİN
-========================================= -->
-
-<div
-  class="panel"
-  id="admin"
->
-
-  <button
-    class="close"
-    onclick="closePanels()"
-  >
-    ×
-  </button>
-
-  <h2>
-    🛡️ Admin
-  </h2>
-
-  <div class="panelItem">
-
-    <input
-      id="adminPass"
-      type="password"
-      placeholder="Admin şifresi"
-      style="
-        width:100%;
-        padding:12px;
-        background:#0b0b0b;
-        color:#fff;
-        border:1px solid #333;
-        border-radius:10px;
-        outline:none;
-      "
-    >
-
-    <button
-      onclick="adminLogin()"
-      style="
-        width:100%;
-        margin-top:10px;
-        padding:12px;
-        background:#ff1e25;
-        color:#fff;
-        border:0;
-        border-radius:10px;
-        cursor:pointer;
-      "
-    >
-      Giriş Yap
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================
-     MOBİL ALT MENÜ
-========================================= -->
-
-<div class="mobileNav">
-
-  <button onclick="scrollCars()">
-
-    <div>
-      🚘
-    </div>
-
-    Araçlar
-
-  </button>
-
-
-  <button onclick="openPanel('favorites')">
-
-    <div>
-      ❤️
-    </div>
-
-    Favori
-
-  </button>
-
-
-  <button onclick="openPanel('notifications')">
-
-    <div>
-      🔔
-    </div>
-
-    Bildirim
-
-  </button>
-
-
-  <button onclick="openPanel('messages')">
-
-    <div>
-      💬
-    </div>
-
-    Mesaj
-
-  </button>
-
-</div>
-
-
-<!-- =========================================
+<!-- =========================
      FOOTER
-========================================= -->
+========================= -->
 
 <footer>
 
@@ -1547,9 +1313,9 @@ body.phoneMode header{
 
 <script>
 
-/* =========================================
+/* =========================
    TELEFON ALGILAMA
-========================================= */
+========================= */
 
 (function(){
 
@@ -1566,9 +1332,9 @@ body.phoneMode header{
 })();
 
 
-/* =========================================
+/* =========================
    FOTOĞRAFLAR
-========================================= */
+========================= */
 
 const photos = [
 
@@ -1623,9 +1389,9 @@ function changePhoto(direction){
 }
 
 
-/* =========================================
+/* =========================
    FAVORİ
-========================================= */
+========================= */
 
 let favorite =
   localStorage.getItem("cpmxFavorite") === "true";
@@ -1711,9 +1477,9 @@ function toggleFavorite(){
 updateFavorite();
 
 
-/* =========================================
+/* =========================
    ARAMA
-========================================= */
+========================= */
 
 function searchCars(){
 
@@ -1743,9 +1509,9 @@ function searchCars(){
 }
 
 
-/* =========================================
+/* =========================
    PANELLER
-========================================= */
+========================= */
 
 function openPanel(id){
 
@@ -1757,6 +1523,8 @@ function openPanel(id){
   if(panel){
 
     panel.classList.add("show");
+
+    panel.scrollTop = 0;
 
   }
 
@@ -1776,30 +1544,26 @@ function closePanels(){
 }
 
 
-/* =========================================
+/* =========================
    DETAY
-========================================= */
+========================= */
 
 function showDetails(){
 
   alert(
     "🚘 Murat 131\n\n" +
-
     "📅 Model: 2026\n" +
-
     "📂 Kategori: JDM\n" +
-
     "🏷️ Satıcı: CPMXSTORE\n" +
-
     "💰 Fiyat: 25 TL"
   );
 
 }
 
 
-/* =========================================
+/* =========================
    PROFİL
-========================================= */
+========================= */
 
 function saveProfile(){
 
@@ -1845,37 +1609,9 @@ if(savedName){
 }
 
 
-/* =========================================
-   ADMİN
-========================================= */
-
-function adminLogin(){
-
-  const password =
-    document.getElementById(
-      "adminPass"
-    ).value;
-
-  if(password === "6640"){
-
-    alert(
-      "🛡️ Admin paneline hoş geldin!"
-    );
-
-  }else{
-
-    alert(
-      "❌ Şifre yanlış!"
-    );
-
-  }
-
-}
-
-
-/* =========================================
+/* =========================
    ARAÇLARA GİT
-========================================= */
+========================= */
 
 function scrollCars(){
 
@@ -1898,9 +1634,9 @@ function scrollCars(){
 }
 
 
-/* =========================================
-   ESC İLE KAPAT
-========================================= */
+/* =========================
+   ESC
+========================= */
 
 document.addEventListener(
   "keydown",
@@ -1916,16 +1652,14 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   FOTOĞRAF TELEFONDA KAYDIRMA
-========================================= */
+/* =========================
+   FOTOĞRAF KAYDIRMA
+========================= */
 
 let touchStartX = 0;
 
 const photoBox =
-  document.querySelector(
-    ".photoBox"
-  );
+  document.querySelector(".photoBox");
 
 
 if(photoBox){
@@ -1935,13 +1669,10 @@ if(photoBox){
     function(e){
 
       touchStartX =
-        e.changedTouches[0]
-        .screenX;
+        e.changedTouches[0].screenX;
 
     },
-    {
-      passive:true
-    }
+    {passive:true}
   );
 
 
@@ -1950,8 +1681,7 @@ if(photoBox){
     function(e){
 
       const touchEndX =
-        e.changedTouches[0]
-        .screenX;
+        e.changedTouches[0].screenX;
 
       const difference =
         touchStartX -
@@ -1972,30 +1702,8 @@ if(photoBox){
       }
 
     },
-    {
-      passive:true
-    }
+    {passive:true}
   );
-
-}
-
-
-/* =========================================
-   PANEL AÇILINCA SCROLL BAŞA AL
-========================================= */
-
-function openPanelFixed(id){
-
-  openPanel(id);
-
-  const panel =
-    document.getElementById(id);
-
-  if(panel){
-
-    panel.scrollTop = 0;
-
-  }
 
 }
 
